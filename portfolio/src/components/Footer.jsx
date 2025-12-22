@@ -1,10 +1,19 @@
 import React from "react";
 
-
 export default function Footer() {
   return (
-    <footer className="py-6 text-center text-gray-500">
-      © 2025 Neelima. All rights reserved.
+    <footer className="mt-16 bg-[#05071A] py-6 text-center text-[11px] text-[#9CA3AF] md:mt-20 md:py-8">
+      <div className="mx-auto max-w-5xl px-4 md:px-6">
+        <p className="text-xs font-semibold text-[#E5E7EB]">
+          Alex Morgan
+        </p>
+        <p className="mt-1 text-[11px] text-[#9CA3AF]">
+          Creating beautiful digital experiences
+        </p>
+        <p className="mt-3 text-[10px] text-[#6B7280]">
+          © 2024 Alex Morgan. All rights reserved.
+        </p>
+      </div>
     </footer>
   );
 }
