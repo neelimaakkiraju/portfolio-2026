@@ -26,6 +26,30 @@ const projects = [
     repo: "https://github.com/your-username/creative-portfolio",
     live: "https://portfolio.example.com",
   },
+  {
+    name: "Creative Portfolio",
+    description: "Artistic showcase with interactive elements.",
+    tags: ["Web", "Creative"],
+    imageAlt: "Creative portfolio gallery preview",
+    repo: "https://github.com/your-username/creative-portfolio",
+    live: "https://portfolio.example.com",
+  },
+  {
+    name: "Creative Portfolio",
+    description: "Artistic showcase with interactive elements.",
+    tags: ["Web", "Creative"],
+    imageAlt: "Creative portfolio gallery preview",
+    repo: "https://github.com/your-username/creative-portfolio",
+    live: "https://portfolio.example.com",
+  },
+  {
+    name: "Creative Portfolio",
+    description: "Artistic showcase with interactive elements.",
+    tags: ["Web", "Creative"],
+    imageAlt: "Creative portfolio gallery preview",
+    repo: "https://github.com/your-username/creative-portfolio",
+    live: "https://portfolio.example.com",
+  },
 ];
 
 export default function Projects() {

@@ -14,16 +14,15 @@ export default function Hero() {
     >
       <div className="order-2 w-full md:order-1 md:w-1/2">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9094B2]">
-          Creative Designer
+         REACT SPECIALIST
         </p>
         <h1 className="mt-3 text-3xl font-extrabold leading-tight text-[#1A1A2E] sm:text-4xl lg:text-[40px]">
-          Creative <span className="text-[#4C5BFF]">Designer</span>
+          Creative <span className="text-[#4C5BFF]">Frontend</span>
           <br />
-          &amp; Developer
+           Developer
         </h1>
         <p className="mt-4 max-w-md text-sm leading-relaxed text-[#8588A3] sm:text-[13px]">
-          I craft beautiful digital experiences that combine stunning design
-          with seamless functionality. Let&apos;s bring your vision to life.
+        Frontend Developer with 2+ years of experience building high-performance, responsive web applications using React, Next.js, and TypeScript. I focus on clean UI, smooth user experiences, and scalable frontend architecture.
         </p>
 
         <div className="mt-7 flex flex-wrap items-center gap-3">

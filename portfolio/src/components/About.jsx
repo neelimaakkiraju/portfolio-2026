@@ -3,21 +3,21 @@ import { useRevealOnScroll } from "../hooks/useRevealOnScroll";
 
 const services = [
   {
-    title: "UI/UX Design",
+    title: "UI Development",
     description:
-      "Creating intuitive and beautiful interfaces that users love to interact with.",
+      "Building responsive, user-friendly interfaces with React and Tailwind CSS.",
     icon: "✨",
   },
   {
-    title: "Frontend Development",
+    title: "Performance & Optimization",
     description:
-      "Bringing designs to life with clean, efficient, and responsive code.",
+      "Improving speed, SEO, and overall frontend performance.",
     icon: "💻",
   },
   {
-    title: "Mobile Apps",
+    title: "Scalable Frontend Architecture",
     description:
-      "Developing mobile experiences that work seamlessly across all devices.",
+      "Writing clean, reusable code and integrating APIs for real-world products.",
     icon: "📱",
   },
 ];
@@ -36,8 +36,7 @@ export default function About() {
         <div className="text-center">
           <h2 className="text-xl font-semibold text-[#1A1A2E]">About Me</h2>
           <p className="mt-2 text-xs text-[#8588A3] md:text-sm">
-            Passionate about creating digital experiences that make a
-            difference.
+          I’m a frontend developer who builds clean, intuitive, and high-performance web interfaces using React, Next.js, and Tailwind CSS. I focus on scalable UI, strong UX, and turning complex ideas into simple, user-friendly solutions.
           </p>
         </div>
 
