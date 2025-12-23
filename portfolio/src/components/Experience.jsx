@@ -50,14 +50,15 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="mt-20 px-4 md:mt-24 md:px-6"
+      className="bg-white py-20"
     >
-      <div
-        ref={ref}
-        className={`reveal-on-scroll mx-auto max-w-5xl rounded-3xl bg-white/90 p-6 shadow-[0_18px_60px_rgba(15,23,42,0.08)] md:p-10 ${
-          isVisible ? "is-visible" : ""
-        }`}
-      >
+      <div className="mx-auto max-w-5xl px-4 md:px-6">
+        <div
+          ref={ref}
+          className={`reveal-on-scroll rounded-3xl bg-white p-6 shadow-[0_18px_60px_rgba(15,23,42,0.08)] md:p-10 ${
+            isVisible ? "is-visible" : ""
+          }`}
+        >
         <div className="text-center">
           <h2 className="text-xl font-semibold text-[#1A1A2E]">
             Experience &amp; Skills
@@ -67,7 +68,7 @@ export default function Experience() {
           </p>
         </div>
 
-        <div className="mt-8 grid gap-8 md:grid-cols-[1.2fr,1fr] md:items-start">
+        <div className="mt-8 grid gap-8 md:grid-cols-2 md:items-start">
           <div>
             <h3 className="text-sm font-semibold text-[#1A1A2E]">
               Professional Journey
@@ -135,6 +136,7 @@ export default function Experience() {
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </section>

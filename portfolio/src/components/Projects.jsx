@@ -6,6 +6,7 @@ const projects = [
     name: "E-Commerce Platform",
     description: "Modern shopping experience with intuitive navigation.",
     tags: ["React", "Design"],
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
     imageAlt: "E-Commerce dashboard preview",
     repo: "https://github.com/your-username/ecommerce-platform",
     live: "https://ecommerce.example.com",
@@ -14,6 +15,7 @@ const projects = [
     name: "Banking App",
     description: "Secure and user-friendly financial management.",
     tags: ["Mobile", "UI/UX"],
+    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop",
     imageAlt: "Banking mobile app preview",
     repo: "https://github.com/your-username/banking-app",
     live: "https://banking.example.com",
@@ -22,6 +24,7 @@ const projects = [
     name: "Creative Portfolio",
     description: "Artistic showcase with interactive elements.",
     tags: ["Web", "Creative"],
+    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&h=600&fit=crop",
     imageAlt: "Creative portfolio gallery preview",
     repo: "https://github.com/your-username/creative-portfolio",
     live: "https://portfolio.example.com",
@@ -30,6 +33,7 @@ const projects = [
     name: "Creative Portfolio",
     description: "Artistic showcase with interactive elements.",
     tags: ["Web", "Creative"],
+    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&h=600&fit=crop",
     imageAlt: "Creative portfolio gallery preview",
     repo: "https://github.com/your-username/creative-portfolio",
     live: "https://portfolio.example.com",
@@ -38,6 +42,7 @@ const projects = [
     name: "Creative Portfolio",
     description: "Artistic showcase with interactive elements.",
     tags: ["Web", "Creative"],
+    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&h=600&fit=crop",
     imageAlt: "Creative portfolio gallery preview",
     repo: "https://github.com/your-username/creative-portfolio",
     live: "https://portfolio.example.com",
@@ -46,6 +51,7 @@ const projects = [
     name: "Creative Portfolio",
     description: "Artistic showcase with interactive elements.",
     tags: ["Web", "Creative"],
+    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&h=600&fit=crop",
     imageAlt: "Creative portfolio gallery preview",
     repo: "https://github.com/your-username/creative-portfolio",
     live: "https://portfolio.example.com",
@@ -58,11 +64,11 @@ export default function Projects() {
   return (
     <section
       id="portfolio"
-      className="mt-20 px-4 md:mt-24 md:px-6"
+      className="bg-gradient-to-b from-white via-[#F9FAFF] to-white py-20"
     >
       <div
         ref={ref}
-        className={`reveal-on-scroll mx-auto max-w-5xl ${
+        className={`reveal-on-scroll mx-auto max-w-5xl px-4 md:px-6 ${
           isVisible ? "is-visible" : ""
         }`}
       >
@@ -81,10 +87,12 @@ export default function Projects() {
               key={p.name}
               className="flex flex-col overflow-hidden rounded-3xl bg-white shadow-[0_18px_60px_rgba(15,23,42,0.08)] transition-transform duration-300 hover:-translate-y-2 hover:shadow-[0_24px_70px_rgba(15,23,42,0.14)]"
             >
-              <div className="h-32 bg-gradient-to-br from-[#E3E7FF] via-[#F3F5FF] to-[#FFEAF7] md:h-28">
-                <div className="flex h-full items-center justify-center text-[11px] font-medium text-[#A0A3C0]">
-                  {p.imageAlt}
-                </div>
+              <div className="relative h-32 overflow-hidden md:h-28">
+                <img
+                  src={p.image}
+                  alt={p.imageAlt}
+                  className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+                />
               </div>
               <div className="flex flex-1 flex-col px-5 pb-4 pt-4">
                 <h3 className="text-sm font-semibold text-[#1A1A2E]">

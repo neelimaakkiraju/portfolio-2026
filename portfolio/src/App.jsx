@@ -11,9 +11,9 @@ import Footer from "./components/Footer";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#F3F6FF] via-[#F5F7FF] to-white text-[#1A1A2E]">
+    <div className="min-h-screen bg-white text-[#1A1A2E]">
       <Navbar />
-      <main className="page-fade-in pt-20 pb-16">
+      <main className="page-fade-in">
         <Hero />
         <About />
         <Projects />
