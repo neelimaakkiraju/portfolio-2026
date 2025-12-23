@@ -14,7 +14,9 @@ export default function Hero() {
     >
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-10 px-4 md:flex-row md:items-stretch md:gap-16 md:px-6">
         <div className="order-2 w-full md:order-1 md:w-1/2">
-        <h4>REACT SPECIALIST</h4>
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9094B2]">
+         REACT SPECIALIST
+        </p>
           <h1 className="text-3xl font-extrabold leading-tight text-[#1A1A2E] sm:text-4xl lg:text-[40px]">
             Creative <span className="bg-gradient-to-r from-[#4C5BFF] to-[#654BFF] bg-clip-text text-transparent">Frontend</span>  Developer
           </h1>
