@@ -14,11 +14,12 @@ export default function Hero() {
     >
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-10 px-4 md:flex-row md:items-stretch md:gap-16 md:px-6">
         <div className="order-2 w-full md:order-1 md:w-1/2">
+        <h4>REACT SPECIALIST</h4>
           <h1 className="text-3xl font-extrabold leading-tight text-[#1A1A2E] sm:text-4xl lg:text-[40px]">
-            Creative <span className="bg-gradient-to-r from-[#4C5BFF] to-[#654BFF] bg-clip-text text-transparent">Designer</span> & Developer
+            Creative <span className="bg-gradient-to-r from-[#4C5BFF] to-[#654BFF] bg-clip-text text-transparent">Frontend</span>  Developer
           </h1>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-[#8588A3] sm:text-[13px]">
-            I craft beautiful digital experiences that combine stunning design with seamless functionality. Let's bring your vision to life.
+           Frontend Developer with 2+ years of experience building high-performance, responsive web applications using React, Next.js, and TypeScript. I focus on clean UI, smooth user experiences, and scalable frontend architecture.
           </p>
 
           <div className="mt-7 flex flex-wrap items-center gap-3">
@@ -29,7 +30,7 @@ export default function Hero() {
               View My Work
             </a>
             <a
-              href="/cv.pdf"
+              href="https://drive.google.com/file/d/1rmRlzjZ9EFXcnu3AtJGgAZn7FLI78vAk/view?usp=sharing"
               className="rounded-full border border-[#D0D4E7] bg-white px-5 py-2 text-xs font-semibold text-[#1A1A2E] shadow-sm hover:bg-[#f3f6ff]"
             >
               Download CV

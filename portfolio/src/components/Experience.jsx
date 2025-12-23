@@ -3,45 +3,63 @@ import { useRevealOnScroll } from "../hooks/useRevealOnScroll";
 
 const experience = [
   {
-    period: "2022 - Present",
-    role: "Senior UI/UX Designer",
-    company: "Creative Studios Inc.",
-    description:
-      "Leading design initiatives for major clients, creating user-centered solutions that drive engagement and conversion.",
-  },
-  {
-    period: "2020 - 2022",
+    period: "Apr 2025 - Present",
     role: "Frontend Developer",
-    company: "Tech Innovations Ltd.",
+    company: "Techenhance",
     description:
-      "Developed responsive web applications using modern frameworks and ensured optimal performance across devices.",
+      "Developed a scalable Next.js and TypeScript CRM with automated workflows, advanced reporting, modular UI components, and streamlined CI/CD delivery processes.",
   },
   {
-    period: "2018 - 2020",
-    role: "UI Designer",
-    company: "Digital Agency Pro",
+    period: "Jul 2024 - Mar 2025",
+    role: "Frontend Developer",
+    company: "Freelancer",
     description:
-      "Crafted beautiful interfaces for web and mobile applications, collaborating with cross-functional teams.",
+      "Designed responsive React and Next.js interfaces using Tailwind CSS, optimized performance and SEO, integrated secure APIs, and maintained reliable production deployments.",
+  },
+  {
+    period: "May 2023 - Jun 2024",
+    role: "Frontend Developer",
+    company: "AGM Global Solutions",
+    description:
+      "Built high-performance React and Next.js applications with optimized Core Web Vitals, reusable UI components, and UX collaboration to improve speed, maintainability, and engagement.",
+      
   },
 ];
 
 const skills = [
-  { name: "UI/UX Design", value: 95 },
-  { name: "React & Next.js", value: 90 },
-  { name: "Figma & Adobe XD", value: 92 },
-  { name: "HTML/CSS/JavaScript", value: 88 },
-  { name: "Mobile Development", value: 85 },
+  { name: "React JS", value: 90 },
+  { name: "Next JS", value: 85 },
+  { name: "Javascript & Typescript", value: 82 },
+  { name: "Tailwind CSS & Responsive UI", value: 80 },
+  { name: "Performance Optimization & SEO", value: 75 },
 ];
 
 const tools = [
   "Figma",
-  "React",
+  "React JS",
+  "Next JS",
   "Tailwind",
+  "HTML & CSS",
   "TypeScript",
-  "Node.js",
+  "Javascript",
   "Git",
-  "Photoshop",
-  "Illustrator",
+  "Redux",
+  "Context API",
+  "Responsive Design",
+  "Bootstrap",
+  "Netlify",
+  "GraphQL",
+  "Rest API",
+  "GitHub",
+  "Jest",
+  "Vitest",
+  "React Hooks",
+  "Data structure & Algorithms",
+  "AI Assisted Development",
+  "Copilot",
+  "Cursor",
+  "Webpack"
+
 ];
 
 export default function Experience() {

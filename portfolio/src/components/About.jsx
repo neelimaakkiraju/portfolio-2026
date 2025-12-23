@@ -31,23 +31,23 @@ const MobileIcon = () => (
 
 const services = [
   {
-    title: "UI/UX Design",
+    title: "UI Development",
     description:
-      "Creating intuitive and beautiful interfaces that users love to interact with.",
+      "Building responsive, user-friendly interfaces with React and Tailwind CSS.",
     icon: <UIIcon />,
     iconBg: "bg-gradient-to-br from-[#4C5BFF] to-[#654BFF]",
   },
   {
-    title: "Frontend Development",
+    title: "Performance Optimization",
     description:
-      "Bringing designs to life with clean, efficient, and responsive code.",
+      "Improving speed, SEO, and overall frontend performance.",
     icon: <FrontendIcon />,
     iconBg: "bg-gradient-to-br from-[#4C5BFF] to-[#654BFF]",
   },
   {
     title: "Mobile Apps",
     description:
-      "Developing mobile experiences that work seamlessly across all devices.",
+      "Writing clean, reusable code and integrating APIs for real-world products.",
     icon: <MobileIcon />,
     iconBg: "bg-gradient-to-br from-[#4C5BFF] to-[#654BFF]",
   },
@@ -67,7 +67,7 @@ export default function About() {
         <div className="text-center">
           <h2 className="text-xl font-semibold text-[#1A1A2E]">About Me</h2>
           <p className="mt-2 text-xs text-[#8588A3] md:text-sm">
-            Passionate about creating digital experiences that make a difference.
+           Frontend developer creating modern, responsive, and scalable web applications.
           </p>
         </div>
 

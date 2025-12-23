@@ -25,7 +25,7 @@ export default function Navbar() {
           className="cursor-pointer text-sm font-semibold tracking-tight text-[#3B4C9B]"
           onClick={() => scrollToSection("home")}
         >
-          Alex <span className="font-bold text-[#1A1A2E]">Morgan</span>
+          Neelima <span className="font-bold text-[#1A1A2E]">Akkiraju</span>
         </div>
 
         <button
