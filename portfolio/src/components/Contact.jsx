@@ -21,7 +21,7 @@ export default function Contact() {
             Let&apos;s Work Together
           </h2>
           <p className="mt-2 text-xs text-[#8588A3] md:text-sm">
-            Ready to start your next project? I&apos;d love to hear from you.
+            Open to collaboration and new opportunities.
           </p>
         </div>
 
@@ -39,7 +39,7 @@ export default function Contact() {
                   Email
                 </p>
                 <p className="mt-1 text-sm font-medium text-[#1A1A2E]">
-                  hello@alexmorgan.com
+                  neelimaakkiraju2001@gmail.com
                 </p>
               </div>
             </div>
@@ -55,14 +55,14 @@ export default function Contact() {
                   Phone
                 </p>
                 <p className="mt-1 text-sm font-medium text-[#1A1A2E]">
-                  +1 (555) 123-4567
+                  +91 6281649948
                 </p>
               </div>
             </div>
 
             <div className="mt-4 flex gap-3">
               <a
-                href="https://linkedin.com/in/alexmorgan"
+                href="https://www.linkedin.com/in/akkirajuneelima/"
                 target="_blank"
                 rel="noreferrer"
                 className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-[#654BFF] to-[#27C2FF] shadow-sm transition-transform hover:scale-110"
@@ -72,7 +72,7 @@ export default function Contact() {
                 </svg>
               </a>
               <a
-                href="https://github.com/alexmorgan"
+                href="https://github.com/neelimaakkiraju"
                 target="_blank"
                 rel="noreferrer"
                 className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-[#654BFF] to-[#27C2FF] shadow-sm transition-transform hover:scale-110"
