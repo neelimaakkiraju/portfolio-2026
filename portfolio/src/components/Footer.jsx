@@ -11,7 +11,7 @@ export default function Footer() {
           Creating beautiful digital experiences
         </p>
         <p className="mt-3 text-[10px] text-[#6B7280]">
-          © 2024 Alex Morgan. All rights reserved.
+          © 2026 Neelima Akkiraju. All rights reserved.
         </p>
       </div>
     </footer>
