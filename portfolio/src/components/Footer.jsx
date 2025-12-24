@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="mt-16 bg-[#05071A] py-6 text-center text-[11px] text-[#9CA3AF] md:mt-20 md:py-8">
       <div className="mx-auto max-w-5xl px-4 md:px-6">
         <p className="text-xs font-semibold text-[#E5E7EB]">
-          Alex Morgan
+         Neelima Akkiraju
         </p>
         <p className="mt-1 text-[11px] text-[#9CA3AF]">
           Creating beautiful digital experiences

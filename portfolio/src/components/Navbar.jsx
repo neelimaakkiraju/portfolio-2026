@@ -5,6 +5,7 @@ const navItems = [
   { id: "about", label: "About" },
   { id: "portfolio", label: "Portfolio" },
   { id: "contact", label: "Contact" },
+  {id:"experience", label:"Experience"}
 ];
 
 export default function Navbar() {
@@ -36,7 +37,7 @@ export default function Navbar() {
           ☰
         </button>
 
-        <div className="hidden items-center gap-8 text-xs font-medium text-[#6B7280] md:flex">
+        <div className="hidden items-center gap-8 text-xs font-medium text-black md:flex">
           {navItems.map((item) => (
             <button
               key={item.id}

@@ -64,7 +64,7 @@ export default function Projects() {
   return (
     <section
       id="portfolio"
-      className="bg-gradient-to-b from-white via-[#F9FAFF] to-white py-20"
+      className="bg-gray-50 py-20"
     >
       <div
         ref={ref}

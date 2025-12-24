@@ -95,9 +95,9 @@ export default function Experience() {
               {experience.map((item, index) => (
                 <div key={item.role} className="relative">
                   <span className="absolute -left-6 mt-1 inline-flex h-3 w-3 rounded-full bg-gradient-to-r from-[#654BFF] to-[#27C2FF]" />
-                  <p className="text-[11px] font-semibold text-[#6C6FA3] md:text-xs">
-                    {item.period}
-                  </p>
+                  <p className="text-[11px] font-semibold bg-gradient-to-br from-blue-500 to-purple-500 bg-clip-text text-transparent md:text-xs">
+  {item.period}
+</p>
                   <h4 className="mt-1 text-sm font-semibold text-[#1A1A2E]">
                     {item.role}
                   </h4>

@@ -8,7 +8,7 @@ export default function Hero() {
     <section
       id="home"
       ref={ref}
-      className={`reveal-on-scroll bg-gradient-to-b from-[#F3F6FF] via-[#F5F7FF] to-white py-32 md:py-40 ${
+      className={`reveal-on-scroll bg-gradient-to-br from-blue-50 to-purple-50 py-32 md:py-40 ${
         isVisible ? "is-visible" : ""
       }`}
     >
@@ -32,11 +32,12 @@ export default function Hero() {
               View My Work
             </a>
             <a
-              href="https://drive.google.com/file/d/1rmRlzjZ9EFXcnu3AtJGgAZn7FLI78vAk/view?usp=sharing"
-              className="rounded-full border border-[#D0D4E7] bg-white px-5 py-2 text-xs font-semibold text-[#1A1A2E] shadow-sm hover:bg-[#f3f6ff]"
-            >
-              Download CV
-            </a>
+  href="/resume/Neelima_Frontend_Resume.pdf"
+  download
+  className="rounded-full border border-[#D0D4E7] bg-white px-5 py-2 text-xs font-semibold text-[#1A1A2E] shadow-sm hover:bg-[#f3f6ff]"
+>
+  Download CV
+</a>
           </div>
         </div>
 
@@ -45,12 +46,12 @@ export default function Hero() {
           <div className="absolute inset-4 overflow-hidden rounded-full bg-[#FDFDFE]">
             {/* Replace this with your actual photo */}
             <div className="flex h-full items-center justify-center text-xs font-medium text-[#A0A3C0]">
-              Add your photo here
+             <img src="/images/hero.jpg"/>
             </div>
           </div>
           {/* Decorative circular shapes */}
-          <div className="absolute -top-3 -right-2 h-10 w-10 rounded-full bg-[#E1E6FF]/60 blur-sm" />
-          <div className="absolute bottom-6 -left-4 h-16 w-16 rounded-full bg-[#E6F7FF]/60 blur-sm" />
+          <div className="absolute -top-3 -right-2 h-16 w-16 rounded-full bg-purple-200/60 blur-sm" />
+          <div className="absolute bottom-6 -left-4 h-16 w-16 rounded-full bg-purple-200/60 blur-sm" />
           <div className="absolute top-1/2 -right-8 h-12 w-12 rounded-full bg-[#E1E6FF]/40 blur-sm" />
           <div className="absolute top-1/4 -left-6 h-8 w-8 rounded-full bg-[#E6F7FF]/50 blur-sm" />
         </div>
