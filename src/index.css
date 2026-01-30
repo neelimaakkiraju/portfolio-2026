@@ -119,14 +119,24 @@
   --state-focus: rgba(255, 183, 77, 0.12);
   --state-pressed: rgba(255, 183, 77, 0.16);
 
-  /* ===== MOTION (MD3 Easing) ===== */
-  --motion-standard: cubic-bezier(0.2, 0, 0, 1);
+  /* ===== MOTION (Butter Smooth Easing) ===== */
+  /* Smooth, natural easing curves */
+  --motion-standard: cubic-bezier(0.4, 0, 0.2, 1);
   --motion-emphasized: cubic-bezier(0.2, 0, 0, 1);
-  --motion-emphasized-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1);
-  --motion-emphasized-accelerate: cubic-bezier(0.3, 0, 0.8, 0.15);
-  --motion-duration-short: 150ms;
-  --motion-duration-medium: 300ms;
+  --motion-emphasized-decelerate: cubic-bezier(0, 0, 0.2, 1);
+  --motion-emphasized-accelerate: cubic-bezier(0.4, 0, 1, 1);
+
+  /* Longer durations for smoother feel */
+  --motion-duration-short: 200ms;
+  --motion-duration-medium: 350ms;
   --motion-duration-long: 500ms;
+
+  /* Legacy aliases for component CSS */
+  --duration-short: 250ms;
+  --duration-medium: 400ms;
+  --duration-long: 600ms;
+  --easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --easing-emphasized: cubic-bezier(0.2, 0, 0, 1);
 
   /* ===== LAYOUT ===== */
   --gutter: var(--space-4);
@@ -333,15 +343,15 @@ a {
   padding: 0 var(--space-6);
   border-radius: var(--radius-full);
   transition:
-    background var(--motion-duration-short) var(--motion-standard),
-    box-shadow var(--motion-duration-short) var(--motion-standard),
-    transform var(--motion-duration-short) var(--motion-standard);
+    background var(--duration-medium) var(--easing-standard),
+    box-shadow var(--duration-medium) var(--easing-standard),
+    opacity var(--duration-medium) var(--easing-standard);
   position: relative;
   overflow: hidden;
 }
 
 .btn:hover {
-  transform: translateY(-1px);
+  opacity: 0.9;
 }
 
 .btn:focus-visible {
@@ -350,7 +360,7 @@ a {
 }
 
 .btn:active {
-  transform: scale(0.98);
+  opacity: 0.8;
 }
 
 .btnPrimary {
@@ -531,13 +541,13 @@ a {
   left: var(--space-4);
 }
 
-/* ===== SCROLL REVEAL ===== */
+/* ===== SCROLL REVEAL - Butter Smooth ===== */
 .revealOnScroll {
   opacity: 0;
-  transform: translateY(var(--space-6));
+  transform: translateY(20px);
   transition:
-    opacity var(--motion-duration-long) var(--motion-emphasized-decelerate),
-    transform var(--motion-duration-long) var(--motion-emphasized-decelerate);
+    opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .revealOnScroll.isVisible {

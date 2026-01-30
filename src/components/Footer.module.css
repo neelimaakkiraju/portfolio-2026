@@ -75,7 +75,7 @@
   font: var(--body-medium);
   color: var(--on-surface-variant);
   text-decoration: none;
-  transition: color var(--duration-short) var(--easing-standard);
+  transition: color var(--duration-medium) var(--easing-standard);
   width: fit-content;
   position: relative;
 }
@@ -88,7 +88,7 @@
   width: 0;
   height: 1px;
   background: var(--primary);
-  transition: width var(--duration-short) var(--easing-standard);
+  transition: width var(--duration-medium) var(--easing-standard);
 }
 
 .quickLink:hover {
@@ -113,7 +113,7 @@
   font: var(--body-medium);
   color: var(--on-surface-variant);
   text-decoration: none;
-  transition: color var(--duration-short) var(--easing-standard);
+  transition: color var(--duration-medium) var(--easing-standard);
   width: fit-content;
 }
 
@@ -206,7 +206,10 @@
   color: var(--on-surface-variant);
   background: transparent;
   border: 1px solid var(--outline-variant);
-  transition: all var(--duration-short) var(--easing-standard);
+  transition:
+    color var(--duration-medium) var(--easing-standard),
+    border-color var(--duration-medium) var(--easing-standard),
+    background var(--duration-medium) var(--easing-standard);
 }
 
 .socialLink:hover {
@@ -237,13 +240,14 @@
   background: var(--surface-container);
   border: 1px solid var(--outline-variant);
   cursor: pointer;
-  transition: all var(--duration-short) var(--easing-standard);
+  transition:
+    color var(--duration-medium) var(--easing-standard),
+    border-color var(--duration-medium) var(--easing-standard);
 }
 
 .backToTop:hover {
   color: var(--primary);
   border-color: var(--primary);
-  transform: translateY(-2px);
 }
 
 .backToTop:focus-visible {

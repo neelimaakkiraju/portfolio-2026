@@ -53,16 +53,16 @@ export default function Hero() {
         <div className={styles.heroGrid}>
           <motion.div
             className={styles.copy}
-            initial={prefersReducedMotion ? false : { opacity: 0, y: 30 }}
-            animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
+            initial={prefersReducedMotion ? false : { opacity: 0 }}
+            animate={prefersReducedMotion ? undefined : { opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
           >
             <span className={styles.eyebrow}>{heroData.headline.includes("Design") ? "Design + Engineering" : heroData.headline}</span>
             <h1 className={styles.headline}>
               {heroData.headline}&nbsp;
               <span className="gradientText">{heroData.headlineHighlight}</span>
             </h1>
-            <div className={styles.typewriter} aria-live="polite">
+            <div className={styles.typewriter} aria-live="polite" aria-atomic="false">
               <span>{text}</span>
               <span className={styles.cursor} aria-hidden="true" />
             </div>
@@ -86,9 +86,9 @@ export default function Hero() {
 
           <motion.div
             className={styles.visual}
-            initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.95 }}
-            animate={prefersReducedMotion ? undefined : { opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
+            initial={prefersReducedMotion ? false : { opacity: 0 }}
+            animate={prefersReducedMotion ? undefined : { opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.15 }}
           >
             <div className={`${styles.glowOrb} ${styles.glowOne}`} />
             <div className={`${styles.glowOrb} ${styles.glowTwo}`} />

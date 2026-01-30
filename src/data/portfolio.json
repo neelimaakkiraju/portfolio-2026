@@ -84,56 +84,104 @@
     "about": {
         "eyebrow": "About",
         "title": "Design-minded frontend engineer",
-        "subtitle": "I blend thoughtful UX with robust engineering to deliver delightful, accessible web experiences.",
-        "bio": [
-            "I specialize in building modern React applications with clean architecture, scalable component systems, and meticulous attention to detail. My focus is creating polished UI that feels as good as it looks—fast, accessible, and intuitive.",
-            "I collaborate closely with designers and product teams to translate complex requirements into elegant, maintainable interfaces. From motion design to performance tuning, I deliver end-to-end frontend solutions.",
-            "Outside of client work, I enjoy exploring design systems, mentoring, and iterating on interaction patterns that elevate user delight."
-        ],
-        "skills": [
+        "subtitle": "Blending thoughtful UX with robust engineering for delightful web experiences.",
+        "bio": "I build modern React applications with clean architecture and meticulous attention to detail. My focus is creating polished UI that's fast, accessible, and intuitive.",
+        "highlights": [
             {
-                "name": "React + Next.js",
-                "value": 92
+                "icon": "FiCode",
+                "title": "Clean Code",
+                "text": "Scalable, maintainable architecture"
             },
             {
-                "name": "TypeScript + JavaScript",
-                "value": 88
+                "icon": "FiZap",
+                "title": "Performance",
+                "text": "Optimized for speed & Core Web Vitals"
             },
             {
-                "name": "UI Systems + Design",
-                "value": 84
+                "icon": "FiSmartphone",
+                "title": "Responsive",
+                "text": "Pixel-perfect on all devices"
             }
         ],
-        "techStack": [
+        "skillCategories": [
             {
-                "label": "React",
-                "icon": "SiReact",
-                "hint": "Component architecture"
+                "category": "Frontend",
+                "skills": [
+                    {
+                        "name": "React",
+                        "icon": "SiReact"
+                    },
+                    {
+                        "name": "Next.js",
+                        "icon": "SiNextdotjs"
+                    },
+                    {
+                        "name": "TypeScript",
+                        "icon": "SiTypescript"
+                    },
+                    {
+                        "name": "JavaScript",
+                        "icon": "SiJavascript"
+                    },
+                    {
+                        "name": "HTML5",
+                        "icon": "SiHtml5"
+                    },
+                    {
+                        "name": "CSS3",
+                        "icon": "SiCss3"
+                    }
+                ]
             },
             {
-                "label": "Next.js",
-                "icon": "SiNextdotjs",
-                "hint": "Full-stack React"
+                "category": "Styling",
+                "skills": [
+                    {
+                        "name": "Tailwind",
+                        "icon": "SiTailwindcss"
+                    },
+                    {
+                        "name": "Sass",
+                        "icon": "SiSass"
+                    },
+                    {
+                        "name": "Styled Components",
+                        "icon": "SiStyledcomponents"
+                    },
+                    {
+                        "name": "Framer Motion",
+                        "icon": "SiFramer"
+                    }
+                ]
             },
             {
-                "label": "TypeScript",
-                "icon": "SiTypescript",
-                "hint": "Typed codebases"
-            },
-            {
-                "label": "JavaScript",
-                "icon": "SiJavascript",
-                "hint": "ES2024+"
-            },
-            {
-                "label": "Tailwind",
-                "icon": "SiTailwindcss",
-                "hint": "Utility styling"
-            },
-            {
-                "label": "Figma",
-                "icon": "SiFigma",
-                "hint": "Design handoff"
+                "category": "Tools",
+                "skills": [
+                    {
+                        "name": "Git",
+                        "icon": "SiGit"
+                    },
+                    {
+                        "name": "VS Code",
+                        "icon": "VscVscode"
+                    },
+                    {
+                        "name": "Figma",
+                        "icon": "SiFigma"
+                    },
+                    {
+                        "name": "Vercel",
+                        "icon": "SiVercel"
+                    },
+                    {
+                        "name": "npm",
+                        "icon": "SiNpm"
+                    },
+                    {
+                        "name": "Vite",
+                        "icon": "SiVite"
+                    }
+                ]
             }
         ]
     },
@@ -162,46 +210,39 @@
     "projects": {
         "eyebrow": "Portfolio",
         "title": "Featured work",
-        "subtitle": "A selection of projects showcasing my expertise in frontend development and UI engineering.",
+        "subtitle": "Real projects built for real users — clean, fast, and user-friendly.",
         "categories": [
             "All",
             "Web Apps",
             "Mobile",
-            "Dashboards",
-            "UI Experiments"
+            "Dashboards"
         ],
         "items": [
             {
-                "name": "E-Commerce Simple Store",
-                "description": "Modern shopping experience with intuitive navigation.",
+                "name": "Simple Store",
+                "description": "A complete e-commerce platform with product browsing, cart management, and seamless checkout experience.",
                 "tags": [
-                    "React",
-                    "Responsive Design",
-                    "Tailwind CSS",
-                    "Redux",
-                    "React Hooks",
-                    "Rest API"
+                    "E-Commerce",
+                    "Shopping Cart",
+                    "Product Catalog"
                 ],
                 "image": "/images/simplestore.png",
-                "imageAlt": "E-Commerce dashboard preview",
+                "imageAlt": "E-Commerce store preview showing product grid",
                 "repo": "https://github.com/neelimaakkiraju/frontend-e-commerce.git",
                 "live": "https://ecommerce-simple-store.netlify.app/",
                 "category": "Web Apps",
                 "featured": true
             },
             {
-                "name": "Doctor-Booking-app",
-                "description": "A responsive doctor appointment booking app for quick and easy scheduling.",
+                "name": "MedBook",
+                "description": "Book doctor appointments instantly with real-time availability, easy scheduling, and appointment reminders.",
                 "tags": [
-                    "React",
-                    "Responsive Design",
-                    "Tailwind CSS",
-                    "NextJS",
-                    "Date-fns",
-                    "Typescript"
+                    "Healthcare",
+                    "Booking System",
+                    "Mobile-First"
                 ],
                 "image": "/images/doctor-booking.png",
-                "imageAlt": "Doctor booking mobile app preview",
+                "imageAlt": "Doctor appointment booking interface",
                 "repo": "https://github.com/neelimaakkiraju/doctor-booking-app.git",
                 "live": "https://doctor-booking-app.netlify.app/",
                 "category": "Mobile",
@@ -209,17 +250,14 @@
             },
             {
                 "name": "Finance Monitor",
-                "description": "A real-time finance dashboard for tracking key financial insights.",
+                "description": "Track income, expenses, and financial trends with interactive charts and real-time insights.",
                 "tags": [
-                    "React",
-                    "Responsive Design",
-                    "Tailwind CSS",
-                    "Recharts",
-                    "React Hooks",
-                    "React Icons"
+                    "Analytics",
+                    "Data Visualization",
+                    "Financial"
                 ],
                 "image": "/images/dashboard.png",
-                "imageAlt": "Finance dashboard preview",
+                "imageAlt": "Finance dashboard with charts and metrics",
                 "repo": "https://github.com/neelimaakkiraju/invoice-dashboard.git",
                 "live": "https://dashboard-invoice2.netlify.app/",
                 "category": "Dashboards",
@@ -227,17 +265,14 @@
             },
             {
                 "name": "SecureX",
-                "description": "A secure and responsive login page with smooth authentication flow.",
+                "description": "Modern authentication system with secure login, signup, and password recovery flows.",
                 "tags": [
-                    "React JS",
-                    "Typescript",
-                    "Vite",
-                    "Firebase",
-                    "React Hooks",
-                    "React-toast"
+                    "Authentication",
+                    "Security",
+                    "User Management"
                 ],
                 "image": "/images/login.png",
-                "imageAlt": "Secure login page preview",
+                "imageAlt": "Secure login page interface",
                 "repo": "https://github.com/neelimaakkiraju/login-page.git",
                 "live": "https://authentication-setup.netlify.app/login",
                 "category": "Web Apps",
@@ -245,16 +280,14 @@
             },
             {
                 "name": "TaskFlow",
-                "description": "A simple and efficient task manager for organizing and tracking daily work.",
+                "description": "Stay organized with a simple task manager — add, complete, and track your daily to-dos effortlessly.",
                 "tags": [
-                    "HTML/CSS",
-                    "Javascript",
-                    "EventListeners",
-                    "Responsive Design",
-                    "Tailwind CSS"
+                    "Productivity",
+                    "Task Management",
+                    "Organization"
                 ],
                 "image": "/images/task.png",
-                "imageAlt": "Task manager app preview",
+                "imageAlt": "Task manager showing todo list",
                 "repo": "https://github.com/neelimaakkiraju/todo-app.git",
                 "live": "https://plan-task-app.netlify.app/",
                 "category": "Web Apps",
@@ -262,19 +295,17 @@
             },
             {
                 "name": "SearchEase",
-                "description": "A smooth search animation app for fast and intuitive interactions.",
+                "description": "Lightning-fast search with smooth animations and instant results as you type.",
                 "tags": [
-                    "React JS",
-                    "Responsive Design",
-                    "React Icons",
-                    "Animations",
-                    "Tailwind CSS"
+                    "Search",
+                    "UX Animation",
+                    "Interactive"
                 ],
                 "image": "/images/search.png",
-                "imageAlt": "Search animation app preview",
+                "imageAlt": "Animated search interface",
                 "repo": "https://github.com/neelimaakkiraju/search-animation.git",
                 "live": "https://search-animation-app.netlify.app/",
-                "category": "UI Experiments",
+                "category": "Web Apps",
                 "featured": false
             }
         ]

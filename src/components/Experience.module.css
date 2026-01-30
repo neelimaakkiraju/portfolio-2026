@@ -86,7 +86,7 @@
   height: 100%;
   background: linear-gradient(120deg, var(--primary), var(--secondary));
   border-radius: var(--radius-full);
-  transition: width var(--duration-long-2) var(--easing-emphasized);
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* h3 - Subsection titles */

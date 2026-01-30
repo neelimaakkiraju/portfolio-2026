@@ -1,5 +1,23 @@
 import React from "react";
-import { SiFigma, SiJavascript, SiNextdotjs, SiReact, SiTailwindcss, SiTypescript } from "react-icons/si";
+import {
+  SiFigma,
+  SiJavascript,
+  SiNextdotjs,
+  SiReact,
+  SiTailwindcss,
+  SiTypescript,
+  SiHtml5,
+  SiCss3,
+  SiSass,
+  SiStyledcomponents,
+  SiFramer,
+  SiGit,
+  SiVercel,
+  SiNpm,
+  SiVite,
+} from "react-icons/si";
+import { FiCode, FiZap, FiSmartphone } from "react-icons/fi";
+import { VscVscode } from "react-icons/vsc";
 import { useRevealOnScroll } from "../hooks/useRevealOnScroll";
 import { getAbout, getPersonal } from "../data";
 import styles from "./About.module.css";
@@ -9,12 +27,27 @@ const personalData = getPersonal();
 
 // Icon mapping for dynamic rendering
 const iconMap = {
-  SiReact: <SiReact />,
-  SiNextdotjs: <SiNextdotjs />,
-  SiTypescript: <SiTypescript />,
-  SiJavascript: <SiJavascript />,
-  SiTailwindcss: <SiTailwindcss />,
-  SiFigma: <SiFigma />,
+  // Tech icons
+  SiReact: SiReact,
+  SiNextdotjs: SiNextdotjs,
+  SiTypescript: SiTypescript,
+  SiJavascript: SiJavascript,
+  SiTailwindcss: SiTailwindcss,
+  SiFigma: SiFigma,
+  SiHtml5: SiHtml5,
+  SiCss3: SiCss3,
+  SiSass: SiSass,
+  SiStyledcomponents: SiStyledcomponents,
+  SiFramer: SiFramer,
+  SiGit: SiGit,
+  VscVscode: VscVscode,
+  SiVercel: SiVercel,
+  SiNpm: SiNpm,
+  SiVite: SiVite,
+  // Feature icons
+  FiCode: FiCode,
+  FiZap: FiZap,
+  FiSmartphone: FiSmartphone,
 };
 
 export default function About() {
@@ -33,51 +66,59 @@ export default function About() {
         </header>
 
         <div className={styles.aboutGrid}>
-          <figure className={styles.photoCard}>
-            <img
-              src={personalData.avatarUrl}
-              alt={`${personalData.name} portrait`}
-              loading="lazy"
-              width="480"
-              height="560"
-              className={styles.photoImage}
-            />
-          </figure>
-
-          <div className={styles.bio}>
-            {aboutData.bio.map((paragraph, index) => (
-              <p key={index}>{paragraph}</p>
-            ))}
-
-            <div className={styles.skills}>
-              {aboutData.skills.map((skill) => (
-                <div key={skill.name}>
-                  <div className={styles.skillRow}>
-                    <span>{skill.name}</span>
-                    <span>{skill.value}%</span>
+          {/* Left: Photo + Bio */}
+          <div className={styles.introSection}>
+            <figure className={styles.photoCard}>
+              <img
+                src={personalData.avatarUrl}
+                alt={`${personalData.name} portrait`}
+                loading="lazy"
+                width="400"
+                height="400"
+                className={styles.photoImage}
+              />
+            </figure>
+            <p className={styles.bioText}>{aboutData.bio}</p>
+            
+            {/* Highlights */}
+            <div className={styles.highlights}>
+              {aboutData.highlights.map((item) => {
+                const IconComponent = iconMap[item.icon];
+                return (
+                  <div key={item.title} className={styles.highlightCard}>
+                    <span className={styles.highlightIcon}>
+                      {IconComponent && <IconComponent aria-hidden="true" />}
+                    </span>
+                    <div>
+                      <h4 className={styles.highlightTitle}>{item.title}</h4>
+                      <p className={styles.highlightText}>{item.text}</p>
+                    </div>
                   </div>
-                  <div className={styles.skillBar} role="progressbar" aria-valuenow={skill.value} aria-valuemin="0" aria-valuemax="100">
-                    <div
-                      className={styles.skillFill}
-                      style={{ width: `${isVisible ? skill.value : 0}%` }}
-                    />
-                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Right: Skills Grid */}
+          <div className={styles.skillsSection}>
+            {aboutData.skillCategories.map((category) => (
+              <div key={category.category} className={styles.skillCategory}>
+                <h3 className={styles.categoryTitle}>{category.category}</h3>
+                <div className={styles.skillsGrid}>
+                  {category.skills.map((skill) => {
+                    const IconComponent = iconMap[skill.icon];
+                    return (
+                      <div key={skill.name} className={styles.skillItem}>
+                        <span className={styles.skillIcon}>
+                          {IconComponent && <IconComponent aria-hidden="true" />}
+                        </span>
+                        <span className={styles.skillName}>{skill.name}</span>
+                      </div>
+                    );
+                  })}
                 </div>
-              ))}
-            </div>
-
-            <div className={styles.techGrid}>
-              {aboutData.techStack.map((tech) => (
-                <span
-                  key={tech.label}
-                  className={styles.techItem}
-                  title={tech.hint}
-                >
-                  {iconMap[tech.icon]}
-                  {tech.label}
-                </span>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

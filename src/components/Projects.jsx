@@ -91,27 +91,13 @@ function Projects() {
           ))}
         </div>
 
-        <motion.div
-          className={styles.grid}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={{
-            hidden: {},
-            show: {
-              transition: { staggerChildren: 0.12, delayChildren: 0.1 },
-            },
-          }}
-        >
+        <div className={styles.grid}>
           {filteredProjects.map((project) => (
-            <motion.div
-              key={project.name}
-              variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
-            >
+            <div key={project.name} className={styles.cardWrapper}>
               <ProjectCard project={project} />
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
