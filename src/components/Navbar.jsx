@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Navbar.module.css";
 import { useActiveSection } from "../hooks/useActiveSection";
+import { getNavigation } from "../data";
 
-const navItems = [
-  { id: "home", label: "Home" },
-  { id: "about", label: "About" },
-  { id: "services", label: "Services" },
-  { id: "portfolio", label: "Projects" },
-  { id: "experience", label: "Experience" },
-  { id: "contact", label: "Contact" },
-];
+const navData = getNavigation();
+const navItems = navData.links.map(link => ({
+  id: link.href.replace('#', ''),
+  label: link.label
+}));
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -49,7 +47,7 @@ export default function Navbar() {
             onClick={() => scrollToSection("home")}
             aria-label="Scroll to top"
           >
-            Neelima <span className={styles.brandAccent}>Akkiraju</span>
+            {navData.brand.text} <span className={styles.brandAccent}>{navData.brand.accent}</span>
           </button>
 
           <div className={styles.desktopLinks} role="list">
@@ -68,10 +66,10 @@ export default function Navbar() {
           </div>
 
           <button
-            onClick={() => scrollToSection("contact")}
+            onClick={() => scrollToSection(navData.ctaButton.href.replace('#', ''))}
             className={`btn btnPrimary ${styles.cta}`}
           >
-            Let&apos;s Talk
+            {navData.ctaButton.text}
           </button>
 
           <button
@@ -108,10 +106,10 @@ export default function Navbar() {
             ))}
           </div>
           <button
-            onClick={() => scrollToSection("contact")}
+            onClick={() => scrollToSection(navData.ctaButton.href.replace('#', ''))}
             className={`btn btnPrimary ${styles.mobileCta}`}
           >
-            Let&apos;s Talk
+            {navData.ctaButton.text}
           </button>
         </div>
       </div>

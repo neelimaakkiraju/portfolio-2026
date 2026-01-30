@@ -1,7 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { FiGithub, FiLinkedin, FiMail, FiPhone } from "react-icons/fi";
+import {
+  FiGithub,
+  FiLinkedin,
+  FiTwitter,
+  FiMail,
+  FiPhone,
+  FiMapPin,
+  FiInstagram,
+  FiDribbble,
+} from "react-icons/fi";
 import { useRevealOnScroll } from "../hooks/useRevealOnScroll";
+import { getContact, getPersonal, getSocial } from "../data";
 import styles from "./Contact.module.css";
+
+// Icon mapping for dynamic rendering
+const iconMap = {
+  FiGithub: FiGithub,
+  FiLinkedin: FiLinkedin,
+  FiTwitter: FiTwitter,
+  FiMail: FiMail,
+  FiPhone: FiPhone,
+  FiMapPin: FiMapPin,
+  FiInstagram: FiInstagram,
+  FiDribbble: FiDribbble,
+};
 
 export default function Contact() {
   const { ref, isVisible } = useRevealOnScroll();
@@ -9,15 +31,22 @@ export default function Contact() {
   const [errors, setErrors] = useState({});
   const [toast, setToast] = useState(null);
 
+  // Load data from JSON
+  const contactData = getContact();
+  const personalData = getPersonal();
+  const socialLinks = getSocial();
+
   const validate = () => {
     const nextErrors = {};
-    if (!form.name.trim()) nextErrors.name = "Please enter your name.";
+    if (!form.name.trim())
+      nextErrors.name = contactData.form.fields.name.error;
     if (!form.email.trim()) {
-      nextErrors.email = "Please enter your email.";
+      nextErrors.email = contactData.form.fields.email.error;
     } else if (!/\S+@\S+\.\S+/.test(form.email)) {
-      nextErrors.email = "Please enter a valid email.";
+      nextErrors.email = contactData.form.fields.email.invalidError;
     }
-    if (!form.message.trim()) nextErrors.message = "Please share your message.";
+    if (!form.message.trim())
+      nextErrors.message = contactData.form.fields.message.error;
     return nextErrors;
   };
 
@@ -27,12 +56,12 @@ export default function Contact() {
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length > 0) {
-      setToast({ type: "error", message: "Please fix the highlighted fields." });
+      setToast({ type: "error", message: contactData.form.errorToast });
       return;
     }
 
     setErrors({});
-    setToast({ type: "success", message: "Message sent successfully." });
+    setToast({ type: "success", message: contactData.form.successToast });
     setForm({ name: "", email: "", message: "" });
   };
 
@@ -43,30 +72,35 @@ export default function Contact() {
   }, [toast]);
 
   return (
-    <section id="contact" className="section">
+    <section id="contact" className="section" aria-labelledby="contact-heading">
       <div
         ref={ref}
         className={`container revealOnScroll ${isVisible ? "isVisible" : ""}`}
       >
         <div className="textCenter">
-          <p className="eyebrow">Contact</p>
-          <h2 className="sectionTitle">Let&apos;s build something great</h2>
-          <p className="sectionSubtitle">
-            Have a project in mind? Send a message and I&apos;ll get back within 24
-            hours.
-          </p>
+          <p className="eyebrow">{contactData.eyebrow}</p>
+          <h2 id="contact-heading" className="sectionTitle">
+            {contactData.title}
+          </h2>
+          <p className="sectionSubtitle">{contactData.subtitle}</p>
         </div>
 
         <div className={styles.wrapper}>
-          <form className={styles.form} onSubmit={handleSubmit} noValidate>
+          <form
+            className={styles.form}
+            onSubmit={handleSubmit}
+            noValidate
+            aria-label="Contact form"
+          >
             <div className={styles.field}>
               <label className={styles.label} htmlFor="name">
-                Name
+                {contactData.form.fields.name.label}
               </label>
               <input
                 id="name"
                 name="name"
                 className={styles.input}
+                placeholder={contactData.form.fields.name.placeholder}
                 value={form.name}
                 onChange={(event) => {
                   setForm((prev) => ({ ...prev, name: event.target.value }));
@@ -78,7 +112,7 @@ export default function Contact() {
                 aria-describedby={errors.name ? "name-error" : undefined}
               />
               {errors.name && (
-                <span id="name-error" className={styles.error}>
+                <span id="name-error" className={styles.error} role="alert">
                   {errors.name}
                 </span>
               )}
@@ -86,13 +120,14 @@ export default function Contact() {
 
             <div className={styles.field}>
               <label className={styles.label} htmlFor="email">
-                Email
+                {contactData.form.fields.email.label}
               </label>
               <input
                 id="email"
                 name="email"
                 type="email"
                 className={styles.input}
+                placeholder={contactData.form.fields.email.placeholder}
                 value={form.email}
                 onChange={(event) => {
                   setForm((prev) => ({ ...prev, email: event.target.value }));
@@ -104,7 +139,7 @@ export default function Contact() {
                 aria-describedby={errors.email ? "email-error" : undefined}
               />
               {errors.email && (
-                <span id="email-error" className={styles.error}>
+                <span id="email-error" className={styles.error} role="alert">
                   {errors.email}
                 </span>
               )}
@@ -112,15 +147,19 @@ export default function Contact() {
 
             <div className={styles.field}>
               <label className={styles.label} htmlFor="message">
-                Message
+                {contactData.form.fields.message.label}
               </label>
               <textarea
                 id="message"
                 name="message"
                 className={styles.textarea}
+                placeholder={contactData.form.fields.message.placeholder}
                 value={form.message}
                 onChange={(event) => {
-                  setForm((prev) => ({ ...prev, message: event.target.value }));
+                  setForm((prev) => ({
+                    ...prev,
+                    message: event.target.value,
+                  }));
                   if (errors.message) {
                     setErrors((prev) => ({ ...prev, message: undefined }));
                   }
@@ -129,52 +168,53 @@ export default function Contact() {
                 aria-describedby={errors.message ? "message-error" : undefined}
               />
               {errors.message && (
-                <span id="message-error" className={styles.error}>
+                <span id="message-error" className={styles.error} role="alert">
                   {errors.message}
                 </span>
               )}
             </div>
 
             <button type="submit" className="btn btnPrimary">
-              Send Message
+              {contactData.form.submitButton}
             </button>
           </form>
 
-          <div className={styles.infoCard}>
+          <address className={styles.infoCard}>
             <div className={styles.infoRow}>
-              <FiMail />
-              <a href="mailto:neelimaakkiraju2001@gmail.com">
-                neelimaakkiraju2001@gmail.com
+              <FiMail aria-hidden="true" />
+              <a href={`mailto:${personalData.email}`}>{personalData.email}</a>
+            </div>
+            <div className={styles.infoRow}>
+              <FiPhone aria-hidden="true" />
+              <a href={`tel:${personalData.phone.replace(/\s/g, "")}`}>
+                {personalData.phone}
               </a>
             </div>
             <div className={styles.infoRow}>
-              <FiPhone />
-              <span>+91 6281649948</span>
+              <FiMapPin aria-hidden="true" />
+              <span>{personalData.location}</span>
             </div>
             <p className="sectionSubtitle" style={{ margin: 0 }}>
-              Based in India · Open to remote opportunities.
+              {contactData.availability}
             </p>
-            <div className={styles.links}>
-              <a
-                href="https://www.linkedin.com/in/akkirajuneelima/"
-                target="_blank"
-                rel="noreferrer"
-                className="iconButton"
-                aria-label="LinkedIn"
-              >
-                <FiLinkedin />
-              </a>
-              <a
-                href="https://github.com/neelimaakkiraju"
-                target="_blank"
-                rel="noreferrer"
-                className="iconButton"
-                aria-label="GitHub"
-              >
-                <FiGithub />
-              </a>
-            </div>
-          </div>
+            <nav className={styles.links} aria-label="Social media links">
+              {socialLinks.map((social) => {
+                const IconComponent = iconMap[social.icon];
+                return (
+                  <a
+                    key={social.name}
+                    href={social.url}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="iconButton"
+                    aria-label={social.ariaLabel}
+                  >
+                    {IconComponent && <IconComponent aria-hidden="true" />}
+                  </a>
+                );
+              })}
+            </nav>
+          </address>
         </div>
       </div>
 

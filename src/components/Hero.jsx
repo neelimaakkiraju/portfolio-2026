@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useRevealOnScroll } from "../hooks/useRevealOnScroll";
 import ParticleBackground from "./ParticleBackground";
+import { getHero, getPersonal } from "../data";
 import styles from "./Hero.module.css";
 
-const phrases = ["Frontend Developer", "React Specialist", "UI Engineer"];
+const heroData = getHero();
+const personalData = getPersonal();
+const phrases = heroData.typewriterPhrases;
 
 export default function Hero() {
   const { ref, isVisible } = useRevealOnScroll();
@@ -54,32 +57,30 @@ export default function Hero() {
             animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            <span className={styles.eyebrow}>Design + Engineering</span>
+            <span className={styles.eyebrow}>{heroData.headline.includes("Design") ? "Design + Engineering" : heroData.headline}</span>
             <h1 className={styles.headline}>
-              Crafting elegant, high-performance&nbsp;
-              <span className="gradientText">frontend experiences</span>
+              {heroData.headline}&nbsp;
+              <span className="gradientText">{heroData.headlineHighlight}</span>
             </h1>
             <div className={styles.typewriter} aria-live="polite">
               <span>{text}</span>
               <span className={styles.cursor} aria-hidden="true" />
             </div>
             <p className={styles.subtitle}>
-              I&apos;m Neelima, a frontend developer specializing in React, Next.js, and
-              TypeScript. I build accessible, scalable interfaces with polished
-              interactions.
+              {heroData.subtitle}
             </p>
             <div className={styles.ctaRow}>
-              <a href="#portfolio" className="btn btnPrimary">
-                View Work
+              <a href={heroData.primaryCta.href} className="btn btnPrimary">
+                {heroData.primaryCta.text}
               </a>
-              <a href="#contact" className="btn btnSecondary">
-                Contact
+              <a href={heroData.secondaryCta.href} className="btn btnSecondary">
+                {heroData.secondaryCta.text}
               </a>
             </div>
             <div className={styles.statRow}>
-              <span className={styles.statCard}>2+ years experience</span>
-              <span className={styles.statCard}>React + Next.js</span>
-              <span className={styles.statCard}>UI Systems</span>
+              {heroData.stats.map((stat, index) => (
+                <span key={index} className={styles.statCard}>{stat}</span>
+              ))}
             </div>
           </motion.div>
 
@@ -94,8 +95,8 @@ export default function Hero() {
             <div className={styles.imageWrap}>
               <div className={styles.imageInner}>
                 <img
-                  src="/images/hero.jpg"
-                  alt="Neelima Akkiraju"
+                  src={personalData.avatarUrl}
+                  alt={personalData.name}
                   width="480"
                   height="480"
                   decoding="async"

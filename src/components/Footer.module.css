@@ -1,25 +1,330 @@
-/* ===== FOOTER - MD3/HIG COMPLIANT ===== */
+/* ===== FOOTER - MODERN RESPONSIVE DESIGN ===== */
 .footer {
   border-top: 1px solid var(--outline-variant);
-  padding: var(--space-8) 0;
-  text-align: center;
+  padding: var(--space-12) 0 var(--space-6);
   color: var(--on-surface-variant);
   background: var(--surface-container-low);
 }
 
-.name {
-  font: var(--title-medium);
+.footerContainer {
+  max-width: 1200px;
+}
+
+/* ===== TOP SECTION - 3 COLUMN LAYOUT ===== */
+.topSection {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: var(--space-8);
+  margin-bottom: var(--space-8);
+}
+
+/* Brand Section */
+.brandSection {
+  max-width: 320px;
+}
+
+.brand {
+  display: inline-block;
+  font-size: 1.5rem;
+  font-weight: 700;
   color: var(--on-surface);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  transition: opacity var(--duration-short) var(--easing-standard);
+}
+
+.brand:hover {
+  opacity: 0.8;
+}
+
+.brandAccent {
+  color: var(--primary);
 }
 
 .tagline {
-  margin-top: var(--space-1);
+  margin-top: var(--space-2);
   font: var(--body-medium);
   color: var(--on-surface-variant);
+  line-height: 1.6;
+}
+
+/* Links Section */
+.linksSection,
+.contactSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.linksTitle {
+  font: var(--label-large);
+  font-weight: 600;
+  color: var(--on-surface);
+  margin-bottom: var(--space-4);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.quickLinks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.quickLink {
+  font: var(--body-medium);
+  color: var(--on-surface-variant);
+  text-decoration: none;
+  transition: color var(--duration-short) var(--easing-standard);
+  width: fit-content;
+  position: relative;
+}
+
+.quickLink::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--primary);
+  transition: width var(--duration-short) var(--easing-standard);
+}
+
+.quickLink:hover {
+  color: var(--primary);
+}
+
+.quickLink:hover::after {
+  width: 100%;
+}
+
+/* Contact Section */
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.contactLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font: var(--body-medium);
+  color: var(--on-surface-variant);
+  text-decoration: none;
+  transition: color var(--duration-short) var(--easing-standard);
+  width: fit-content;
+}
+
+.contactLink:hover {
+  color: var(--primary);
+}
+
+.contactLink svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.location {
+  font: var(--body-medium);
+  color: var(--on-surface-variant);
+  margin: 0;
+}
+
+/* ===== DIVIDER ===== */
+.divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--outline-variant) 20%,
+    var(--outline-variant) 80%,
+    transparent
+  );
+  margin-bottom: var(--space-6);
+}
+
+/* ===== BOTTOM SECTION ===== */
+.bottomSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
 }
 
 .copy {
-  margin-top: var(--space-4);
-  font: var(--label-medium);
+  font: var(--body-small);
   color: var(--on-surface-variant);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.madeWith {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  opacity: 0.8;
+}
+
+.heartIcon {
+  width: 14px;
+  height: 14px;
+  color: #ef4444;
+  animation: heartbeat 2s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Social Links */
+.socialLinks {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  color: var(--on-surface-variant);
+  background: transparent;
+  border: 1px solid var(--outline-variant);
+  transition: all var(--duration-short) var(--easing-standard);
+}
+
+.socialLink:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+  background: rgba(var(--primary-rgb, 99, 102, 241), 0.08);
+}
+
+.socialLink:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.socialLink svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Back to Top Button */
+.backToTop {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  color: var(--on-surface-variant);
+  background: var(--surface-container);
+  border: 1px solid var(--outline-variant);
+  cursor: pointer;
+  transition: all var(--duration-short) var(--easing-standard);
+}
+
+.backToTop:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.backToTop:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.backToTop svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ===== RESPONSIVE - TABLET ===== */
+@media (max-width: 900px) {
+  .topSection {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+  }
+
+  .brandSection {
+    grid-column: 1 / -1;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .linksSection,
+  .contactSection {
+    align-items: center;
+    text-align: center;
+  }
+
+  .quickLinks {
+    align-items: center;
+  }
+
+  .contactInfo {
+    align-items: center;
+  }
+}
+
+/* ===== RESPONSIVE - MOBILE ===== */
+@media (max-width: 600px) {
+  .footer {
+    padding: var(--space-8) 0 var(--space-4);
+  }
+
+  .topSection {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    text-align: center;
+  }
+
+  .brandSection {
+    max-width: 100%;
+  }
+
+  .brand {
+    font-size: 1.25rem;
+  }
+
+  .bottomSection {
+    flex-direction: column;
+    gap: var(--space-4);
+    text-align: center;
+  }
+
+  .copy {
+    order: 3;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .socialLinks {
+    order: 1;
+  }
+
+  .backToTop {
+    order: 2;
+  }
+
+  .divider {
+    margin-bottom: var(--space-4);
+  }
 }

@@ -1,0 +1,411 @@
+{
+    "meta": {
+        "title": "Neelima Akkiraju | Frontend Developer & React Specialist",
+        "description": "Frontend Developer specializing in React, Next.js, and TypeScript. Building accessible, high-performance web applications with modern UI/UX design.",
+        "keywords": "Frontend Developer, React Developer, Next.js, TypeScript, JavaScript, UI Engineer, Web Developer, Portfolio, Neelima Akkiraju",
+        "author": "Neelima Akkiraju",
+        "siteUrl": "https://neelima-portfolio.netlify.app",
+        "image": "/images/og-image.jpg",
+        "twitterHandle": "@neelimaakkiraju",
+        "locale": "en_US",
+        "themeColor": "#0a0e12"
+    },
+    "personal": {
+        "name": "Neelima Akkiraju",
+        "firstName": "Neelima",
+        "role": "Frontend Developer",
+        "tagline": "Design + Engineering",
+        "email": "neelimaakkiraju@gmail.com",
+        "phone": "+91 9876543210",
+        "location": "Hyderabad, India",
+        "resumeUrl": "/resume/neelima-resume.pdf",
+        "avatarUrl": "/images/hero.jpg",
+        "availability": "Available for opportunities"
+    },
+    "hero": {
+        "headline": "Crafting elegant, high-performance",
+        "headlineHighlight": "frontend experiences",
+        "subtitle": "I'm Neelima, a frontend developer specializing in React, Next.js, and TypeScript. I build accessible, scalable interfaces with polished interactions.",
+        "typewriterPhrases": [
+            "Frontend Developer",
+            "React Specialist",
+            "UI Engineer"
+        ],
+        "stats": [
+            "2+ years experience",
+            "React + Next.js",
+            "UI Systems"
+        ],
+        "primaryCta": {
+            "text": "View Work",
+            "href": "#portfolio"
+        },
+        "secondaryCta": {
+            "text": "Contact",
+            "href": "#contact"
+        }
+    },
+    "navigation": {
+        "brand": {
+            "text": "Neelima",
+            "accent": ".dev"
+        },
+        "links": [
+            {
+                "label": "Home",
+                "href": "#home"
+            },
+            {
+                "label": "About",
+                "href": "#about"
+            },
+            {
+                "label": "Services",
+                "href": "#services"
+            },
+            {
+                "label": "Portfolio",
+                "href": "#portfolio"
+            },
+            {
+                "label": "Experience",
+                "href": "#experience"
+            },
+            {
+                "label": "Contact",
+                "href": "#contact"
+            }
+        ],
+        "ctaButton": {
+            "text": "Hire Me",
+            "href": "#contact"
+        }
+    },
+    "about": {
+        "eyebrow": "About",
+        "title": "Design-minded frontend engineer",
+        "subtitle": "I blend thoughtful UX with robust engineering to deliver delightful, accessible web experiences.",
+        "bio": [
+            "I specialize in building modern React applications with clean architecture, scalable component systems, and meticulous attention to detail. My focus is creating polished UI that feels as good as it looks—fast, accessible, and intuitive.",
+            "I collaborate closely with designers and product teams to translate complex requirements into elegant, maintainable interfaces. From motion design to performance tuning, I deliver end-to-end frontend solutions.",
+            "Outside of client work, I enjoy exploring design systems, mentoring, and iterating on interaction patterns that elevate user delight."
+        ],
+        "skills": [
+            {
+                "name": "React + Next.js",
+                "value": 92
+            },
+            {
+                "name": "TypeScript + JavaScript",
+                "value": 88
+            },
+            {
+                "name": "UI Systems + Design",
+                "value": 84
+            }
+        ],
+        "techStack": [
+            {
+                "label": "React",
+                "icon": "SiReact",
+                "hint": "Component architecture"
+            },
+            {
+                "label": "Next.js",
+                "icon": "SiNextdotjs",
+                "hint": "Full-stack React"
+            },
+            {
+                "label": "TypeScript",
+                "icon": "SiTypescript",
+                "hint": "Typed codebases"
+            },
+            {
+                "label": "JavaScript",
+                "icon": "SiJavascript",
+                "hint": "ES2024+"
+            },
+            {
+                "label": "Tailwind",
+                "icon": "SiTailwindcss",
+                "hint": "Utility styling"
+            },
+            {
+                "label": "Figma",
+                "icon": "SiFigma",
+                "hint": "Design handoff"
+            }
+        ]
+    },
+    "services": {
+        "eyebrow": "Services",
+        "title": "How I can help",
+        "subtitle": "Focused offerings designed to move your product forward quickly and confidently.",
+        "items": [
+            {
+                "title": "UI Engineering",
+                "description": "Design system-ready interfaces with precise spacing, typography, and reusable components.",
+                "icon": "FiLayers"
+            },
+            {
+                "title": "Performance + SEO",
+                "description": "Core Web Vitals optimization, code splitting, and semantic markup for high Lighthouse scores.",
+                "icon": "FiZap"
+            },
+            {
+                "title": "Product Strategy",
+                "description": "Collaborative delivery across design, engineering, and stakeholders to ship polished experiences.",
+                "icon": "FiActivity"
+            }
+        ]
+    },
+    "projects": {
+        "eyebrow": "Portfolio",
+        "title": "Featured work",
+        "subtitle": "A selection of projects showcasing my expertise in frontend development and UI engineering.",
+        "categories": [
+            "All",
+            "Web Apps",
+            "Mobile",
+            "Dashboards",
+            "UI Experiments"
+        ],
+        "items": [
+            {
+                "name": "E-Commerce Simple Store",
+                "description": "Modern shopping experience with intuitive navigation.",
+                "tags": [
+                    "React",
+                    "Responsive Design",
+                    "Tailwind CSS",
+                    "Redux",
+                    "React Hooks",
+                    "Rest API"
+                ],
+                "image": "/images/simplestore.png",
+                "imageAlt": "E-Commerce dashboard preview",
+                "repo": "https://github.com/neelimaakkiraju/frontend-e-commerce.git",
+                "live": "https://ecommerce-simple-store.netlify.app/",
+                "category": "Web Apps",
+                "featured": true
+            },
+            {
+                "name": "Doctor-Booking-app",
+                "description": "A responsive doctor appointment booking app for quick and easy scheduling.",
+                "tags": [
+                    "React",
+                    "Responsive Design",
+                    "Tailwind CSS",
+                    "NextJS",
+                    "Date-fns",
+                    "Typescript"
+                ],
+                "image": "/images/doctor-booking.png",
+                "imageAlt": "Doctor booking mobile app preview",
+                "repo": "https://github.com/neelimaakkiraju/doctor-booking-app.git",
+                "live": "https://doctor-booking-app.netlify.app/",
+                "category": "Mobile",
+                "featured": true
+            },
+            {
+                "name": "Finance Monitor",
+                "description": "A real-time finance dashboard for tracking key financial insights.",
+                "tags": [
+                    "React",
+                    "Responsive Design",
+                    "Tailwind CSS",
+                    "Recharts",
+                    "React Hooks",
+                    "React Icons"
+                ],
+                "image": "/images/dashboard.png",
+                "imageAlt": "Finance dashboard preview",
+                "repo": "https://github.com/neelimaakkiraju/invoice-dashboard.git",
+                "live": "https://dashboard-invoice2.netlify.app/",
+                "category": "Dashboards",
+                "featured": true
+            },
+            {
+                "name": "SecureX",
+                "description": "A secure and responsive login page with smooth authentication flow.",
+                "tags": [
+                    "React JS",
+                    "Typescript",
+                    "Vite",
+                    "Firebase",
+                    "React Hooks",
+                    "React-toast"
+                ],
+                "image": "/images/login.png",
+                "imageAlt": "Secure login page preview",
+                "repo": "https://github.com/neelimaakkiraju/login-page.git",
+                "live": "https://authentication-setup.netlify.app/login",
+                "category": "Web Apps",
+                "featured": false
+            },
+            {
+                "name": "TaskFlow",
+                "description": "A simple and efficient task manager for organizing and tracking daily work.",
+                "tags": [
+                    "HTML/CSS",
+                    "Javascript",
+                    "EventListeners",
+                    "Responsive Design",
+                    "Tailwind CSS"
+                ],
+                "image": "/images/task.png",
+                "imageAlt": "Task manager app preview",
+                "repo": "https://github.com/neelimaakkiraju/todo-app.git",
+                "live": "https://plan-task-app.netlify.app/",
+                "category": "Web Apps",
+                "featured": false
+            },
+            {
+                "name": "SearchEase",
+                "description": "A smooth search animation app for fast and intuitive interactions.",
+                "tags": [
+                    "React JS",
+                    "Responsive Design",
+                    "React Icons",
+                    "Animations",
+                    "Tailwind CSS"
+                ],
+                "image": "/images/search.png",
+                "imageAlt": "Search animation app preview",
+                "repo": "https://github.com/neelimaakkiraju/search-animation.git",
+                "live": "https://search-animation-app.netlify.app/",
+                "category": "UI Experiments",
+                "featured": false
+            }
+        ]
+    },
+    "experience": {
+        "eyebrow": "Experience",
+        "title": "Growth & expertise",
+        "subtitle": "A snapshot of my professional journey and the skills I've honed.",
+        "journeyTitle": "Professional Journey",
+        "skillsTitle": "Technical Skills",
+        "toolsTitle": "Tools & Technologies",
+        "timeline": [
+            {
+                "period": "Apr 2025 - Present",
+                "role": "Frontend Developer",
+                "company": "Techenhance",
+                "description": "Developed a scalable Next.js and TypeScript CRM with automated workflows, advanced reporting, modular UI components, and streamlined CI/CD delivery processes."
+            },
+            {
+                "period": "Jul 2024 - Mar 2025",
+                "role": "Frontend Developer",
+                "company": "Freelancer",
+                "description": "Designed responsive React and Next.js interfaces using Tailwind CSS, optimized performance and SEO, integrated secure APIs, and maintained reliable production deployments."
+            },
+            {
+                "period": "May 2023 - Jun 2024",
+                "role": "Frontend Developer",
+                "company": "AGM Global Solutions",
+                "description": "Built high-performance React and Next.js applications with optimized Core Web Vitals, reusable UI components, and UX collaboration to improve speed, maintainability, and engagement."
+            }
+        ],
+        "skills": [
+            {
+                "name": "React JS",
+                "value": 90
+            },
+            {
+                "name": "Next JS",
+                "value": 85
+            },
+            {
+                "name": "Javascript & Typescript",
+                "value": 82
+            },
+            {
+                "name": "Tailwind CSS & Responsive UI",
+                "value": 80
+            },
+            {
+                "name": "Performance Optimization & SEO",
+                "value": 75
+            }
+        ],
+        "tools": [
+            "Figma",
+            "React JS",
+            "Next JS",
+            "Tailwind",
+            "HTML & CSS",
+            "TypeScript",
+            "Javascript",
+            "Git",
+            "Redux",
+            "Context API",
+            "Responsive Design",
+            "Bootstrap",
+            "Netlify",
+            "GraphQL",
+            "Rest API",
+            "GitHub",
+            "Jest",
+            "Vitest",
+            "React Hooks",
+            "Data structure & Algorithms",
+            "AI Assisted Development",
+            "Copilot",
+            "Cursor",
+            "Webpack"
+        ]
+    },
+    "contact": {
+        "eyebrow": "Contact",
+        "title": "Let's build something great",
+        "subtitle": "Have a project in mind? Send a message and I'll get back within 24 hours.",
+        "availability": "Based in India · Open to remote opportunities.",
+        "form": {
+            "fields": {
+                "name": {
+                    "label": "Name",
+                    "placeholder": "Your name",
+                    "error": "Please enter your name."
+                },
+                "email": {
+                    "label": "Email",
+                    "placeholder": "your@email.com",
+                    "error": "Please enter your email.",
+                    "invalidError": "Please enter a valid email."
+                },
+                "message": {
+                    "label": "Message",
+                    "placeholder": "Tell me about your project...",
+                    "error": "Please share your message."
+                }
+            },
+            "submitButton": "Send Message",
+            "successToast": "Message sent successfully!",
+            "errorToast": "Please fix the highlighted fields."
+        }
+    },
+    "social": [
+        {
+            "name": "GitHub",
+            "url": "https://github.com/neelimaakkiraju",
+            "icon": "FiGithub",
+            "ariaLabel": "View GitHub profile"
+        },
+        {
+            "name": "LinkedIn",
+            "url": "https://linkedin.com/in/neelimaakkiraju",
+            "icon": "FiLinkedin",
+            "ariaLabel": "Connect on LinkedIn"
+        },
+        {
+            "name": "Twitter",
+            "url": "https://twitter.com/neelimaakkiraju",
+            "icon": "FiTwitter",
+            "ariaLabel": "Follow on Twitter"
+        }
+    ],
+    "footer": {
+        "tagline": "Creating refined digital experiences",
+        "copyright": "© {year} {name}. All rights reserved."
+    }
+}
