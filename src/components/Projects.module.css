@@ -1,0 +1,156 @@
+/* ===== PROJECTS - MD3/HIG COMPLIANT ===== */
+
+/* Filter chips */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  margin: var(--space-8) 0 var(--space-10);
+}
+
+/* MD3 Filter chip */
+.filterButton {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--outline-variant);
+  background: var(--surface-container);
+  color: var(--on-surface-variant);
+  font: var(--label-large);
+  min-height: var(--touch-target-compact);
+  transition: all var(--duration-short-2) var(--easing-standard);
+}
+
+.filterButton:hover {
+  background: var(--surface-container-high);
+}
+
+/* Active filter chip */
+.filterActive {
+  color: var(--on-primary);
+  background: linear-gradient(120deg, var(--primary), var(--secondary));
+  border-color: transparent;
+}
+
+/* Project grid */
+.grid {
+  display: grid;
+  gap: var(--space-6);
+}
+
+/* MD3 Card */
+.card {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--outline-variant);
+  background: var(--surface-container);
+  transition:
+    transform var(--duration-short-2) var(--easing-standard),
+    box-shadow var(--duration-short-2) var(--easing-standard),
+    border-color var(--duration-short-2) var(--easing-standard);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--elevation-2);
+  border-color: var(--outline);
+}
+
+/* Card image */
+.imageWrap {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  background: var(--surface-container-highest);
+}
+
+.imageWrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-medium-2) var(--easing-standard);
+}
+
+.card:hover img {
+  transform: scale(1.03);
+}
+
+/* Card content */
+.cardBody {
+  display: grid;
+  gap: var(--space-4); /* Better spacing */
+  padding: var(--space-6);
+}
+
+/* h3 - Project title */
+.cardTitle {
+  font: var(--headline-small); /* Larger: 1.5rem */
+  color: var(--on-surface);
+}
+
+/* Project description */
+.cardCopy {
+  color: var(--on-surface-variant);
+  font: var(--body-large); /* Larger body text */
+  line-height: 1.6;
+}
+
+/* Tech tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+/* Action buttons */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+/* Secondary action button */
+.linkButton {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--outline-variant);
+  color: var(--on-surface);
+  background: var(--surface-container-high);
+  font: var(--label-large);
+  min-height: var(--touch-target-compact);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  transition: background var(--duration-short-2) var(--easing-standard);
+}
+
+.linkButton:hover {
+  background: var(--surface-container-highest);
+}
+
+/* Primary action button */
+.primaryLink {
+  background: linear-gradient(120deg, var(--primary), var(--secondary));
+  color: var(--on-primary);
+  border: none;
+}
+
+.primaryLink:hover {
+  opacity: 0.9;
+}
+
+/* Tablet: 2 columns */
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop: 3 columns */
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

@@ -1,0 +1,118 @@
+/* ===== ABOUT - MD3/HIG COMPLIANT ===== */
+.aboutGrid {
+  display: grid;
+  gap: var(--space-10); /* 80px */
+  align-items: start;
+}
+
+/* MD3 Elevated card style */
+.photoCard {
+  padding: var(--space-4);
+  border-radius: var(--radius-xl);
+  background: var(--surface-container);
+  border: 1px solid var(--outline-variant);
+  position: relative;
+  box-shadow: var(--elevation-1);
+}
+
+.photoCard::after {
+  content: "";
+  position: absolute;
+  inset: var(--space-2);
+  border-radius: var(--radius-lg);
+  border: 1px dashed var(--primary-container);
+  pointer-events: none;
+}
+
+.photoImage {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+  aspect-ratio: 4 / 5;
+}
+
+/* Bio text */
+.bio {
+  display: grid;
+  gap: var(--space-5); /* 20px paragraph spacing - more breathing room */
+}
+
+.bio p {
+  color: var(--on-surface-variant);
+  font: var(--body-large);
+  line-height: 1.8;
+  font-size: 1.0625rem; /* Slightly larger */
+}
+
+/* Skills section */
+.skills {
+  display: grid;
+  gap: var(--space-5);
+  margin-top: var(--space-10); /* More separation from bio */
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--outline-variant);
+}
+
+.skillRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font: var(--title-small);
+  color: var(--on-surface);
+  margin-bottom: var(--space-2);
+}
+
+/* Progress bar */
+.skillBar {
+  height: var(--space-2); /* 8px */
+  border-radius: var(--radius-full);
+  background: var(--surface-container-highest);
+  overflow: hidden;
+}
+
+.skillFill {
+  height: 100%;
+  background: linear-gradient(120deg, var(--primary), var(--secondary));
+  border-radius: var(--radius-full);
+  transition: width var(--duration-long-2) var(--easing-emphasized);
+}
+
+/* Tech stack grid */
+.techGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-10); /* More separation */
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--outline-variant);
+}
+
+/* MD3 Input chip style */
+.techItem {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+  background: var(--surface-container-high);
+  border: 1px solid var(--outline-variant);
+  color: var(--on-surface);
+  font: var(--label-large);
+  min-height: var(--touch-target-compact); /* 32px */
+  transition:
+    background var(--duration-short-2) var(--easing-standard),
+    border-color var(--duration-short-2) var(--easing-standard);
+}
+
+.techItem:hover {
+  background: var(--surface-container-highest);
+  border-color: var(--outline);
+}
+
+/* Desktop layout */
+@media (min-width: 1024px) {
+  .aboutGrid {
+    grid-template-columns: 1fr 1.4fr;
+    gap: var(--space-12);
+  }
+}

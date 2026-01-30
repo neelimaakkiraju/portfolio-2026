@@ -1,0 +1,47 @@
+.particleField {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(245, 158, 11, 0.5);
+  animation: float 12s linear infinite;
+}
+
+.particle:nth-child(2n) {
+  background: rgba(45, 212, 191, 0.5);
+  width: 8px;
+  height: 8px;
+}
+
+.particle:nth-child(3n) {
+  background: rgba(251, 113, 133, 0.5);
+  width: 4px;
+  height: 4px;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-120px) translateX(40px);
+    opacity: 0.1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .particle {
+    animation: none;
+  }
+}

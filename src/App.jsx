@@ -1,26 +1,39 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 
-import "./App.css";
+import styles from "./App.module.css";
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Projects from "./components/Projects";
-import Experience from "./components/Experience";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
+
+const Hero = lazy(() => import("./components/Hero"));
+const About = lazy(() => import("./components/About"));
+const Services = lazy(() => import("./components/Services"));
+const Projects = lazy(() => import("./components/Projects"));
+const Experience = lazy(() => import("./components/Experience"));
+const Contact = lazy(() => import("./components/Contact"));
+const Footer = lazy(() => import("./components/Footer"));
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white text-[#1A1A2E]">
+    <div className={styles.app}>
+      <div className={styles.backgroundGlow} aria-hidden="true" />
+      <div className={styles.noise} aria-hidden="true" />
       <Navbar />
-      <main className="page-fade-in">
-        <Hero />
-        <About />
-        <Projects />
-        <Experience />
-        <Contact />
-      </main>
-      <Footer />
+      <Suspense
+        fallback={
+          <div className={styles.loader} role="status" aria-live="polite">
+            Loading experience…
+          </div>
+        }
+      >
+        <main id="main-content" className={styles.main}>
+          <Hero />
+          <About />
+          <Services />
+          <Projects />
+          <Experience />
+          <Contact />
+        </main>
+        <Footer />
+      </Suspense>
     </div>
   );
 }

@@ -1,5 +1,7 @@
-import React from "react";
+import React, { memo, useMemo, useState } from "react";
+import { motion } from "framer-motion";
 import { useRevealOnScroll } from "../hooks/useRevealOnScroll";
+import styles from "./Projects.module.css";
 
 const projects = [
   {
@@ -10,6 +12,7 @@ const projects = [
     imageAlt: "E-Commerce dashboard preview",
     repo: "https://github.com/neelimaakkiraju/frontend-e-commerce.git",
     live: "https://ecommerce-simple-store.netlify.app/",
+    category: "Web Apps",
   },
   {
     name: "Doctor-Booking-app",
@@ -19,6 +22,7 @@ const projects = [
     imageAlt: "Banking mobile app preview",
     repo: "https://github.com/neelimaakkiraju/doctor-booking-app.git",
     live: "https://doctor-booking-app.netlify.app/",
+    category: "Mobile",
   },
   {
     name: "Finance Monitor",
@@ -28,6 +32,7 @@ const projects = [
     imageAlt: "Creative portfolio gallery preview",
     repo: "https://github.com/neelimaakkiraju/invoice-dashboard.git",
     live: "https://dashboard-invoice2.netlify.app/",
+    category: "Dashboards",
   },
   {
     name: "SecureX",
@@ -37,6 +42,7 @@ const projects = [
     imageAlt: "Creative portfolio gallery preview",
     repo: "https://github.com/neelimaakkiraju/login-page.git",
     live: "https://authentication-setup.netlify.app/login",
+    category: "Web Apps",
   },
   {
     name: "TaskFlow",
@@ -46,6 +52,7 @@ const projects = [
     imageAlt: "Creative portfolio gallery preview",
     repo: "https://github.com/neelimaakkiraju/todo-app.git",
     live: "https://plan-task-app.netlify.app/",
+    category: "Web Apps",
   },
   {
     name: "SearchEase",
@@ -55,86 +62,120 @@ const projects = [
     imageAlt: "Creative portfolio gallery preview",
     repo: "https://github.com/neelimaakkiraju/search-animation.git",
     live: "https://search-animation-app.netlify.app/",
+    category: "UI Experiments",
   },
 ];
 
-export default function Projects() {
+const categories = ["All", "Web Apps", "Mobile", "Dashboards", "UI Experiments"];
+
+const ProjectCard = memo(function ProjectCard({ project }) {
+  return (
+    <article className={styles.card}>
+      <div className={styles.imageWrap}>
+        <img
+          src={project.image}
+          alt={project.imageAlt}
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+      <div className={styles.cardBody}>
+        <h3 className={styles.cardTitle}>{project.name}</h3>
+        <p className={styles.cardCopy}>{project.description}</p>
+        <div className={styles.tags}>
+          {project.tags.map((tag) => (
+            <span key={tag} className="tag">
+              {tag}
+            </span>
+          ))}
+        </div>
+        <div className={styles.actions}>
+          <a
+            href={project.repo}
+            target="_blank"
+            rel="noreferrer"
+            className={styles.linkButton}
+          >
+            GitHub
+          </a>
+          <a
+            href={project.live}
+            target="_blank"
+            rel="noreferrer"
+            className={`${styles.linkButton} ${styles.primaryLink}`}
+          >
+            Live Demo
+          </a>
+        </div>
+      </div>
+    </article>
+  );
+});
+
+function Projects() {
   const { ref, isVisible } = useRevealOnScroll();
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  const filteredProjects = useMemo(() => {
+    if (activeCategory === "All") return projects;
+    return projects.filter((project) => project.category === activeCategory);
+  }, [activeCategory]);
 
   return (
-    <section
-      id="portfolio"
-      className="bg-gray-50 py-20"
-    >
+    <section id="portfolio" className="section">
       <div
         ref={ref}
-        className={`reveal-on-scroll mx-auto max-w-5xl px-4 md:px-6 ${
-          isVisible ? "is-visible" : ""
-        }`}
+        className={`container revealOnScroll ${isVisible ? "isVisible" : ""}`}
       >
-        <div className="text-center">
-          <h2 className="text-xl font-semibold text-[#1A1A2E]">
-            Featured Work
-          </h2>
-          <p className="mt-2 text-xs text-[#8588A3] md:text-sm">
-            A selection of projects that showcase my skills and creativity.
+        <div className="textCenter">
+          <p className="eyebrow">Projects</p>
+          <h2 className="sectionTitle">Selected work</h2>
+          <p className="sectionSubtitle">
+            A curated portfolio of frontend projects spanning product work and
+            UI experimentation.
           </p>
         </div>
 
-        <div className="mt-8 grid gap-6 md:mt-10 md:grid-cols-3">
-          {projects.map((p) => (
-            <article
-              key={p.name}
-              className="flex flex-col overflow-hidden rounded-3xl bg-white shadow-[0_18px_60px_rgba(15,23,42,0.08)] transition-transform duration-300 hover:-translate-y-2 hover:shadow-[0_24px_70px_rgba(15,23,42,0.14)]"
+        <div className={styles.filters} role="tablist" aria-label="Project categories">
+          {categories.map((category) => (
+            <button
+              key={category}
+              role="tab"
+              aria-selected={activeCategory === category}
+              className={`${styles.filterButton} ${
+                activeCategory === category ? styles.filterActive : ""
+              }`}
+              onClick={() => setActiveCategory(category)}
             >
-              <div className="relative h-32 overflow-hidden md:h-28">
-                <img
-                  src={p.image}
-                  alt={p.imageAlt}
-                  className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
-                />
-              </div>
-              <div className="flex flex-1 flex-col px-5 pb-4 pt-4">
-                <h3 className="text-sm font-semibold text-[#1A1A2E]">
-                  {p.name}
-                </h3>
-                <p className="mt-2 text-[11px] leading-relaxed text-[#8588A3] md:text-xs">
-                  {p.description}
-                </p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {p.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full bg-[#F5F7FF] px-3 py-1 text-[10px] font-medium text-[#6C6FA3]"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="mt-4 flex flex-wrap gap-3 text-[11px]">
-                  <a
-                    href={p.repo}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="rounded-full border border-[#E0E3F3] px-3 py-1 font-medium text-[#4C5BFF] transition-colors hover:border-[#4C5BFF] hover:bg-[#F5F7FF]"
-                  >
-                    GitHub Repo
-                  </a>
-                  <a
-                    href={p.live}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="rounded-full bg-gradient-to-r from-[#654BFF] to-[#27C2FF] px-3 py-1 font-medium text-white shadow-sm shadow-[#654BFF33]"
-                  >
-                    Live Demo
-                  </a>
-                </div>
-              </div>
-            </article>
+              {category}
+            </button>
           ))}
         </div>
+
+        <motion.div
+          className={styles.grid}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={{
+            hidden: {},
+            show: {
+              transition: { staggerChildren: 0.12, delayChildren: 0.1 },
+            },
+          }}
+        >
+          {filteredProjects.map((project) => (
+            <motion.div
+              key={project.name}
+              variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
+            >
+              <ProjectCard project={project} />
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
 }
+
+export default memo(Projects);

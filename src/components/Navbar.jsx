@@ -1,83 +1,120 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import styles from "./Navbar.module.css";
+import { useActiveSection } from "../hooks/useActiveSection";
 
 const navItems = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
-  { id: "portfolio", label: "Portfolio" },
+  { id: "services", label: "Services" },
+  { id: "portfolio", label: "Projects" },
+  { id: "experience", label: "Experience" },
   { id: "contact", label: "Contact" },
-  {id:"experience", label:"Experience"}
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const activeId = useActiveSection(navItems.map((item) => item.id));
 
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
     if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+      el.scrollIntoView({
+        behavior: prefersReducedMotion ? "auto" : "smooth",
+        block: "start",
+      });
       setOpen(false);
     }
   };
 
+  useEffect(() => {
+    if (!open) return undefined;
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
   return (
-    <header className="nav-slide-down fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur border-b border-[#E3E6F0]">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:px-6 md:py-4">
-        <div
-          className="cursor-pointer text-sm font-semibold tracking-tight text-[#3B4C9B]"
-          onClick={() => scrollToSection("home")}
-        >
-          Neelima <span className="font-bold text-[#1A1A2E]">Akkiraju</span>
-        </div>
+    <header className={styles.header}>
+      <div className="container">
+        <nav className={styles.navbar} aria-label="Primary">
+          <button
+            className={styles.brand}
+            onClick={() => scrollToSection("home")}
+            aria-label="Scroll to top"
+          >
+            Neelima <span className={styles.brandAccent}>Akkiraju</span>
+          </button>
 
-        <button
-          className="inline-flex items-center justify-center rounded-md border border-[#D0D4E7] px-3 py-1.5 text-xs font-medium text-[#1A1A2E] shadow-sm hover:bg-[#f3f5ff] md:hidden"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Toggle navigation"
-        >
-          ☰
-        </button>
-
-        <div className="hidden items-center gap-8 text-xs font-medium text-black md:flex">
-          {navItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => scrollToSection(item.id)}
-              className="transition-colors hover:text-[#3B4C9B]"
-            >
-              {item.label}
-            </button>
-          ))}
-        </div>
-
-        <button
-          onClick={() => scrollToSection("contact")}
-          className="hidden rounded-full bg-gradient-to-r from-[#654BFF] to-[#27C2FF] px-5 py-1.5 text-xs font-semibold text-white shadow-md shadow-[#654BFF33] md:inline-block"
-        >
-          Let&apos;s Talk
-        </button>
-      </nav>
-
-      {open && (
-        <div className="border-t border-[#E3E6F0] bg-white/95 px-4 py-3 md:hidden">
-          <div className="flex flex-col gap-3 text-sm font-medium text-[#6B7280]">
+          <div className={styles.desktopLinks} role="list">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="text-left transition-colors hover:text-[#3B4C9B]"
+                className={`${styles.link} ${
+                  activeId === item.id ? styles.linkActive : ""
+                }`}
+                aria-current={activeId === item.id ? "page" : undefined}
               >
                 {item.label}
               </button>
             ))}
-            <button
-              onClick={() => scrollToSection("contact")}
-              className="mt-2 rounded-full bg-gradient-to-r from-[#654BFF] to-[#27C2FF] px-5 py-2 text-xs font-semibold text-white shadow-md shadow-[#654BFF33]"
-            >
-              Let&apos;s Talk
-            </button>
           </div>
+
+          <button
+            onClick={() => scrollToSection("contact")}
+            className={`btn btnPrimary ${styles.cta}`}
+          >
+            Let&apos;s Talk
+          </button>
+
+          <button
+            className={styles.menuButton}
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Toggle navigation"
+            aria-expanded={open}
+          >
+            <span className={styles.menuIcon} />
+          </button>
+        </nav>
+      </div>
+
+      <div
+        className={`${styles.mobilePanel} ${open ? styles.mobilePanelOpen : ""}`}
+        onClick={() => setOpen(false)}
+        role="presentation"
+      >
+        <div
+          className={`${styles.mobileMenu} ${open ? styles.mobileMenuOpen : ""}`}
+          onClick={(event) => event.stopPropagation()}
+        >
+          <div className={styles.mobileLinks} role="list">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className={`${styles.link} ${
+                  activeId === item.id ? styles.linkActive : ""
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+          <button
+            onClick={() => scrollToSection("contact")}
+            className={`btn btnPrimary ${styles.mobileCta}`}
+          >
+            Let&apos;s Talk
+          </button>
         </div>
-      )}
+      </div>
     </header>
   );
 }

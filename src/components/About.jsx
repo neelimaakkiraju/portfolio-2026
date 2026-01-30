@@ -1,94 +1,101 @@
 import React from "react";
+import { SiFigma, SiJavascript, SiNextdotjs, SiReact, SiTailwindcss, SiTypescript } from "react-icons/si";
 import { useRevealOnScroll } from "../hooks/useRevealOnScroll";
+import styles from "./About.module.css";
 
-// UI/UX Design Icon (Painter's palette - white icon)
-const UIIcon = () => (
-  <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none">
-    <rect x="3" y="4" width="18" height="6" rx="2" fill="white"/>
-    <rect x="3" y="14" width="10" height="6" rx="2" fill="white"/>
-    <rect x="15" y="14" width="6" height="6" rx="2" fill="white"/>
-  </svg>
-);
+const skills = [
+  { name: "React + Next.js", value: 92 },
+  { name: "TypeScript + JavaScript", value: 88 },
+  { name: "UI Systems + Design", value: 84 },
+];
 
-// Frontend Development Icon (Angle brackets - white icon)
-const FrontendIcon = () => (
-   <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none">
-    <path
-      d="M13 2L3 14H11L9 22L21 9H13L13 2Z"
-      fill="white"
-    />
-  </svg>
-);
-
-// Mobile Apps Icon (Smartphone - white icon)
-const MobileIcon = () => (
-  <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none">
-    <rect x="3" y="3" width="7" height="7" rx="2" fill="white"/>
-    <rect x="14" y="3" width="7" height="7" rx="2" fill="white"/>
-    <rect x="3" y="14" width="7" height="7" rx="2" fill="white"/>
-    <rect x="14" y="14" width="7" height="7" rx="2" fill="white"/>
-  </svg>
-);
-
-const services = [
-  {
-    title: "UI Development",
-    description:
-      "Building responsive, user-friendly interfaces with React and Tailwind CSS.",
-    icon: <UIIcon />,
-    iconBg: "bg-gradient-to-r from-[#654BFF] to-[#27C2FF]",
-  },
-  {
-    title: "Performance Optimization",
-    description:
-      "Improving speed, SEO, and overall frontend performance.",
-    icon: <FrontendIcon />,
-    iconBg: "bg-gradient-to-r from-[#654BFF] to-[#27C2FF]",
-  },
-  {
-    title: "Scalable Architecture",
-    description:
-      "Writing clean, reusable code and integrating APIs for real-world products.",
-    icon: <MobileIcon />,
-    iconBg: "bg-gradient-to-r from-[#654BFF] to-[#27C2FF]",
-  },
+const techStack = [
+  { label: "React", icon: <SiReact />, hint: "Component architecture" },
+  { label: "Next.js", icon: <SiNextdotjs />, hint: "Full-stack React" },
+  { label: "TypeScript", icon: <SiTypescript />, hint: "Typed codebases" },
+  { label: "JavaScript", icon: <SiJavascript />, hint: "ES2024+" },
+  { label: "Tailwind", icon: <SiTailwindcss />, hint: "Utility styling" },
+  { label: "Figma", icon: <SiFigma />, hint: "Design handoff" },
 ];
 
 export default function About() {
   const { ref, isVisible } = useRevealOnScroll();
 
   return (
-    <section id="about" className="bg-white py-20">
+    <section id="about" className="section">
       <div
         ref={ref}
-        className={`reveal-on-scroll mx-auto max-w-5xl px-4 md:px-6 ${
-          isVisible ? "is-visible" : ""
-        }`}
+        className={`container revealOnScroll ${isVisible ? "isVisible" : ""}`}
       >
-        <div className="text-center">
-          <h2 className="text-xl font-semibold text-[#1A1A2E]">About Me</h2>
-          <p className="mt-2 text-xs text-[#8588A3] md:text-sm">
-           Frontend developer creating modern, responsive, and scalable web applications.
+        <div className="textCenter">
+          <p className="eyebrow">About</p>
+          <h2 className="sectionTitle">Design-minded frontend engineer</h2>
+          <p className="sectionSubtitle">
+            I blend thoughtful UX with robust engineering to deliver delightful,
+            accessible web experiences.
           </p>
         </div>
 
-        <div className="mt-8 grid gap-5 md:grid-cols-3">
-          {services.map((service) => (
-            <div
-              key={service.title}
-              className="rounded-2xl  bg-gradient-to-br from-blue-50 to-purple-50 p-5 text-left"
-            >
-              <div className={`mb-4 inline-flex h-10 w-10 items-center justify-center rounded-2xl ${service.iconBg}`}>
-                {service.icon}
-              </div>
-              <h3 className="text-sm font-semibold text-[#1A1A2E]">
-                {service.title}
-              </h3>
-              <p className="mt-2 text-[11px] leading-relaxed text-[#8588A3] md:text-xs">
-                {service.description}
-              </p>
+        <div className={styles.aboutGrid}>
+          <div className={styles.photoCard}>
+            <img
+              src="/images/hero.jpg"
+              alt="Neelima Akkiraju portrait"
+              loading="lazy"
+              width="480"
+              height="560"
+              className={styles.photoImage}
+            />
+          </div>
+
+          <div className={styles.bio}>
+            <p>
+              I specialize in building modern React applications with clean
+              architecture, scalable component systems, and meticulous attention to
+              detail. My focus is creating polished UI that feels as good as it
+              looks—fast, accessible, and intuitive.
+            </p>
+            <p>
+              I collaborate closely with designers and product teams to translate
+              complex requirements into elegant, maintainable interfaces. From
+              motion design to performance tuning, I deliver end-to-end frontend
+              solutions.
+            </p>
+            <p>
+              Outside of client work, I enjoy exploring design systems, mentoring,
+              and iterating on interaction patterns that elevate user delight.
+            </p>
+
+            <div className={styles.skills}>
+              {skills.map((skill) => (
+                <div key={skill.name}>
+                  <div className={styles.skillRow}>
+                    <span>{skill.name}</span>
+                    <span>{skill.value}%</span>
+                  </div>
+                  <div className={styles.skillBar}>
+                    <div
+                      className={styles.skillFill}
+                      style={{ width: `${isVisible ? skill.value : 0}%` }}
+                    />
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+
+            <div className={styles.techGrid}>
+              {techStack.map((tech) => (
+                <span
+                  key={tech.label}
+                  className={styles.techItem}
+                  title={tech.hint}
+                >
+                  {tech.icon}
+                  {tech.label}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

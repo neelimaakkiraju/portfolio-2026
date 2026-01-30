@@ -1,0 +1,125 @@
+/* ===== EXPERIENCE - MD3/HIG COMPLIANT ===== */
+.wrapper {
+  display: grid;
+  gap: var(--space-10); /* 80px */
+}
+
+/* Timeline container */
+.timeline {
+  display: grid;
+  gap: var(--space-8); /* More gap between timeline items */
+  border-left: 2px solid var(--outline-variant);
+  padding-left: var(--space-7);
+  margin-top: var(--space-6);
+}
+
+.timelineItem {
+  position: relative;
+  padding-bottom: var(--space-2);
+}
+
+/* Timeline dot */
+.timelineDot {
+  position: absolute;
+  left: calc(-1 * var(--space-7) - 7px);
+  top: var(--space-1);
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(120deg, var(--primary), var(--secondary));
+  box-shadow: 0 0 0 4px var(--background);
+}
+
+/* Time period - small label */
+.timelinePeriod {
+  font: var(--label-large);
+  color: var(--primary);
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-2);
+}
+
+/* h4 - Role title */
+.timelineRole {
+  font: var(--headline-small); /* Larger: 1.5rem */
+  color: var(--on-surface);
+  margin-bottom: var(--space-2);
+}
+
+/* Company name */
+.timelineCompany {
+  font: var(--title-medium);
+  color: var(--secondary);
+  margin-bottom: var(--space-4); /* More space before description */
+}
+
+/* Description */
+.timelineCopy {
+  color: var(--on-surface-variant);
+  font: var(--body-large); /* Larger body text */
+  line-height: 1.7;
+}
+
+/* Skills section */
+.skillGrid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.skillLabel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font: var(--label-large);
+  color: var(--on-surface);
+  margin-bottom: var(--space-2);
+}
+
+/* Progress track */
+.skillTrack {
+  height: var(--space-2); /* 8px */
+  border-radius: var(--radius-full);
+  background: var(--surface-container-highest);
+  overflow: hidden;
+}
+
+.skillFill {
+  height: 100%;
+  background: linear-gradient(120deg, var(--primary), var(--secondary));
+  border-radius: var(--radius-full);
+  transition: width var(--duration-long-2) var(--easing-emphasized);
+}
+
+/* h3 - Subsection titles */
+.subsectionTitle {
+  font: var(--headline-medium); /* 1.75rem */
+  color: var(--on-surface);
+  margin-bottom: var(--space-2);
+}
+
+/* Tools section */
+.toolsSection {
+  margin-top: var(--space-10);
+}
+
+/* h4 - Tools title */
+.toolsTitle {
+  font: var(--title-large); /* 1.375rem */
+  color: var(--on-surface);
+  margin-bottom: var(--space-5);
+}
+
+/* Tools/technologies */
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+/* Desktop: 2 columns */
+@media (min-width: 1024px) {
+  .wrapper {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: var(--space-12);
+  }
+}

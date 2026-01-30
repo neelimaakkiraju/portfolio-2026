@@ -1,5 +1,6 @@
-import React from "react";
+import React, { memo } from "react";
 import { useRevealOnScroll } from "../hooks/useRevealOnScroll";
+import styles from "./Experience.module.css";
 
 const experience = [
   {
@@ -62,92 +63,69 @@ const tools = [
 
 ];
 
-export default function Experience() {
+function Experience() {
   const { ref, isVisible } = useRevealOnScroll();
 
   return (
-    <section
-      id="experience"
-      className="bg-white py-20"
-    >
-      <div className="mx-auto max-w-5xl px-4 md:px-6">
-        <div
-          ref={ref}
-          className={`reveal-on-scroll rounded-3xl bg-white p-6 shadow-[0_18px_60px_rgba(15,23,42,0.08)] md:p-10 ${
-            isVisible ? "is-visible" : ""
-          }`}
-        >
-        <div className="text-center">
-          <h2 className="text-xl font-semibold text-[#1A1A2E]">
-            Experience &amp; Skills
-          </h2>
-          <p className="mt-2 text-xs text-[#8588A3] md:text-sm">
-            My journey in creating exceptional digital experiences.
+    <section id="experience" className="section">
+      <div
+        ref={ref}
+        className={`container revealOnScroll ${isVisible ? "isVisible" : ""}`}
+      >
+        <div className="textCenter">
+          <p className="eyebrow">Experience</p>
+          <h2 className="sectionTitle">Growth &amp; expertise</h2>
+          <p className="sectionSubtitle">
+            A snapshot of my professional journey and the skills I&apos;ve honed.
           </p>
         </div>
 
-        <div className="mt-8 grid gap-8 md:grid-cols-2 md:items-start">
+        <div className={styles.wrapper}>
           <div>
-            <h3 className="text-sm font-semibold text-[#1A1A2E]">
+            <h3 className={styles.subsectionTitle}>
               Professional Journey
             </h3>
-            <div className="mt-5 space-y-6 border-l border-[#E0E3F3] pl-5">
-              {experience.map((item, index) => (
-                <div key={item.role} className="relative">
-                  <span className="absolute -left-6 mt-1 inline-flex h-3 w-3 rounded-full bg-gradient-to-r from-[#654BFF] to-[#27C2FF]" />
-                  <p className="text-[11px] font-semibold bg-gradient-to-br from-blue-500 to-purple-500 bg-clip-text text-transparent md:text-xs">
-  {item.period}
-</p>
-                  <h4 className="mt-1 text-sm font-semibold text-[#1A1A2E]">
-                    {item.role}
-                  </h4>
-                  <p className="text-[11px] font-medium text-[#9A9DBD] md:text-xs">
-                    {item.company}
-                  </p>
-                  <p className="mt-2 text-[11px] leading-relaxed text-[#8588A3] md:text-xs">
-                    {item.description}
-                  </p>
-                  {index !== experience.length - 1 && (
-                    <div className="mt-5 h-px w-10 bg-[#E0E3F3]" />
-                  )}
+            <div className={styles.timeline}>
+              {experience.map((item) => (
+                <div key={item.role} className={styles.timelineItem}>
+                  <span className={styles.timelineDot} />
+                  <p className={styles.timelinePeriod}>{item.period}</p>
+                  <h4 className={styles.timelineRole}>{item.role}</h4>
+                  <p className={styles.timelineCompany}>{item.company}</p>
+                  <p className={styles.timelineCopy}>{item.description}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="space-y-6">
-            <div>
-              <h3 className="text-sm font-semibold text-[#1A1A2E]">
-                Technical Skills
-              </h3>
-              <div className="mt-4 space-y-3">
-                {skills.map((skill) => (
-                  <div key={skill.name}>
-                    <div className="flex items-center justify-between text-[11px] text-[#6C6FA3] md:text-xs">
-                      <span>{skill.name}</span>
-                      <span>{skill.value}%</span>
-                    </div>
-                    <div className="mt-1 h-2 rounded-full bg-[#EEF1FF]">
-                      <div
-                        className="skill-bar h-2 rounded-full bg-gradient-to-r from-[#654BFF] to-[#27C2FF]"
-                        style={{ width: `${skill.value}%` }}
-                      />
-                    </div>
+          <div>
+            <h3 className={styles.subsectionTitle}>
+              Technical Skills
+            </h3>
+            <div className={styles.skillGrid}>
+              {skills.map((skill) => (
+                <div key={skill.name}>
+                  <div className={styles.skillLabel}>
+                    <span>{skill.name}</span>
+                    <span>{skill.value}%</span>
                   </div>
-                ))}
-              </div>
+                  <div className={styles.skillTrack}>
+                    <div
+                      className={styles.skillFill}
+                      style={{ width: `${isVisible ? skill.value : 0}%` }}
+                    />
+                  </div>
+                </div>
+              ))}
             </div>
 
-            <div className="rounded-2xl bg-[#F7F8FF] p-4">
-              <h4 className="text-xs font-semibold text-[#1A1A2E] md:text-sm">
+            <div className={styles.toolsSection}>
+              <h4 className={styles.toolsTitle}>
                 Tools &amp; Technologies
               </h4>
-              <div className="mt-3 flex flex-wrap gap-2">
+              <div className={styles.tools}>
                 {tools.map((tool) => (
-                  <span
-                    key={tool}
-                    className="rounded-full bg-white px-3 py-1 text-[10px] font-medium text-[#6C6FA3] shadow-sm"
-                  >
+                  <span key={tool} className="chip">
                     {tool}
                   </span>
                 ))}
@@ -155,8 +133,9 @@ export default function Experience() {
             </div>
           </div>
         </div>
-        </div>
       </div>
     </section>
   );
 }
+
+export default memo(Experience);

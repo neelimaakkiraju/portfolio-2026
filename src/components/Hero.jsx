@@ -1,60 +1,108 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { useRevealOnScroll } from "../hooks/useRevealOnScroll";
+import ParticleBackground from "./ParticleBackground";
+import styles from "./Hero.module.css";
+
+const phrases = ["Frontend Developer", "React Specialist", "UI Engineer"];
 
 export default function Hero() {
   const { ref, isVisible } = useRevealOnScroll();
+  const prefersReducedMotion = useReducedMotion();
+  const [text, setText] = useState(phrases[0]);
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    if (prefersReducedMotion) {
+      setText(phrases[0]);
+      return undefined;
+    }
+
+    const currentPhrase = phrases[phraseIndex];
+    const nextText = isDeleting
+      ? currentPhrase.slice(0, text.length - 1)
+      : currentPhrase.slice(0, text.length + 1);
+
+    const timeout = setTimeout(
+      () => {
+        setText(nextText);
+
+        if (!isDeleting && nextText === currentPhrase) {
+          setIsDeleting(true);
+        } else if (isDeleting && nextText === "") {
+          setIsDeleting(false);
+          setPhraseIndex((prev) => (prev + 1) % phrases.length);
+        }
+      },
+      isDeleting ? 40 : 70
+    );
+
+    return () => clearTimeout(timeout);
+  }, [isDeleting, phraseIndex, prefersReducedMotion, text]);
 
   return (
-    <section
-      id="home"
-      ref={ref}
-      className={`reveal-on-scroll bg-gradient-to-br from-blue-50 to-purple-50 py-32 md:py-40 ${
-        isVisible ? "is-visible" : ""
-      }`}
-    >
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-10 px-4 md:flex-row md:items-stretch md:gap-16 md:px-6">
-        <div className="order-2 w-full md:order-1 md:w-1/2">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9094B2]">
-         REACT SPECIALIST
-        </p>
-          <h1 className="text-3xl font-extrabold leading-tight text-[#1A1A2E] sm:text-4xl lg:text-[40px]">
-            Creative <span className="bg-gradient-to-r from-[#4C5BFF] to-[#654BFF] bg-clip-text text-transparent">Frontend</span>  Developer
-          </h1>
-          <p className="mt-4 max-w-md text-sm leading-relaxed text-[#8588A3] sm:text-[13px]">
-           Frontend Developer with 2+ years of experience building high-performance, responsive web applications using React, Next.js, and TypeScript. I focus on clean UI, smooth user experiences, and scalable frontend architecture.
-          </p>
-
-          <div className="mt-7 flex flex-wrap items-center gap-3">
-            <a
-              href="#portfolio"
-              className="rounded-full bg-gradient-to-r from-[#654BFF] to-[#27C2FF] px-5 py-2 text-xs font-semibold text-white shadow-lg shadow-[#654BFF33]"
-            >
-              View My Work
-            </a>
-            <a
-  href="/resume/Neelima_Frontend_Resume.pdf"
-  download
-  className="rounded-full border border-[#D0D4E7] bg-white px-5 py-2 text-xs font-semibold text-[#1A1A2E] shadow-sm hover:bg-[#f3f6ff]"
->
-  Download CV
-</a>
-          </div>
-        </div>
-
-        <div className="order-1 relative flex w-full justify-center md:order-2 md:w-1/2">
-        <div className="hero-photo-float relative h-60 w-60 rounded-full bg-gradient-to-b from-[#F2F5FF] to-[#E4F2FF] shadow-[0_18px_40px_rgba(101,75,255,0.18)] sm:h-72 sm:w-72 md:h-80 md:w-80">
-          <div className="absolute inset-4 overflow-hidden rounded-full bg-[#FDFDFE]">
-            {/* Replace this with your actual photo */}
-            <div className="flex h-full items-center justify-center text-xs font-medium text-[#A0A3C0]">
-             <img src="/images/hero.jpg"/>
+    <section id="home" ref={ref} className={`section ${styles.hero}`}>
+      <ParticleBackground />
+      <div
+        className={`container revealOnScroll ${isVisible ? "isVisible" : ""}`}
+      >
+        <div className={styles.heroGrid}>
+          <motion.div
+            className={styles.copy}
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 30 }}
+            animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          >
+            <span className={styles.eyebrow}>Design + Engineering</span>
+            <h1 className={styles.headline}>
+              Crafting elegant, high-performance&nbsp;
+              <span className="gradientText">frontend experiences</span>
+            </h1>
+            <div className={styles.typewriter} aria-live="polite">
+              <span>{text}</span>
+              <span className={styles.cursor} aria-hidden="true" />
             </div>
-          </div>
-          {/* Decorative circular shapes */}
-          <div className="absolute -top-3 -right-2 h-16 w-16 rounded-full bg-purple-200/60 blur-sm" />
-          <div className="absolute bottom-6 -left-4 h-16 w-16 rounded-full bg-purple-200/60 blur-sm" />
-          <div className="absolute top-1/2 -right-8 h-12 w-12 rounded-full bg-[#E1E6FF]/40 blur-sm" />
-          <div className="absolute top-1/4 -left-6 h-8 w-8 rounded-full bg-[#E6F7FF]/50 blur-sm" />
-        </div>
+            <p className={styles.subtitle}>
+              I&apos;m Neelima, a frontend developer specializing in React, Next.js, and
+              TypeScript. I build accessible, scalable interfaces with polished
+              interactions.
+            </p>
+            <div className={styles.ctaRow}>
+              <a href="#portfolio" className="btn btnPrimary">
+                View Work
+              </a>
+              <a href="#contact" className="btn btnSecondary">
+                Contact
+              </a>
+            </div>
+            <div className={styles.statRow}>
+              <span className={styles.statCard}>2+ years experience</span>
+              <span className={styles.statCard}>React + Next.js</span>
+              <span className={styles.statCard}>UI Systems</span>
+            </div>
+          </motion.div>
+
+          <motion.div
+            className={styles.visual}
+            initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.95 }}
+            animate={prefersReducedMotion ? undefined : { opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
+          >
+            <div className={`${styles.glowOrb} ${styles.glowOne}`} />
+            <div className={`${styles.glowOrb} ${styles.glowTwo}`} />
+            <div className={styles.imageWrap}>
+              <div className={styles.imageInner}>
+                <img
+                  src="/images/hero.jpg"
+                  alt="Neelima Akkiraju"
+                  width="480"
+                  height="480"
+                  decoding="async"
+                />
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

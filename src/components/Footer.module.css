@@ -1,0 +1,25 @@
+/* ===== FOOTER - MD3/HIG COMPLIANT ===== */
+.footer {
+  border-top: 1px solid var(--outline-variant);
+  padding: var(--space-8) 0;
+  text-align: center;
+  color: var(--on-surface-variant);
+  background: var(--surface-container-low);
+}
+
+.name {
+  font: var(--title-medium);
+  color: var(--on-surface);
+}
+
+.tagline {
+  margin-top: var(--space-1);
+  font: var(--body-medium);
+  color: var(--on-surface-variant);
+}
+
+.copy {
+  margin-top: var(--space-4);
+  font: var(--label-medium);
+  color: var(--on-surface-variant);
+}

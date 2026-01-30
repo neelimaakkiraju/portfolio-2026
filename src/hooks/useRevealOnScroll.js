@@ -8,6 +8,15 @@ export function useRevealOnScroll(options = {}) {
     const element = ref.current;
     if (!element) return;
 
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if (prefersReducedMotion) {
+      setIsVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         const [entry] = entries;
@@ -17,7 +26,7 @@ export function useRevealOnScroll(options = {}) {
       {
         threshold: 0.2,
         ...options,
-      }
+      },
     );
 
     observer.observe(element);
