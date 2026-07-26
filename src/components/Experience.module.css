@@ -292,34 +292,3 @@
 .skillItem:hover .bullet {
   background: var(--accent);
 }
-
-/* ===== TOOLKIT ===== */
-.toolsSection {
-  margin-top: var(--block-gap);
-  padding-top: var(--block-gap);
-  border-top: 1px solid var(--border-subtle);
-}
-
-.toolsTitle {
-  font-size: var(--fs-3xs);
-  font-weight: 600;
-  letter-spacing: var(--tracking-eyebrow);
-  text-transform: uppercase;
-  color: var(--text-quaternary);
-  margin-bottom: var(--space-16);
-}
-
-.tools {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--inline-gap);
-}
-
-.tool {
-  cursor: pointer;
-}
-
-.tool:hover {
-  border-color: var(--accent-border);
-  color: var(--accent-text);
-}

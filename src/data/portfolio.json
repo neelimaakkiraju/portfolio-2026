@@ -5,7 +5,7 @@
         "keywords": "Senior Frontend Developer, React Developer, React.js Developer, Next.js Developer, TypeScript Developer, Frontend Engineer, UI Developer, JavaScript Developer, Responsive Web Design, Web Performance Optimization, Core Web Vitals, Web Accessibility, Design Systems, Frontend Developer Hyderabad",
         "author": "Neelima Akkiraju",
         "siteUrl": "https://neelima-portfolio.netlify.app",
-        "image": "/images/og-image.jpg",
+        "image": "/images/hero.jpg",
         "twitterHandle": "@neelimaakkiraju",
         "locale": "en_US",
         "themeColor": "#08090c"
@@ -17,7 +17,6 @@
         "role": "Senior Frontend Developer",
         "tagline": "React.js · Next.js · TypeScript",
         "email": "neelimaakkiraju@gmail.com",
-        "phone": "+91 9876543210",
         "location": "Hyderabad, India",
         "timezone": "IST (UTC+5:30)",
         "resumeUrl": "/resume/Neelima_Frontend_Resume.pdf",
@@ -80,18 +79,6 @@
         },
         "links": [
             {
-                "label": "Home",
-                "href": "#home"
-            },
-            {
-                "label": "About",
-                "href": "#about"
-            },
-            {
-                "label": "Services",
-                "href": "#services"
-            },
-            {
                 "label": "Work",
                 "href": "#portfolio"
             },
@@ -109,148 +96,10 @@
             "href": "#contact"
         }
     },
-    "about": {
-        "eyebrow": "About",
-        "title": "A frontend developer who sweats the details",
-        "subtitle": "I care about two things: how the interface feels to use, and how the codebase feels to work in.",
-        "bio": "I build production-grade React and Next.js applications with strict TypeScript, reusable component libraries and a hard performance budget. New feature or legacy rewrite, the goal is always the same — an interface that feels instant on any device, and code the next developer can pick up without a handover doc.",
-        "highlights": [
-            {
-                "icon": "FiCode",
-                "title": "Clean, typed React",
-                "text": "Reusable components, strict TypeScript, predictable state"
-            },
-            {
-                "icon": "FiZap",
-                "title": "Performance first",
-                "text": "Code splitting, lazy loading, sub-second LCP"
-            },
-            {
-                "icon": "FiSmartphone",
-                "title": "Responsive & accessible",
-                "text": "Mobile-first layouts, full keyboard nav, WCAG AA"
-            }
-        ],
-        "skillCategories": [
-            {
-                "category": "Core stack",
-                "primary": true,
-                "skills": [
-                    {
-                        "name": "React 19 / Next.js",
-                        "icon": "SiReact"
-                    },
-                    {
-                        "name": "TypeScript",
-                        "icon": "SiTypescript"
-                    },
-                    {
-                        "name": "JavaScript (ESNext)",
-                        "icon": "SiJavascript"
-                    },
-                    {
-                        "name": "HTML5 (semantic)",
-                        "icon": "SiHtml5"
-                    },
-                    {
-                        "name": "CSS3 (Flexbox & Grid)",
-                        "icon": "SiCss3"
-                    }
-                ]
-            },
-            {
-                "category": "UI & styling",
-                "primary": false,
-                "skills": [
-                    {
-                        "name": "Tailwind CSS v4",
-                        "icon": "SiTailwindcss"
-                    },
-                    {
-                        "name": "Framer Motion",
-                        "icon": "SiFramer"
-                    },
-                    {
-                        "name": "Figma to code",
-                        "icon": "SiFigma"
-                    },
-                    {
-                        "name": "Sass / CSS Modules",
-                        "icon": "SiSass"
-                    }
-                ]
-            },
-            {
-                "category": "Tooling & workflow",
-                "primary": false,
-                "skills": [
-                    {
-                        "name": "Git & CI/CD",
-                        "icon": "SiGit"
-                    },
-                    {
-                        "name": "Vercel / Netlify",
-                        "icon": "SiVercel"
-                    },
-                    {
-                        "name": "Vite / Webpack",
-                        "icon": "SiVite"
-                    },
-                    {
-                        "name": "npm / pnpm",
-                        "icon": "SiNpm"
-                    }
-                ]
-            }
-        ]
-    },
-    "services": {
-        "eyebrow": "What I do",
-        "title": "How I help product teams",
-        "subtitle": "Three areas where a senior React developer moves the needle — faster interfaces, faster delivery, fewer regressions.",
-        "items": [
-            {
-                "title": "React & Next.js development",
-                "description": "Feature work in React 19 and Next.js with strict TypeScript, clean component APIs and predictable state — built so a growing team can ship in parallel without stepping on each other.",
-                "icon": "FiLayers",
-                "outcomes": [
-                    "Reusable component library",
-                    "Typed props & state",
-                    "Next.js App Router"
-                ]
-            },
-            {
-                "title": "Performance & Core Web Vitals",
-                "description": "Frontend performance audits and fixes: bundle analysis, code splitting, image strategy, SSR/ISR and rendering optimisation — measured before and after, not guessed at.",
-                "icon": "FiZap",
-                "outcomes": [
-                    "Core Web Vitals audit",
-                    "Smaller JS bundles",
-                    "SSR / ISR & SEO wins"
-                ]
-            },
-            {
-                "title": "Responsive UI & accessibility",
-                "description": "Pixel-accurate Figma-to-React builds that hold up on every screen size, with keyboard support, screen-reader semantics and automated checks that keep regressions out of main.",
-                "icon": "FiActivity",
-                "outcomes": [
-                    "Mobile-first layouts",
-                    "WCAG AA compliance",
-                    "Automated CI checks"
-                ]
-            }
-        ]
-    },
     "projects": {
         "eyebrow": "Selected work",
         "title": "Things I've built",
-        "subtitle": "Six React and Next.js applications, each solving a real UI, performance or state-management problem. Open a case study for the full breakdown.",
-        "categories": [
-            "All",
-            "React Apps",
-            "Dashboards",
-            "UI Engineering"
-        ],
+        "subtitle": "Four React and Next.js applications, each solving a real UI, performance or state-management problem. Open a case study for the full breakdown.",
         "items": [
             {
                 "name": "ApexCart",
@@ -373,7 +222,7 @@
                 "repo": "https://github.com/neelimaakkiraju/login-page.git",
                 "live": "https://authentication-setup.netlify.app/login",
                 "category": "UI Engineering",
-                "featured": false,
+                "featured": true,
                 "year": "2024",
                 "challenge": "Keeping auth tokens out of reach of XSS while still refreshing sessions seamlessly across every open tab.",
                 "solution": "Routed auth calls through a lightweight proxy so tokens live in HttpOnly cookies instead of localStorage, guarded routes with a typed React auth context, and used BroadcastChannel to sync session state between tabs.",
@@ -458,7 +307,6 @@
         "subtitle": "Three years of shipping React and Next.js applications — and the measurable difference each one made.",
         "journeyTitle": "Where I've worked",
         "skillsTitle": "What I work with",
-        "toolsTitle": "Day-to-day toolkit",
         "timeline": [
             {
                 "period": "Apr 2025 — Present",
@@ -583,67 +431,14 @@
                     ]
                 }
             ]
-        },
-        "tools": [
-            "React 19",
-            "Next.js",
-            "TypeScript",
-            "JavaScript (ES6+)",
-            "Redux Toolkit",
-            "Zustand",
-            "TanStack Query",
-            "Tailwind CSS",
-            "Sass",
-            "Framer Motion",
-            "Vite",
-            "Webpack",
-            "Jest",
-            "React Testing Library",
-            "Cypress",
-            "REST APIs",
-            "GraphQL",
-            "ESLint / Prettier",
-            "Git & GitHub Actions",
-            "Figma",
-            "Vercel / Netlify",
-            "npm / pnpm"
-        ]
+        }
     },
     "contact": {
         "eyebrow": "Contact",
         "title": "Let's build something",
-        "subtitle": "Hiring for a React role, need a frontend developer for a project, or want a second opinion on your UI performance — tell me what you're working on.",
+        "subtitle": "Hiring for a React role or need a senior frontend perspective on your product? Email is the fastest way to reach me.",
         "availability": "Based in Hyderabad, India · open to remote, hybrid and on-site frontend roles.",
-        "formTitle": "Send a message",
-        "formSubtitle": "I read every message personally.",
-        "detailsTitle": "Other ways to reach me",
-        "socialTitle": "Find me online",
-        "form": {
-            "fields": {
-                "name": {
-                    "label": "Name",
-                    "placeholder": "Jane Doe",
-                    "error": "Please tell me your name.",
-                    "hint": "Your name or your company"
-                },
-                "email": {
-                    "label": "Email",
-                    "placeholder": "jane@company.com",
-                    "error": "An email address is required.",
-                    "invalidError": "That email doesn't look right — please check it.",
-                    "hint": "I'll reply here"
-                },
-                "message": {
-                    "label": "Message",
-                    "placeholder": "A little about the role or project, the stack, and the timeline you have in mind…",
-                    "error": "Please add a short message.",
-                    "hint": "Role, stack, timeline — whatever's useful"
-                }
-            },
-            "submitButton": "Send message",
-            "successToast": "Message sent — I'll get back to you within 24 hours.",
-            "errorToast": "Please fix the highlighted fields before sending."
-        }
+        "actionsNote": "No forms, no waiting — reach me directly."
     },
     "social": [
         {
@@ -657,18 +452,9 @@
             "url": "https://linkedin.com/in/neelimaakkiraju",
             "icon": "FiLinkedin",
             "ariaLabel": "Connect with Neelima, Senior Frontend Developer, on LinkedIn"
-        },
-        {
-            "name": "Twitter",
-            "url": "https://twitter.com/neelimaakkiraju",
-            "icon": "FiTwitter",
-            "ariaLabel": "Follow Neelima on Twitter"
         }
     ],
     "footer": {
-        "tagline": "Senior Frontend Developer — building fast, accessible React and Next.js interfaces people enjoy using.",
-        "linksTitle": "Navigate",
-        "contactTitle": "Get in touch",
         "copyright": "© {year} {name}. All rights reserved."
     }
 }

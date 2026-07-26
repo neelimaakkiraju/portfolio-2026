@@ -1,5 +1,5 @@
-import React, { memo, useCallback, useMemo, useState } from "react";
-import { AnimatePresence, motion as Motion, useReducedMotion } from "framer-motion";
+import React, { memo, useCallback, useState } from "react";
+import { motion as Motion, useReducedMotion } from "framer-motion";
 import { FiExternalLink, FiFileText, FiGithub } from "react-icons/fi";
 
 import Section from "./ui/Section";
@@ -7,11 +7,13 @@ import { EASE } from "./ui/motionTokens";
 import CaseStudyModal from "./CaseStudyModal";
 import { useImpression } from "../hooks/useAnalytics";
 import { getProjects } from "../data";
-import { CATEGORY, trackEvent, trackProject } from "../lib/analytics";
+import { trackProject } from "../lib/analytics";
 import styles from "./Projects.module.css";
 
 const projects = getProjects();
 const caseStudyLabels = projects.caseStudyLabels;
+/* Only the strongest builds make the page — the rest stay in the data file. */
+const featuredProjects = projects.items.filter((project) => project.featured);
 
 const ProjectCard = memo(function ProjectCard({ project, index, onOpenCaseStudy }) {
   const prefersReducedMotion = useReducedMotion();
@@ -37,7 +39,6 @@ const ProjectCard = memo(function ProjectCard({ project, index, onOpenCaseStudy 
   return (
     <Motion.article
       ref={impressionRef}
-      layout={!prefersReducedMotion}
       className={`card ${styles.card}`}
       onMouseEnter={handleHover}
       onFocus={handleHover}
@@ -46,7 +47,6 @@ const ProjectCard = memo(function ProjectCard({ project, index, onOpenCaseStudy 
       initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
-      exit={prefersReducedMotion ? undefined : { opacity: 0, y: -12 }}
       transition={{ duration: 0.45, ease: EASE }}
       itemScope
       itemType="https://schema.org/CreativeWork"
@@ -64,7 +64,6 @@ const ProjectCard = memo(function ProjectCard({ project, index, onOpenCaseStudy 
         <span className={styles.year} aria-hidden="true">
           {project.year}
         </span>
-        {project.featured && <span className={styles.featured}>Featured</span>}
       </div>
 
       <div className={styles.body}>
@@ -151,31 +150,7 @@ const ProjectCard = memo(function ProjectCard({ project, index, onOpenCaseStudy 
 });
 
 function Projects() {
-  const [activeCategory, setActiveCategory] = useState("All");
   const [activeProject, setActiveProject] = useState(null);
-  const prefersReducedMotion = useReducedMotion();
-
-  const filtered = useMemo(
-    () =>
-      activeCategory === "All"
-        ? projects.items
-        : projects.items.filter((item) => item.category === activeCategory),
-    [activeCategory]
-  );
-
-  const handleFilter = useCallback((category) => {
-    setActiveCategory(category);
-    trackEvent({
-      action: "project_filter",
-      category: CATEGORY.PROJECT,
-      label: category,
-      metadata: {
-        section: "projects",
-        component: "category_filter",
-        filter_value: category,
-      },
-    });
-  }, []);
 
   const handleOpenCaseStudy = useCallback((project, index) => {
     setActiveProject(project);
@@ -204,43 +179,16 @@ function Projects() {
       description={projects.subtitle}
       analyticsName="projects"
     >
-      <div className={styles.filters} role="group" aria-label="Filter projects by category">
-        {projects.categories.map((category) => {
-          const isActive = activeCategory === category;
-          return (
-            <button
-              key={category}
-              type="button"
-              aria-pressed={isActive}
-              className={`${styles.filter} ${isActive ? styles.filterActive : ""}`}
-              onClick={() => handleFilter(category)}
-            >
-              {isActive && !prefersReducedMotion && (
-                <Motion.span
-                  layoutId="project-filter-pill"
-                  className={styles.filterPill}
-                  aria-hidden="true"
-                  transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                />
-              )}
-              <span className={styles.filterLabel}>{category}</span>
-            </button>
-          );
-        })}
+      <div className={styles.grid}>
+        {featuredProjects.map((project, index) => (
+          <ProjectCard
+            key={project.name}
+            project={project}
+            index={index}
+            onOpenCaseStudy={handleOpenCaseStudy}
+          />
+        ))}
       </div>
-
-      <Motion.div layout={!prefersReducedMotion} className={styles.grid}>
-        <AnimatePresence mode="popLayout">
-          {filtered.map((project, index) => (
-            <ProjectCard
-              key={project.name}
-              project={project}
-              index={index}
-              onOpenCaseStudy={handleOpenCaseStudy}
-            />
-          ))}
-        </AnimatePresence>
-      </Motion.div>
 
       <CaseStudyModal
         project={activeProject}

@@ -130,23 +130,6 @@ function Experience() {
         ))}
       </Stagger>
 
-      {/* ── Toolkit ──────────────────────────────────────────── */}
-      <Reveal className={styles.toolsSection}>
-        <h3 className={styles.toolsTitle}>{experience.toolsTitle}</h3>
-        <ul className={styles.tools}>
-          {experience.tools.map((tool) => (
-            <li key={tool}>
-              <button
-                type="button"
-                className={`chip ${styles.tool}`}
-                onClick={() => trackSkill(tool, "toolkit", "toolkit_chips")}
-              >
-                {tool}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </Reveal>
     </Section>
   );
 }

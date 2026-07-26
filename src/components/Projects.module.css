@@ -1,65 +1,9 @@
-/* ===== FILTERS ===== */
-.filters {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--list-gap);
-  width: fit-content;
-  max-width: 100%;
-  margin: 0 auto var(--space-32);
-  padding: var(--space-4);
-  border-radius: var(--radius-md);
-  background: var(--surface-card);
-  border: 1px solid var(--border-subtle);
-}
-
-.filter {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  min-height: 34px;
-  padding-inline: var(--space-16);
-  border-radius: var(--radius-sm);
-  font-size: var(--fs-xs);
-  font-weight: 520;
-  color: var(--text-tertiary);
-  transition: color var(--duration-base) var(--ease-out);
-}
-
-.filter:hover {
-  color: var(--text-primary);
-}
-
-/* Selected tab is a sanctioned accent use */
-.filterActive {
-  color: var(--accent-text);
-}
-
-.filterPill {
-  position: absolute;
-  inset: 0;
-  border-radius: var(--radius-sm);
-  background: var(--accent-subtle);
-  border: 1px solid var(--accent-border);
-}
-
-.filterLabel {
-  position: relative;
-  z-index: 1;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .filterActive {
-    background: var(--accent-subtle);
-    border: 1px solid var(--accent-border);
-  }
-}
-
 /* ===== GRID ===== */
+/* Four featured cards — cap at two columns so the grid stays a clean 2×2 */
 .grid {
   display: grid;
   gap: var(--grid-gap);
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 336px), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 460px), 1fr));
   align-items: stretch;
 }
 
@@ -125,10 +69,10 @@
   );
 }
 
-.year,
-.featured {
+.year {
   position: absolute;
   top: var(--space-12);
+  right: var(--space-12);
   z-index: 1;
   display: inline-flex;
   align-items: center;
@@ -143,19 +87,8 @@
   border: 1px solid var(--border);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-}
-
-.year {
-  right: var(--space-12);
   color: var(--text-tertiary);
   font-family: var(--font-mono);
-}
-
-.featured {
-  left: var(--space-12);
-  border-color: var(--accent-border);
-  color: var(--accent-text);
-  text-transform: uppercase;
 }
 
 /* ===== BODY ===== */

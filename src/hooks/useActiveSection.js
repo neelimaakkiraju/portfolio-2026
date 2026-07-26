@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 
 export function useActiveSection(sectionIds = []) {
-  const [activeId, setActiveId] = useState(sectionIds[0] || "");
+  // Start with nothing active — the first nav item is no longer "Home",
+  // so highlighting it while the visitor is still in the hero would be wrong.
+  const [activeId, setActiveId] = useState("");
 
   useEffect(() => {
     if (!sectionIds.length) return undefined;
