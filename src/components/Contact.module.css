@@ -23,6 +23,9 @@
   gap: var(--space-12);
   padding: var(--card-padding);
   border-radius: var(--radius-xl);
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--elevation-1);
 }
 
 .availability {
@@ -30,18 +33,19 @@
   align-items: center;
   gap: var(--space-12);
   font-size: var(--fs-h4);
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-primary);
   margin: 0;
 }
 
 .availabilityDot {
   position: relative;
-  width: 8px;
-  height: 8px;
+  width: 9px;
+  height: 9px;
   border-radius: var(--radius-pill);
   background: var(--accent);
   flex-shrink: 0;
+  box-shadow: 0 0 8px var(--accent-glow);
 }
 
 .availabilityDot::after {
@@ -60,7 +64,7 @@
   }
   70%,
   100% {
-    transform: scale(3);
+    transform: scale(3.2);
     opacity: 0;
   }
 }
@@ -77,23 +81,23 @@
 .responseTime svg {
   width: var(--icon-sm);
   height: var(--icon-sm);
-  color: var(--icon);
+  color: var(--accent-text);
 }
 
 .availabilityNote {
   font-size: var(--fs-xs);
   line-height: var(--lh-normal);
-  color: var(--text-quaternary);
+  color: var(--text-tertiary);
   margin: 0;
 }
 
 /* ===== DETAILS ===== */
 .blockTitle {
   font-size: var(--fs-3xs);
-  font-weight: 600;
+  font-weight: 650;
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  color: var(--text-quaternary);
+  color: var(--text-tertiary);
   margin-bottom: var(--space-16);
 }
 
@@ -107,28 +111,34 @@
   display: flex;
   align-items: center;
   gap: var(--space-16);
-  padding: var(--space-12);
+  padding: var(--space-14);
   margin: 0;
-  border-radius: var(--radius-md);
-  transition: background-color var(--duration-base) var(--ease-out);
+  border-radius: var(--radius-lg);
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--elevation-1);
+  transition: background-color var(--duration-base) var(--ease-out), transform var(--duration-fast) var(--ease-out), border-color var(--duration-base) var(--ease-out);
 }
 
 a.detailRow:hover {
-  background: var(--state-hover);
+  background: var(--primary-container);
+  border-color: var(--accent-border);
+  transform: translateY(-2px);
 }
 
 .detailIcon {
   display: grid;
   place-items: center;
   flex-shrink: 0;
-  width: var(--icon-box-md);
-  height: var(--icon-box-md);
-  border-radius: var(--radius-md);
-  background: var(--surface-card);
-  border: 1px solid var(--border-subtle);
-  color: var(--icon);
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-pill);
+  background: var(--primary-container);
+  border: 1px solid var(--accent-border);
+  color: var(--accent-text);
+  box-shadow: var(--elevation-1);
   transition:
-    border-color var(--duration-base) var(--ease-out),
+    background-color var(--duration-base) var(--ease-out),
     color var(--duration-base) var(--ease-out);
 }
 
@@ -138,22 +148,23 @@ a.detailRow:hover {
 }
 
 a.detailRow:hover .detailIcon {
-  border-color: var(--accent-border);
-  color: var(--accent-text);
+  background: var(--accent);
+  color: var(--on-primary);
 }
 
 .detailLabel {
   display: block;
   font-size: var(--fs-3xs);
-  font-weight: 600;
+  font-weight: 650;
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
-  color: var(--text-quaternary);
+  color: var(--text-tertiary);
 }
 
 .detailValue {
   display: block;
   font-size: var(--fs-sm);
+  font-weight: 550;
   color: var(--text-primary);
   overflow-wrap: anywhere;
 }
@@ -171,9 +182,12 @@ a.detailRow:hover .detailIcon {
   flex-direction: column;
   gap: var(--space-24);
   padding: var(--card-padding);
+  border-radius: var(--radius-xl);
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--elevation-1);
 }
 
-/* Title → subtitle uses the same micro-step as every other card header. */
 .formHeader {
   display: flex;
   flex-direction: column;
@@ -182,13 +196,13 @@ a.detailRow:hover .detailIcon {
 
 .formTitle {
   font-size: var(--fs-h3);
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-primary);
 }
 
 .formSubtitle {
   font-size: var(--fs-sm);
-  color: var(--text-tertiary);
+  color: var(--text-secondary);
   margin: 0;
 }
 
@@ -213,13 +227,13 @@ a.detailRow:hover .detailIcon {
 
 .label {
   font-size: var(--fs-xs);
-  font-weight: 600;
+  font-weight: 650;
   color: var(--text-primary);
 }
 
 .hint {
   font-size: var(--fs-3xs);
-  color: var(--text-quaternary);
+  color: var(--text-tertiary);
 }
 
 .controlWrap {
@@ -230,9 +244,9 @@ a.detailRow:hover .detailIcon {
 .textarea {
   width: 100%;
   min-height: var(--control-md);
-  padding: var(--space-12) var(--space-16);
+  padding: var(--space-14) var(--space-16);
   font-size: var(--fs-sm);
-  background: var(--bg);
+  background: var(--surface-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   color: var(--text-primary);
@@ -259,7 +273,7 @@ a.detailRow:hover .detailIcon {
   outline: none;
   background: var(--surface-raised);
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-subtle);
+  box-shadow: 0 0 0 4px var(--accent-subtle);
 }
 
 .input::placeholder,
@@ -273,10 +287,9 @@ a.detailRow:hover .detailIcon {
 
 .controlError:focus {
   border-color: var(--danger);
-  box-shadow: 0 0 0 3px var(--danger-subtle);
+  box-shadow: 0 0 0 4px var(--danger-subtle);
 }
 
-/* Valid state reads as accent, not green — one colour in the system */
 .controlValid {
   border-color: var(--accent-border);
   padding-right: var(--space-48);
@@ -308,7 +321,7 @@ a.detailRow:hover .detailIcon {
 
 .formFooter {
   font-size: var(--fs-3xs);
-  color: var(--text-quaternary);
+  color: var(--text-tertiary);
   text-align: center;
   margin: 0;
 }
@@ -325,7 +338,7 @@ a.detailRow:hover .detailIcon {
   text-decoration-color: var(--accent-text);
 }
 
-/* ===== TOAST ===== */
+/* ===== MD3 SNACKBAR / TOAST ===== */
 .toast {
   position: fixed;
   left: 50%;
@@ -337,13 +350,14 @@ a.detailRow:hover .detailIcon {
   gap: var(--space-12);
   max-width: calc(100vw - var(--space-48));
   padding: var(--space-16) var(--space-24);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-pill);
   font-size: var(--fs-sm);
-  font-weight: 520;
+  font-weight: 550;
   background: var(--surface-overlay);
   border: 1px solid var(--border-strong);
-  box-shadow: var(--shadow-xl);
+  box-shadow: var(--elevation-4);
   color: var(--text-primary);
+  backdrop-filter: blur(12px);
 }
 
 .toast svg {
@@ -354,6 +368,7 @@ a.detailRow:hover .detailIcon {
 
 .toastSuccess {
   border-color: var(--accent-border);
+  background: var(--primary-container);
 }
 
 .toastSuccess svg {
@@ -362,6 +377,7 @@ a.detailRow:hover .detailIcon {
 
 .toastError {
   border-color: var(--danger-border);
+  background: var(--danger-subtle);
 }
 
 .toastError svg {

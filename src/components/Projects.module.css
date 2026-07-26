@@ -3,25 +3,26 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: var(--list-gap);
+  gap: var(--space-8);
   width: fit-content;
   max-width: 100%;
   margin: 0 auto var(--space-32);
-  padding: var(--space-4);
-  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  border-radius: var(--radius-pill);
   background: var(--surface-card);
   border: 1px solid var(--border-subtle);
+  box-shadow: var(--elevation-1);
 }
 
 .filter {
   position: relative;
   display: inline-flex;
   align-items: center;
-  min-height: 34px;
+  min-height: 36px;
   padding-inline: var(--space-16);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-pill);
   font-size: var(--fs-xs);
-  font-weight: 520;
+  font-weight: 550;
   color: var(--text-tertiary);
   transition: color var(--duration-base) var(--ease-out);
 }
@@ -30,7 +31,6 @@
   color: var(--text-primary);
 }
 
-/* Selected tab is a sanctioned accent use */
 .filterActive {
   color: var(--accent-text);
 }
@@ -38,8 +38,8 @@
 .filterPill {
   position: absolute;
   inset: 0;
-  border-radius: var(--radius-sm);
-  background: var(--accent-subtle);
+  border-radius: var(--radius-pill);
+  background: var(--primary-container);
   border: 1px solid var(--accent-border);
 }
 
@@ -50,7 +50,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .filterActive {
-    background: var(--accent-subtle);
+    background: var(--primary-container);
     border: 1px solid var(--accent-border);
   }
 }
@@ -59,7 +59,7 @@
 .grid {
   display: grid;
   gap: var(--grid-gap);
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 336px), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
   align-items: stretch;
 }
 
@@ -69,21 +69,27 @@
   flex-direction: column;
   padding: 0;
   height: 100%;
+  border-radius: var(--radius-xl);
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--elevation-1);
   overflow: hidden;
   transition:
     background-color var(--duration-base) var(--ease-out),
     border-color var(--duration-base) var(--ease-out),
-    box-shadow var(--duration-base) var(--ease-out);
+    box-shadow var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
 }
 
 .card:hover,
 .card:focus-within {
   background: var(--surface-hover);
-  border-color: var(--border);
-  box-shadow: var(--shadow-lg);
+  border-color: var(--accent-border);
+  box-shadow: var(--elevation-3);
+  transform: translateY(-3px);
 }
 
-/* ===== MEDIA (fixed ratio → every card aligns) ===== */
+/* ===== MEDIA ===== */
 .media {
   position: relative;
   aspect-ratio: 16 / 10;
@@ -97,9 +103,7 @@
   height: 100%;
   object-fit: cover;
   object-position: top center;
-  /* Screenshots arrive in mixed palettes — desaturating them slightly keeps
-     the grid monochrome and consistent, full colour on hover. */
-  filter: saturate(0.55) contrast(1.02);
+  filter: saturate(0.85);
   transition:
     transform var(--duration-slow) var(--ease-out),
     filter var(--duration-slow) var(--ease-out);
@@ -107,11 +111,10 @@
 
 .card:hover .media img,
 .card:focus-within .media img {
-  transform: scale(1.04);
-  filter: saturate(1) contrast(1);
+  transform: scale(1.05);
+  filter: saturate(1.05);
 }
 
-/* Scrim keeps the badges legible over any screenshot */
 .media::after {
   content: "";
   position: absolute;
@@ -119,9 +122,9 @@
   pointer-events: none;
   background: linear-gradient(
     to top,
-    rgba(8, 9, 10, 0.78) 0%,
-    rgba(8, 9, 10, 0.14) 32%,
-    transparent 58%
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.1) 35%,
+    transparent 60%
   );
 }
 
@@ -132,27 +135,28 @@
   z-index: 1;
   display: inline-flex;
   align-items: center;
-  height: 22px;
+  height: 24px;
   padding-inline: var(--space-12);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-pill);
   font-size: var(--fs-3xs);
   font-weight: 600;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   line-height: 1;
-  background: rgba(8, 9, 10, 0.72);
-  border: 1px solid var(--border);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: var(--surface-overlay);
+  border: 1px solid var(--border-strong);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .year {
   right: var(--space-12);
-  color: var(--text-tertiary);
+  color: var(--text-secondary);
   font-family: var(--font-mono);
 }
 
 .featured {
   left: var(--space-12);
+  background: var(--primary-container);
   border-color: var(--accent-border);
   color: var(--accent-text);
   text-transform: uppercase;
@@ -175,29 +179,29 @@
 
 .category {
   font-size: var(--fs-3xs);
-  font-weight: 600;
+  font-weight: 650;
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  color: var(--text-quaternary);
+  color: var(--accent-text);
   margin: 0;
 }
 
 .title {
   font-size: var(--fs-h3);
-  font-weight: 620;
+  font-weight: 700;
   color: var(--text-primary);
 }
 
 .subtitle {
   font-size: var(--fs-xs);
-  color: var(--text-quaternary);
+  color: var(--text-tertiary);
   margin: 0;
 }
 
 .description {
   font-size: var(--fs-sm);
   line-height: var(--lh-relaxed);
-  color: var(--text-tertiary);
+  color: var(--text-secondary);
   margin: 0;
 }
 
@@ -214,21 +218,21 @@
   flex-direction: column;
   gap: var(--space-4);
   padding: var(--space-12);
-  border-radius: var(--radius-sm);
-  background: var(--surface-active);
+  border-radius: var(--radius-lg);
+  background: var(--surface-raised);
   border: 1px solid var(--border-subtle);
 }
 
 .metricValue {
   font-size: var(--fs-sm);
-  font-weight: 620;
-  color: var(--text-primary);
+  font-weight: 700;
+  color: var(--accent-text);
   line-height: 1.2;
 }
 
 .metricLabel {
   font-size: var(--fs-3xs);
-  color: var(--text-quaternary);
+  color: var(--text-tertiary);
   margin: 0;
   line-height: 1.3;
 }
@@ -240,17 +244,20 @@
   gap: var(--inline-gap);
 }
 
-/* ===== ACTIONS (pinned to the bottom of every card) ===== */
+/* ===== ACTIONS ===== */
 .actions {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-12);
+  gap: var(--space-8);
   margin-top: auto;
-  padding-top: var(--space-24);
+  padding-top: var(--space-20);
   border-top: 1px solid var(--border-subtle);
 }
 
-.action {
+.actionPrimary {
+  flex: 1 1 120px;
+}
+
+.actionSecondary {
   flex: 1 1 auto;
-  min-width: 100px;
 }

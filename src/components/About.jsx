@@ -10,14 +10,12 @@ import {
   SiNpm,
   SiReact,
   SiSass,
-  SiStyledcomponents,
   SiTailwindcss,
   SiTypescript,
   SiVercel,
   SiVite,
 } from "react-icons/si";
 import { FiCode, FiSmartphone, FiZap } from "react-icons/fi";
-import { VscVscode } from "react-icons/vsc";
 
 import Section from "./ui/Section";
 import Reveal, { RevealItem, Stagger } from "./ui/Reveal";
@@ -26,8 +24,8 @@ import { getAbout, getPersonal } from "../data";
 import { CATEGORY, trackEvent } from "../lib/analytics";
 import styles from "./About.module.css";
 
-const about = getAbout();
-const personal = getPersonal();
+const about = getAbout() || {};
+const personal = getPersonal() || {};
 
 const iconMap = {
   SiReact,
@@ -39,10 +37,8 @@ const iconMap = {
   SiHtml5,
   SiCss3,
   SiSass,
-  SiStyledcomponents,
   SiFramer,
   SiGit,
-  VscVscode,
   SiVercel,
   SiNpm,
   SiVite,
@@ -66,6 +62,9 @@ function About() {
     });
   };
 
+  const highlightsList = about.highlights || [];
+  const skillCategoryList = about.skillCategories || [];
+
   return (
     <Section
       id="about"
@@ -74,99 +73,90 @@ function About() {
       description={about.subtitle}
       analyticsName="about"
     >
-      <div className={styles.grid}>
-        {/* ── Intro column ───────────────────────────────────── */}
-        <div className={styles.intro}>
-          <Reveal className={styles.portraitCard}>
-            <Portrait
-              src={personal.avatarUrl || undefined}
-              alt={`${personal.name}, ${personal.role}`}
-              monogram={personal.monogram}
-              size={360}
-            />
-          </Reveal>
+      <div className={styles.container}>
+        {/* ── Top Overview Card ──────────────────────────────── */}
+        <Reveal className={`card ${styles.heroCard}`}>
+          <div className={styles.heroContent}>
+            <div className={styles.portraitWrap}>
+              <Portrait
+                src={personal.avatarUrl || undefined}
+                alt={`${personal.name}, ${personal.role}`}
+                monogram={personal.monogram}
+                size={120}
+              />
+            </div>
+            <div className={styles.bioText}>
+              <h3 className={styles.bioTitle}>Passionate about high-impact frontend engineering</h3>
+              <p className={styles.bioParagraph}>{about.bio}</p>
+              <div className={styles.metaRow}>
+                <span className={styles.metaChip}>📍 {personal.location}</span>
+                <span className={styles.metaChip}>🕒 {personal.timezone}</span>
+                <span className={styles.metaChip}>🚀 {personal.tagline}</span>
+              </div>
+            </div>
+          </div>
+        </Reveal>
 
-          <Reveal delay={0.06} className={styles.bioBlock}>
-            <p className={styles.bio}>{about.bio}</p>
-            <ul className={styles.facts}>
-              <li className={styles.fact}>
-                <span className={styles.factLabel}>Based in</span>
-                <span className={styles.factValue}>{personal.location}</span>
-              </li>
-              <li className={styles.fact}>
-                <span className={styles.factLabel}>Timezone</span>
-                <span className={styles.factValue}>{personal.timezone}</span>
-              </li>
-              <li className={styles.fact}>
-                <span className={styles.factLabel}>Focus</span>
-                <span className={styles.factValue}>{personal.tagline}</span>
-              </li>
-            </ul>
-          </Reveal>
-
-          <Stagger className={styles.highlights}>
-            {about.highlights.map((item) => {
+        {/* ── Core Value Pillars ──────────────────────────────── */}
+        {highlightsList.length > 0 && (
+          <Stagger className={styles.pillarsGrid}>
+            {highlightsList.map((item) => {
               const Icon = iconMap[item.icon];
               return (
                 <RevealItem
                   key={item.title}
                   as="article"
-                  className={`card cardHover ${styles.highlightCard}`}
+                  className={`card cardHover ${styles.pillarCard}`}
                 >
-                  <span className={styles.highlightIcon} aria-hidden="true">
+                  <span className={styles.pillarIcon} aria-hidden="true">
                     {Icon && <Icon />}
                   </span>
                   <div>
-                    <h3 className={styles.highlightTitle}>{item.title}</h3>
-                    <p className={styles.highlightText}>{item.text}</p>
+                    <h4 className={styles.pillarTitle}>{item.title}</h4>
+                    <p className={styles.pillarText}>{item.text}</p>
                   </div>
                 </RevealItem>
               );
             })}
           </Stagger>
-        </div>
+        )}
 
-        {/* ── Skills column ──────────────────────────────────── */}
-        <Stagger className={styles.skills} stagger={0.1}>
-          {about.skillCategories.map((category) => (
-            <RevealItem
-              key={category.category}
-              as="section"
-              className={`card ${styles.skillCard} ${
-                category.primary ? styles.skillCardPrimary : ""
-              }`}
-              aria-label={category.category}
-            >
-              <header className={styles.skillHeader}>
-                <h3 className={styles.skillCategoryTitle}>{category.category}</h3>
-                {category.primary && (
-                  <span className={styles.primaryFlag}>Primary</span>
-                )}
-              </header>
-              <ul className={styles.skillList}>
-                {category.skills.map((skill) => {
-                  const Icon = iconMap[skill.icon];
-                  return (
-                    <li key={skill.name}>
-                      <button
-                        type="button"
-                        className={styles.skillItem}
-                        onClick={() =>
-                          handleSkillClick(skill.name, category.category)
-                        }
-                      >
-                        <span className={styles.skillIcon} aria-hidden="true">
-                          {Icon && <Icon />}
-                        </span>
-                        <span className={styles.skillName}>{skill.name}</span>
-                      </button>
-                    </li>
-                  );
-                })}
-              </ul>
-            </RevealItem>
-          ))}
-        </Stagger>
+        {/* ── Skills & Technologies ──────────────────────────── */}
+        {skillCategoryList.length > 0 && (
+          <div className={styles.skillsSection}>
+            <h3 className={styles.skillsHeader}>Technical Stack & Tools</h3>
+            <div className={styles.skillsGroupGrid}>
+              {skillCategoryList.map((category) => (
+                <div key={category.category} className={styles.skillGroup}>
+                  <h4 className={styles.skillGroupTitle}>{category.category}</h4>
+                  <ul className={styles.skillPills}>
+                    {(category.skills || []).map((skill) => {
+                      const Icon = iconMap[skill.icon];
+                      return (
+                        <li key={skill.name}>
+                          <button
+                            type="button"
+                            className={styles.skillPill}
+                            onClick={() =>
+                              handleSkillClick(skill.name, category.category)
+                            }
+                          >
+                            {Icon && (
+                              <span className={styles.skillIcon} aria-hidden="true">
+                                <Icon />
+                              </span>
+                            )}
+                            <span>{skill.name}</span>
+                          </button>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </Section>
   );

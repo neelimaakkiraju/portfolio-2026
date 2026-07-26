@@ -1,190 +1,207 @@
 /* ============================================================
-   DESIGN SYSTEM — monochrome + one accent
-   ============================================================
-   Palette rule: everything is a neutral except a single indigo
-   accent, which is reserved for primary CTAs, active state,
-   links, selected tabs, focus rings, impact metrics and
-   interactive icon hover. Nothing else carries colour.
-
-   Surfaces are solid neutrals (not white overlays) so the step
-   between page → section → card is a real tonal change and
-   reads as depth rather than haze.
+   MATERIAL DESIGN 3 (MD3 EXPRESSIVE) - GOOGLE REDESIGN SYSTEM
+   World-Class Spacing, Buttons, Pills & UI Hierarchy
    ============================================================ */
 
 :root {
   color-scheme: dark;
 
-  /* ===== SPACING SCALE =====
-     The complete set. Tokens are named for their value, so an off-scale
-     number in a stylesheet is immediately visible in review. Nothing in
-     the app may use a spacing value that is not on this list. */
+  /* ===== SPACING SCALE ===== */
   --space-4: 4px;
   --space-8: 8px;
   --space-12: 12px;
   --space-16: 16px;
+  --space-20: 20px;
   --space-24: 24px;
   --space-32: 32px;
+  --space-40: 40px;
   --space-48: 48px;
   --space-64: 64px;
   --space-80: 80px;
-  --space-96: 96px;
-  --space-120: 120px;
 
-  /* ===== VERTICAL RHYTHM =====
-     Semantic aliases. Components reference these, not raw steps, so a
-     rhythm change is a one-line edit that applies site-wide. */
-
-  /* Section shell — identical top and bottom on every section */
-  --section-py: clamp(80px, 8vw, 120px);
-  /* Section header block → its content */
-  --section-header-mb: clamp(48px, 5vw, 64px);
-  /* Badge → heading → description, inside the header */
-  --stack-badge-title: var(--space-24);
-  --stack-title-desc: var(--space-16);
-  /* Sibling blocks within one section (e.g. timeline → skills matrix) */
+  /* ===== SECTION & LAYOUT RHYTHM ===== */
+  --section-py: clamp(72px, 7vw, 110px);
+  --section-header-mb: clamp(36px, 4vw, 56px);
+  --stack-badge-title: var(--space-16);
+  --stack-title-desc: var(--space-12);
   --block-gap: var(--space-48);
 
-  /* Two-column section layouts */
-  --layout-gap: clamp(32px, 4vw, 48px);
-  --layout-gap-lg: clamp(48px, 5vw, 64px);
+  --layout-gap: clamp(32px, 4vw, 56px);
+  --layout-gap-lg: clamp(48px, 5vw, 72px);
 
-  /* Repeating collections */
-  --grid-gap: var(--space-24); /* card ↔ card, every grid  */
-  --stack-gap: var(--space-16); /* block ↔ block in a card  */
-  --inline-gap: var(--space-8); /* chips, tags, button rows */
-  --list-gap: var(--space-4); /* dense nav / skill lists  */
-  --field-gap: var(--space-24); /* form field ↔ field       */
+  --grid-gap: var(--space-24);
+  --stack-gap: var(--space-16);
+  --inline-gap: var(--space-12);
+  --list-gap: var(--space-8);
 
-  /* Card interiors */
-  --card-padding: clamp(24px, 2vw, 32px);
-  --card-padding-sm: var(--space-24);
+  --card-padding: clamp(24px, 2.5vw, 36px);
+  --card-padding-sm: var(--space-20);
+  --hero-py: clamp(48px, 5vw, 84px);
 
-  /* Hero */
-  --hero-py: clamp(48px, 6vw, 96px);
+  /* ===== RADII ===== */
+  --radius-xs: 6px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+  --radius-pill: 9999px;
 
-  /* ===== NEUTRAL RAMP ===== */
-  --bg: #08090a; /* page canvas          */
-  --surface-raised: #0d0e10; /* alternating section   */
-  --surface-card: #131416; /* every card            */
-  --surface-hover: #191b1e; /* card / control hover  */
-  --surface-active: #202225; /* pressed, high control */
-  --surface-overlay: #16181b; /* dialogs, sheets       */
+  /* ===== CONTROL SIZES ===== */
+  --icon-xs: 14px;
+  --icon-sm: 16px;
+  --icon-md: 18px;
+  --icon-lg: 22px;
+  --icon-box-sm: 38px;
+  --icon-box-md: 44px;
+  --icon-box-lg: 50px;
 
-  /* ===== BORDERS ===== */
-  --border-subtle: rgba(255, 255, 255, 0.055);
-  --border: rgba(255, 255, 255, 0.085);
-  --border-strong: rgba(255, 255, 255, 0.14);
+  --control-sm: 38px;
+  --control-md: 44px;
+  --control-lg: 50px;
 
-  /* ===== TEXT HIERARCHY =====
-     Ratios below are against --surface-active, the *lightest* surface any
-     of these ever sit on, so every pairing in the system clears WCAG AA. */
-  --text-primary: #f4f5f6; /* 14.6:1 — headings         */
-  --text-secondary: #c2c6cb; /* 10.0:1 — body             */
-  --text-tertiary: #9ba0a6; /*  6.5:1 — supporting       */
-  --text-quaternary: #848a91; /*  4.9:1 — captions, labels */
-  --text-disabled: #565b61; /* non-text / inert only     */
+  /* ===== MOTION ===== */
+  --ease-out: cubic-bezier(0.2, 0, 0, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 150ms;
+  --duration-base: 220ms;
+  --duration-slow: 360ms;
 
-  /* ===== ICONS ===== */
-  --icon: #9ba0a6;
-  --icon-strong: #c2c6cb;
-  --icon-inverse: #08090a;
+  /* ===== COLOR TOKENS (DARK MODE) ===== */
+  --bg: #0b0d0f;
+  --md-sys-color-surface: #14171a;
+  --surface-raised: #111417;
+  --surface-card: #161a1e;
+  --surface-hover: #1c2126;
+  --surface-active: #232a30;
+  --surface-overlay: rgba(20, 23, 26, 0.92);
 
-  /* ===== ACCENT (the only colour in the system) ===== */
-  --accent: #5457d6; /* solid fills — 5.7:1 with white */
-  --accent-hover: #6265e0;
-  --accent-active: #484bc4;
-  --accent-text: #a5a8f5; /* 9.0:1 — accent as text          */
-  --accent-subtle: rgba(84, 87, 214, 0.14);
-  --accent-border: rgba(124, 127, 235, 0.28);
-  --accent-glow: rgba(84, 87, 214, 0.3);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border: rgba(255, 255, 255, 0.14);
+  --border-strong: rgba(255, 255, 255, 0.22);
 
-  /* ===== STATE LAYERS ===== */
-  --state-hover: rgba(255, 255, 255, 0.05);
-  --state-active: rgba(255, 255, 255, 0.08);
-  --state-disabled-bg: rgba(255, 255, 255, 0.03);
-  --state-disabled-border: rgba(255, 255, 255, 0.05);
+  --text-primary: #f4f7fa;
+  --text-secondary: #c8d0da;
+  --text-tertiary: #98a4b4;
+  --text-quaternary: #707d8e;
+  --text-disabled: #4e5661;
 
-  /* ===== SEMANTIC (validation only — never decorative) ===== */
-  --danger: #e5686b;
-  --danger-subtle: rgba(229, 104, 107, 0.12);
-  --danger-border: rgba(229, 104, 107, 0.28);
+  --icon: #98a4b4;
+  --icon-strong: #c8d0da;
+  --icon-inverse: #0b0d0f;
 
-  /* ===== ELEVATION (neutral, no coloured shadows) ===== */
-  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.5);
-  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.4);
-  --shadow-md:
-    0 6px 16px -4px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3);
-  --shadow-lg:
-    0 16px 40px -12px rgba(0, 0, 0, 0.6), 0 4px 10px rgba(0, 0, 0, 0.3);
-  --shadow-xl: 0 32px 72px -20px rgba(0, 0, 0, 0.72);
-  --shadow-accent: 0 4px 14px -4px var(--accent-glow);
+  /* Google Expressive Accent */
+  --accent: #635bff;
+  --accent-hover: #756eff;
+  --accent-active: #5147e5;
+  --accent-text: #a49eff;
+  --accent-subtle: rgba(99, 91, 255, 0.16);
+  --accent-border: rgba(117, 110, 255, 0.35);
+  --accent-glow: rgba(99, 91, 255, 0.35);
+  --on-primary: #ffffff;
+  --primary-container: rgba(99, 91, 255, 0.18);
+  --on-primary-container: #dedcff;
 
-  /* ===== TYPOGRAPHY ===== */
-  --font-sans:
-    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui,
-    sans-serif;
-  --font-mono:
-    "SFMono-Regular", ui-monospace, "JetBrains Mono", Menlo, Consolas, monospace;
+  --state-hover: rgba(255, 255, 255, 0.06);
+  --state-active: rgba(255, 255, 255, 0.1);
+  --state-disabled-bg: rgba(255, 255, 255, 0.04);
+  --state-disabled-border: rgba(255, 255, 255, 0.06);
 
-  --fs-display: clamp(2.6rem, 1.15rem + 4.9vw, 4.4rem);
-  --fs-h2: clamp(1.95rem, 1.3rem + 2.3vw, 2.95rem);
-  --fs-h3: clamp(1.25rem, 1.14rem + 0.45vw, 1.45rem);
-  --fs-h4: clamp(1rem, 0.96rem + 0.22vw, 1.1rem);
-  --fs-lead: clamp(1.0625rem, 1rem + 0.38vw, 1.1875rem);
+  --danger: #ff5252;
+  --danger-subtle: rgba(255, 82, 82, 0.14);
+  --danger-border: rgba(255, 82, 82, 0.3);
+
+  /* Elevation Shadows */
+  --elevation-0: none;
+  --elevation-1: 0 2px 8px 0 rgba(0, 0, 0, 0.35), 0 1px 3px 0 rgba(0, 0, 0, 0.25);
+  --elevation-2: 0 6px 18px -2px rgba(0, 0, 0, 0.45), 0 2px 6px -1px rgba(0, 0, 0, 0.25);
+  --elevation-3: 0 12px 28px -4px rgba(0, 0, 0, 0.55), 0 4px 10px -2px rgba(0, 0, 0, 0.3);
+  --elevation-4: 0 20px 42px -6px rgba(0, 0, 0, 0.65), 0 8px 16px -4px rgba(0, 0, 0, 0.35);
+  --shadow-sm: var(--elevation-1);
+  --shadow-md: var(--elevation-2);
+  --shadow-lg: var(--elevation-3);
+  --shadow-xl: var(--elevation-4);
+  --shadow-accent: 0 6px 20px -4px var(--accent-glow);
+
+  /* Typography */
+  --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+
+  --fs-display: clamp(2.4rem, 1.2rem + 4.5vw, 4.2rem);
+  --fs-h2: clamp(1.8rem, 1.3rem + 2vw, 2.8rem);
+  --fs-h3: clamp(1.25rem, 1.15rem + 0.4vw, 1.5rem);
+  --fs-h4: clamp(1rem, 0.95rem + 0.2vw, 1.15rem);
+  --fs-lead: clamp(1.05rem, 0.98rem + 0.3vw, 1.2rem);
   --fs-body: 1rem;
   --fs-sm: 0.9375rem;
   --fs-xs: 0.8125rem;
   --fs-2xs: 0.75rem;
   --fs-3xs: 0.6875rem;
 
-  --lh-tight: 1.05;
-  --lh-snug: 1.2;
+  --lh-tight: 1.1;
+  --lh-snug: 1.25;
   --lh-normal: 1.5;
   --lh-relaxed: 1.65;
 
-  --tracking-display: -0.035em;
-  --tracking-heading: -0.02em;
-  --tracking-label: 0.09em;
-  --tracking-eyebrow: 0.13em;
+  --tracking-display: -0.03em;
+  --tracking-heading: -0.015em;
+  --tracking-label: 0.08em;
+  --tracking-eyebrow: 0.12em;
 
-  /* ===== RADII ===== */
-  --radius-xs: 6px;
-  --radius-sm: 8px; /* chips, tags, small pills   */
-  --radius-md: 10px; /* buttons, inputs, icon box  */
-  --radius-lg: 14px; /* nested / compact cards     */
-  --radius-xl: 18px; /* every top-level card       */
-  --radius-2xl: 24px; /* dialogs, portrait frame    */
-  --radius-pill: 999px; /* status badges only         */
-
-  /* ===== ICON SIZES ===== */
-  --icon-xs: 13px;
-  --icon-sm: 15px;
-  --icon-md: 17px;
-  --icon-lg: 20px;
-  --icon-box-sm: 36px;
-  --icon-box-md: 40px;
-  --icon-box-lg: 44px;
-
-  /* ===== CONTROL SIZES ===== */
-  --control-sm: 36px;
-  --control-md: 44px;
-  --control-lg: 52px;
-
-  /* ===== MOTION ===== */
-  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-  --duration-fast: 140ms;
-  --duration-base: 220ms;
-  --duration-slow: 380ms;
-
-  /* ===== LAYOUT ===== */
-  --container-max: 1180px;
-  --container-wide: 1260px;
-  --gutter: clamp(24px, 4vw, 48px);
-  --nav-height: 64px;
+  --container-max: 1200px;
+  --container-wide: 1280px;
+  --gutter: clamp(20px, 4vw, 48px);
+  --nav-height: 68px;
 }
 
-/* ===== RESET ===== */
+/* ===== LIGHT MODE OVERRIDES ===== */
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --bg: #f8fafc;
+  --surface-raised: #ffffff;
+  --surface-card: #ffffff;
+  --surface-hover: #f1f5f9;
+  --surface-active: #e2e8f0;
+  --surface-overlay: rgba(255, 255, 255, 0.94);
+
+  --border-subtle: rgba(15, 23, 42, 0.08);
+  --border: rgba(15, 23, 42, 0.14);
+  --border-strong: rgba(15, 23, 42, 0.24);
+
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-tertiary: #64748b;
+  --text-quaternary: #94a3b8;
+  --text-disabled: #cbd5e1;
+
+  --icon: #64748b;
+  --icon-strong: #334155;
+  --icon-inverse: #ffffff;
+
+  --accent: #4f46e5;
+  --accent-hover: #4338ca;
+  --accent-active: #3730a3;
+  --accent-text: #4338ca;
+  --accent-subtle: rgba(79, 70, 229, 0.1);
+  --accent-border: rgba(79, 70, 229, 0.28);
+  --accent-glow: rgba(79, 70, 229, 0.24);
+  --on-primary: #ffffff;
+  --primary-container: rgba(79, 70, 229, 0.12);
+  --on-primary-container: #231d87;
+
+  --elevation-1: 0 2px 8px -1px rgba(15, 23, 42, 0.08), 0 1px 3px -1px rgba(15, 23, 42, 0.05);
+  --elevation-2: 0 6px 18px -3px rgba(15, 23, 42, 0.12), 0 2px 6px -1px rgba(15, 23, 42, 0.06);
+  --elevation-3: 0 12px 28px -4px rgba(15, 23, 42, 0.15), 0 4px 10px -2px rgba(15, 23, 42, 0.08);
+  --elevation-4: 0 20px 42px -6px rgba(15, 23, 42, 0.18), 0 8px 16px -4px rgba(15, 23, 42, 0.1);
+  --shadow-sm: var(--elevation-1);
+  --shadow-md: var(--elevation-2);
+  --shadow-lg: var(--elevation-3);
+  --shadow-xl: var(--elevation-4);
+  --shadow-accent: 0 6px 20px -4px var(--accent-glow);
+}
+
+/* ===== RESET & BASE ===== */
 *,
 *::before,
 *::after {
@@ -195,7 +212,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--nav-height) + 32px);
+  scroll-padding-top: calc(var(--nav-height) + 28px);
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
@@ -204,14 +221,13 @@ body {
   font-family: var(--font-sans);
   font-size: var(--fs-body);
   line-height: var(--lh-relaxed);
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   background: var(--bg);
   color: var(--text-secondary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
   min-height: 100vh;
   overflow-x: hidden;
+  transition: background-color var(--duration-base) var(--ease-out), color var(--duration-base) var(--ease-out);
 }
 
 #root {
@@ -219,11 +235,7 @@ body {
   isolation: isolate;
 }
 
-img,
-picture,
-video,
-canvas,
-svg {
+img, picture, video, canvas, svg {
   display: block;
   max-width: 100%;
 }
@@ -232,10 +244,7 @@ img {
   height: auto;
 }
 
-input,
-button,
-textarea,
-select {
+input, button, textarea, select {
   font: inherit;
   color: inherit;
 }
@@ -251,17 +260,13 @@ a {
   text-decoration: none;
 }
 
-ul,
-ol {
+ul, ol {
   list-style: none;
 }
 
-h1,
-h2,
-h3,
-h4 {
+h1, h2, h3, h4 {
   color: var(--text-primary);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: var(--tracking-heading);
   line-height: var(--lh-snug);
   text-wrap: balance;
@@ -295,23 +300,16 @@ p {
   padding-block: var(--section-py);
 }
 
-/* Depth through tone, not dividers: alternating sections sit one
-   step above the canvas, with hairlines instead of hard rules. */
 .sectionRaised {
   background: var(--surface-raised);
   border-block: 1px solid var(--border-subtle);
 }
 
-/* ===== SECTION HEADER =====
-   badge → --stack-badge-title → heading → --stack-title-desc → description
-   → --section-header-mb → content.
-   The whole block is one flex column so children carry no margins of their
-   own; every section gets byte-identical rhythm from this single rule. */
 .sectionHeader {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 680px;
+  max-width: 700px;
   margin-inline: auto;
   margin-bottom: var(--section-header-mb);
   text-align: center;
@@ -325,15 +323,13 @@ p {
 
 .sectionTitle {
   font-size: var(--fs-h2);
-  font-weight: 620;
+  font-weight: 750;
   letter-spacing: var(--tracking-display);
   line-height: var(--lh-snug);
   color: var(--text-primary);
   margin-top: var(--stack-badge-title);
 }
 
-/* Title is optional in the markup — when there is no badge above it, the
-   heading must not inherit the badge offset. */
 .sectionTitle:first-child {
   margin-top: 0;
 }
@@ -342,7 +338,7 @@ p {
   font-size: var(--fs-lead);
   line-height: var(--lh-relaxed);
   color: var(--text-tertiary);
-  max-width: 580px;
+  max-width: 600px;
   margin-top: var(--stack-title-desc);
 }
 
@@ -356,30 +352,31 @@ p {
   display: inline-flex;
   align-items: center;
   gap: var(--space-8);
-  height: 26px;
-  padding-inline: var(--space-12);
+  height: 28px;
+  padding-inline: var(--space-14);
   border-radius: var(--radius-pill);
-  background: var(--surface-card);
-  border: 1px solid var(--border);
-  color: var(--text-tertiary);
+  background: var(--primary-container);
+  border: 1px solid var(--accent-border);
+  color: var(--accent-text);
   font-size: var(--fs-3xs);
-  font-weight: 600;
+  font-weight: 650;
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
   line-height: 1;
   white-space: nowrap;
+  box-shadow: var(--elevation-1);
 }
 
 .badgeDot {
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
   border-radius: var(--radius-pill);
   background: var(--accent);
   flex-shrink: 0;
+  box-shadow: 0 0 6px var(--accent-glow);
 }
 
 /* ===== TEXT UTILITIES ===== */
-/* Monochrome emphasis: a tonal step down inside a heading, never colour. */
 .headlineMuted {
   color: var(--text-quaternary);
 }
@@ -388,12 +385,11 @@ p {
   color: var(--text-tertiary);
 }
 
-/* Inline links are one of the sanctioned accent uses. */
 .link {
   color: var(--accent-text);
   text-decoration: underline;
   text-decoration-color: var(--accent-border);
-  text-underline-offset: 3px;
+  text-underline-offset: 4px;
   transition: text-decoration-color var(--duration-base) var(--ease-out);
 }
 
@@ -401,7 +397,7 @@ p {
   text-decoration-color: var(--accent-text);
 }
 
-/* ===== BUTTONS ===== */
+/* ===== STANDARDIZED BUTTON SYSTEM ===== */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -409,23 +405,27 @@ p {
   gap: var(--space-8);
   min-height: var(--control-md);
   padding-inline: var(--space-24);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-pill);
   border: 1px solid transparent;
   font-size: var(--fs-sm);
-  font-weight: 550;
-  letter-spacing: -0.006em;
+  font-weight: 600;
+  letter-spacing: -0.005em;
   line-height: 1;
   white-space: nowrap;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
   transition:
     background-color var(--duration-base) var(--ease-out),
     border-color var(--duration-base) var(--ease-out),
     color var(--duration-base) var(--ease-out),
-    box-shadow var(--duration-base) var(--ease-out);
+    box-shadow var(--duration-base) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
 }
 
 .btn:active {
-  transform: translateY(0.5px);
+  transform: scale(0.97);
 }
 
 .btn svg {
@@ -441,6 +441,7 @@ p {
   color: var(--text-disabled);
   box-shadow: none;
   cursor: not-allowed;
+  transform: none;
 }
 
 .btnLg {
@@ -465,29 +466,37 @@ p {
   height: var(--icon-xs);
 }
 
+/* Filled Primary */
 .btnPrimary {
   background: var(--accent);
-  color: #fff;
+  color: var(--on-primary);
   box-shadow: var(--shadow-accent);
 }
 
 .btnPrimary:hover {
   background: var(--accent-hover);
+  box-shadow: var(--elevation-3), var(--shadow-accent);
+  transform: translateY(-1px);
 }
 
 .btnPrimary:active {
   background: var(--accent-active);
 }
 
+/* Outlined / Tonal */
 .btnSecondary {
   background: var(--surface-card);
-  border-color: var(--border);
+  border-color: var(--border-strong);
   color: var(--text-primary);
+  box-shadow: var(--elevation-1);
 }
 
 .btnSecondary:hover {
   background: var(--surface-hover);
-  border-color: var(--border-strong);
+  border-color: var(--accent-border);
+  color: var(--accent-text);
+  box-shadow: var(--elevation-2);
+  transform: translateY(-1px);
 }
 
 .btnSecondary:active {
@@ -496,7 +505,7 @@ p {
 
 .btnGhost {
   background: transparent;
-  color: var(--text-tertiary);
+  color: var(--text-secondary);
 }
 
 .btnGhost:hover {
@@ -513,16 +522,19 @@ p {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--icon-box-lg);
-  height: var(--icon-box-lg);
-  border-radius: var(--radius-md);
+  width: var(--icon-box-md);
+  height: var(--icon-box-md);
+  border-radius: var(--radius-pill);
   background: var(--surface-card);
   border: 1px solid var(--border);
-  color: var(--icon);
+  color: var(--icon-strong);
+  box-shadow: var(--elevation-1);
   transition:
     background-color var(--duration-base) var(--ease-out),
     border-color var(--duration-base) var(--ease-out),
-    color var(--duration-base) var(--ease-out);
+    color var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
 }
 
 .iconButton svg {
@@ -530,53 +542,55 @@ p {
   height: var(--icon-md);
 }
 
-/* Interactive icons pick up the accent on hover — a sanctioned use. */
 .iconButton:hover {
-  background: var(--surface-hover);
+  background: var(--primary-container);
   border-color: var(--accent-border);
   color: var(--accent-text);
+  box-shadow: var(--elevation-2);
+  transform: translateY(-2px);
 }
 
-/* ===== CHIP / TAG ===== */
+/* ===== STANDARDIZED PILL & CHIP SYSTEM ===== */
 .chip {
   display: inline-flex;
   align-items: center;
   gap: var(--space-8);
-  height: 30px;
-  padding-inline: var(--space-12);
-  border-radius: var(--radius-sm);
+  min-height: 32px;
+  padding-inline: var(--space-14);
+  border-radius: var(--radius-pill);
   background: var(--surface-card);
   border: 1px solid var(--border-subtle);
-  color: var(--text-tertiary);
+  color: var(--text-secondary);
   font-size: var(--fs-xs);
   font-weight: 500;
   line-height: 1;
   white-space: nowrap;
+  box-shadow: var(--elevation-1);
   transition:
     background-color var(--duration-base) var(--ease-out),
     border-color var(--duration-base) var(--ease-out),
-    color var(--duration-base) var(--ease-out);
+    color var(--duration-base) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
 }
 
 .chip:hover {
-  background: var(--surface-hover);
-  border-color: var(--border);
-  color: var(--text-secondary);
+  background: var(--primary-container);
+  border-color: var(--accent-border);
+  color: var(--accent-text);
+  transform: translateY(-1px);
 }
 
-/* Sits on --surface-active so it stays legible on a card in both its
-   resting and hover state. */
 .tag {
   display: inline-flex;
   align-items: center;
-  height: 24px;
+  height: 26px;
   padding-inline: var(--space-12);
-  border-radius: var(--radius-sm);
-  background: var(--surface-active);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-quaternary);
+  border-radius: var(--radius-pill);
+  background: var(--primary-container);
+  border: 1px solid var(--accent-border);
+  color: var(--accent-text);
   font-size: var(--fs-3xs);
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1;
   white-space: nowrap;
 }
@@ -588,17 +602,19 @@ p {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-xl);
   padding: var(--card-padding);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--elevation-1);
   transition:
     background-color var(--duration-base) var(--ease-out),
     border-color var(--duration-base) var(--ease-out),
-    box-shadow var(--duration-base) var(--ease-out);
+    box-shadow var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
 }
 
 .cardHover:hover {
   background: var(--surface-hover);
-  border-color: var(--border);
-  box-shadow: var(--shadow-md);
+  border-color: var(--accent-border);
+  box-shadow: var(--elevation-3);
+  transform: translateY(-2px);
 }
 
 /* ===== FORM CONTROLS ===== */
@@ -608,7 +624,7 @@ p {
   min-height: var(--control-md);
   padding: var(--space-12) var(--space-16);
   font-size: var(--fs-sm);
-  background: var(--bg);
+  background: var(--surface-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   color: var(--text-primary);
@@ -621,6 +637,7 @@ p {
 .input:hover,
 .textarea:hover {
   border-color: var(--border-strong);
+  background: var(--surface-hover);
 }
 
 .input:focus,
@@ -644,8 +661,8 @@ p {
 
 /* ===== ACCESSIBILITY ===== */
 :focus-visible {
-  outline: 2px solid var(--accent-text);
-  outline-offset: 2px;
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
   border-radius: var(--radius-xs);
 }
 
@@ -670,10 +687,10 @@ p {
   background: var(--surface-overlay);
   color: var(--text-primary);
   font-size: var(--fs-sm);
-  font-weight: 600;
-  border-radius: var(--radius-md);
+  font-weight: 650;
+  border-radius: var(--radius-pill);
   border: 1px solid var(--border-strong);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--elevation-4);
   transform: translateY(-200%);
   transition: transform var(--duration-base) var(--ease-out);
 }
@@ -682,7 +699,6 @@ p {
   transform: translateY(0);
 }
 
-/* ===== REDUCED MOTION ===== */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

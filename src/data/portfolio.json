@@ -1,14 +1,14 @@
 {
     "meta": {
         "title": "Neelima Akkiraju | Senior Frontend Developer — React.js, Next.js & TypeScript",
-        "description": "Senior Frontend Developer with 3+ years building production-grade web applications in React.js, Next.js and TypeScript. Scalable UI architecture, responsive design, Core Web Vitals performance and WCAG AA accessibility.",
-        "keywords": "Senior Frontend Developer, React Developer, React.js Developer, Next.js Developer, TypeScript Developer, Frontend Engineer, UI Developer, JavaScript Developer, Responsive Web Design, Web Performance Optimization, Core Web Vitals, Web Accessibility, Design Systems, Frontend Developer Hyderabad",
+        "description": "Senior Frontend Developer with 3+ years building high-impact web apps in React, Next.js, and TypeScript. Delivering sub-second LCP, 98+ Lighthouse scores, and WCAG AA accessible design systems.",
+        "keywords": "Senior Frontend Developer, React Developer, Next.js Developer, TypeScript Developer, Frontend Engineer, UI Developer, Web Performance, Core Web Vitals, Design Systems",
         "author": "Neelima Akkiraju",
         "siteUrl": "https://neelima-portfolio.netlify.app",
         "image": "/images/og-image.jpg",
         "twitterHandle": "@neelimaakkiraju",
         "locale": "en_US",
-        "themeColor": "#08090c"
+        "themeColor": "#0b0d0f"
     },
     "personal": {
         "name": "Neelima Akkiraju",
@@ -23,36 +23,36 @@
         "resumeUrl": "/resume/Neelima_Frontend_Resume.pdf",
         "resumeLabel": "Download résumé",
         "avatarUrl": "",
-        "availability": "Open to Senior Frontend Developer roles — remote, hybrid or Hyderabad-based",
-        "availabilityStatus": "Open to new opportunities",
+        "availability": "Available for Senior Frontend Developer roles — Remote or Hybrid",
+        "availabilityStatus": "Available for new roles",
         "responseTime": "Replies within 24 hours"
     },
     "hero": {
-        "status": "Open to new opportunities",
+        "status": "Available for new roles",
         "headline": "Senior Frontend Developer",
-        "headlineHighlight": "building fast, scalable React apps.",
-        "subtitle": "I'm Neelima — a Senior Frontend Developer with 3+ years in React.js, Next.js and TypeScript. I build production-grade web applications with reusable UI architecture, responsive layouts, sub-second load times and accessibility baked in from the first commit.",
+        "headlineHighlight": "React · Next.js · TypeScript",
+        "subtitle": "Specialized in building high-performance web applications, scalable UI systems, and sub-second user experiences.",
         "typewriterPhrases": [
-            "Senior Frontend Developer",
-            "React.js & Next.js Specialist",
-            "TypeScript & UI Performance"
+            "Senior Frontend Engineer",
+            "React 19 & Next.js Expert",
+            "TypeScript & UI Architect"
         ],
         "stats": [
             {
                 "value": "3+",
-                "label": "Years building React applications"
+                "label": "Years Experience"
             },
             {
                 "value": "+40%",
-                "label": "Faster feature delivery for the team"
+                "label": "Delivery Speed"
             },
             {
                 "value": "98+",
-                "label": "Lighthouse performance score"
+                "label": "Lighthouse Score"
             },
             {
-                "value": "WCAG AA",
-                "label": "Accessibility standard met"
+                "value": "100%",
+                "label": "WCAG AA Compliant"
             }
         ],
         "techBadges": [
@@ -63,13 +63,13 @@
             "Redux Toolkit",
             "Framer Motion"
         ],
-        "socialProof": "Shipping React and Next.js products with teams at Techenhance, AGM Global Solutions and independent clients",
+        "socialProof": "Shipped scalable frontend applications for Techenhance, AGM Global Solutions & high-growth teams.",
         "primaryCta": {
-            "text": "View my work",
+            "text": "Explore Work",
             "href": "#portfolio"
         },
         "secondaryCta": {
-            "text": "Download résumé",
+            "text": "Get Résumé",
             "href": "/resume/Neelima_Frontend_Resume.pdf"
         }
     },
@@ -105,35 +105,35 @@
             }
         ],
         "ctaButton": {
-            "text": "Get in touch",
+            "text": "Let's Talk",
             "href": "#contact"
         }
     },
     "about": {
-        "eyebrow": "About",
-        "title": "A frontend developer who sweats the details",
-        "subtitle": "I care about two things: how the interface feels to use, and how the codebase feels to work in.",
-        "bio": "I build production-grade React and Next.js applications with strict TypeScript, reusable component libraries and a hard performance budget. New feature or legacy rewrite, the goal is always the same — an interface that feels instant on any device, and code the next developer can pick up without a handover doc.",
+        "eyebrow": "About Me",
+        "title": "Building modern web experiences at scale",
+        "subtitle": "Senior Frontend Developer with 3+ years of experience transforming complex requirements into clean, performant React applications.",
+        "bio": "I focus on building production-grade React & Next.js applications with strict TypeScript, modular design systems, and sub-second load times. Driven by clean code, high performance, and great user experience.",
         "highlights": [
             {
                 "icon": "FiCode",
-                "title": "Clean, typed React",
-                "text": "Reusable components, strict TypeScript, predictable state"
+                "title": "Frontend Architecture",
+                "text": "React 19, Next.js App Router, strict TypeScript, modular state"
             },
             {
                 "icon": "FiZap",
-                "title": "Performance first",
-                "text": "Code splitting, lazy loading, sub-second LCP"
+                "title": "Performance Optimization",
+                "text": "Sub-second LCP, 98+ Lighthouse scores, bundle optimization"
             },
             {
                 "icon": "FiSmartphone",
-                "title": "Responsive & accessible",
-                "text": "Mobile-first layouts, full keyboard nav, WCAG AA"
+                "title": "Design Systems & UI",
+                "text": "Tailwind CSS v4, Framer Motion, 100% WCAG AA accessibility"
             }
         ],
         "skillCategories": [
             {
-                "category": "Core stack",
+                "category": "Core Stack",
                 "primary": true,
                 "skills": [
                     {
@@ -149,17 +149,13 @@
                         "icon": "SiJavascript"
                     },
                     {
-                        "name": "HTML5 (semantic)",
+                        "name": "HTML5 & CSS3",
                         "icon": "SiHtml5"
-                    },
-                    {
-                        "name": "CSS3 (Flexbox & Grid)",
-                        "icon": "SiCss3"
                     }
                 ]
             },
             {
-                "category": "UI & styling",
+                "category": "UI Engineering",
                 "primary": false,
                 "skills": [
                     {
@@ -171,7 +167,7 @@
                         "icon": "SiFramer"
                     },
                     {
-                        "name": "Figma to code",
+                        "name": "Figma to Code",
                         "icon": "SiFigma"
                     },
                     {
@@ -181,11 +177,11 @@
                 ]
             },
             {
-                "category": "Tooling & workflow",
+                "category": "Tooling & Workflow",
                 "primary": false,
                 "skills": [
                     {
-                        "name": "Git & CI/CD",
+                        "name": "Git & Workflows",
                         "icon": "SiGit"
                     },
                     {
@@ -193,7 +189,7 @@
                         "icon": "SiVercel"
                     },
                     {
-                        "name": "Vite / Webpack",
+                        "name": "Vite & Webpack",
                         "icon": "SiVite"
                     },
                     {
@@ -205,46 +201,46 @@
         ]
     },
     "services": {
-        "eyebrow": "What I do",
-        "title": "How I help product teams",
-        "subtitle": "Three areas where a senior React developer moves the needle — faster interfaces, faster delivery, fewer regressions.",
+        "eyebrow": "Services",
+        "title": "High-impact frontend solutions",
+        "subtitle": "Targeted engineering to accelerate product delivery, optimize runtime performance, and ensure flawless UI consistency.",
         "items": [
             {
-                "title": "React & Next.js development",
-                "description": "Feature work in React 19 and Next.js with strict TypeScript, clean component APIs and predictable state — built so a growing team can ship in parallel without stepping on each other.",
+                "title": "React & Next.js Architecture",
+                "description": "Scalable web applications built with strict TypeScript, clean component APIs, and modern state management for rapid team velocity.",
                 "icon": "FiLayers",
                 "outcomes": [
-                    "Reusable component library",
-                    "Typed props & state",
-                    "Next.js App Router"
+                    "Modular UI Design System",
+                    "Type-safe Data Layer",
+                    "Next.js App Router Setup"
                 ]
             },
             {
-                "title": "Performance & Core Web Vitals",
-                "description": "Frontend performance audits and fixes: bundle analysis, code splitting, image strategy, SSR/ISR and rendering optimisation — measured before and after, not guessed at.",
+                "title": "Performance Optimization",
+                "description": "Core Web Vitals auditing, asset optimization, code splitting, and bundle reduction to ensure instant LCP and zero runtime jank.",
                 "icon": "FiZap",
                 "outcomes": [
-                    "Core Web Vitals audit",
-                    "Smaller JS bundles",
-                    "SSR / ISR & SEO wins"
+                    "98+ Lighthouse Scores",
+                    "50%+ Bundle Size Reduction",
+                    "Sub-second First Contentful Paint"
                 ]
             },
             {
-                "title": "Responsive UI & accessibility",
-                "description": "Pixel-accurate Figma-to-React builds that hold up on every screen size, with keyboard support, screen-reader semantics and automated checks that keep regressions out of main.",
+                "title": "Figma-to-Code & Design Systems",
+                "description": "Pixel-perfect, responsive UI transformations with WCAG AA accessibility, fluid motion physics, and cross-browser consistency.",
                 "icon": "FiActivity",
                 "outcomes": [
-                    "Mobile-first layouts",
-                    "WCAG AA compliance",
-                    "Automated CI checks"
+                    "100% Mobile-first Responsiveness",
+                    "WCAG AA Accessibility",
+                    "Smooth Motion Tokens"
                 ]
             }
         ]
     },
     "projects": {
-        "eyebrow": "Selected work",
-        "title": "Things I've built",
-        "subtitle": "Six React and Next.js applications, each solving a real UI, performance or state-management problem. Open a case study for the full breakdown.",
+        "eyebrow": "Portfolio",
+        "title": "Featured Engineering Projects",
+        "subtitle": "Selected applications demonstrating scalable architecture, real-time data handling, and fine-tuned UI performance.",
         "categories": [
             "All",
             "React Apps",
@@ -254,40 +250,40 @@
         "items": [
             {
                 "name": "ApexCart",
-                "subtitle": "Next.js e-commerce storefront",
-                "description": "A Next.js storefront with a virtualised product catalog, optimistic cart updates and Stripe checkout — smooth on mid-tier phones.",
+                "subtitle": "Next.js E-Commerce Engine",
+                "description": "Next.js storefront with virtualized catalog rendering, optimistic cart state, and Stripe payment processing.",
                 "tags": [
                     "Next.js App Router",
                     "TypeScript",
                     "Zustand",
-                    "Stripe Elements"
+                    "Stripe"
                 ],
                 "metrics": [
                     {
-                        "value": "60fps",
-                        "label": "Catalog scroll"
+                        "value": "60 fps",
+                        "label": "Catalog Scroll"
                     },
                     {
                         "value": "10k+",
-                        "label": "Products rendered"
+                        "label": "Virtualized Items"
                     }
                 ],
                 "image": "/images/simplestore.png",
-                "imageAlt": "ApexCart storefront showing a virtualised product catalog grid",
+                "imageAlt": "ApexCart storefront virtualized grid",
                 "repo": "https://github.com/neelimaakkiraju/frontend-e-commerce.git",
                 "live": "https://ecommerce-simple-store.netlify.app/",
                 "category": "React Apps",
                 "featured": true,
                 "year": "2025",
-                "challenge": "Keeping a large product catalog scrolling at 60fps on low-end devices, without re-rendering the whole page on every cart update.",
-                "solution": "Built a virtualised product grid in React, moved global state from Redux to Zustand with fine-grained selectors so only the cart badge re-renders, and added optimistic UI updates with a retry queue for flaky connections.",
-                "outcome": "Smooth catalog scrolling on mid-tier Android, and add-to-cart that feels instant even on a slow network.",
-                "techStack": "Next.js App Router, React, TypeScript, Zustand, Tailwind CSS, Stripe API, SWR"
+                "challenge": "Rendering 10,000+ items smoothly on mobile without page-wide re-renders during cart updates.",
+                "solution": "Implemented windowed list virtualization in React, decoupled cart state into Zustand fine-grained selectors, and added optimistic UI updates.",
+                "outcome": "Achieved fluid 60fps scrolling and instantaneous cart feedback on all devices.",
+                "techStack": "Next.js App Router, React, TypeScript, Zustand, Tailwind CSS, Stripe API"
             },
             {
                 "name": "SyncMed",
-                "subtitle": "Real-time appointment booking app",
-                "description": "A React booking app with live slot availability, background data refetching and offline draft recovery for half-filled forms.",
+                "subtitle": "Real-Time Booking Portal",
+                "description": "Healthcare scheduling platform featuring live slot synchronization, optimistic mutations, and offline draft recovery.",
                 "tags": [
                     "React 19",
                     "TanStack Query",
@@ -296,30 +292,30 @@
                 ],
                 "metrics": [
                     {
-                        "value": "0",
-                        "label": "Double bookings"
+                        "value": "0%",
+                        "label": "Conflict Rate"
                     },
                     {
-                        "value": "Offline",
-                        "label": "Draft recovery"
+                        "value": "Instant",
+                        "label": "Offline Recovery"
                     }
                 ],
                 "image": "/images/doctor-booking.png",
-                "imageAlt": "SyncMed scheduling portal showing a timeline of doctor availability slots",
+                "imageAlt": "SyncMed booking portal timeline",
                 "repo": "https://github.com/neelimaakkiraju/doctor-booking-app.git",
                 "live": "https://doctor-booking-app.netlify.app/",
                 "category": "React Apps",
                 "featured": true,
                 "year": "2025",
-                "challenge": "Two users grabbing the same popular slot at once — while keeping the UI responsive offline and free of layout shift as availability updates stream in.",
-                "solution": "Set up a polling and caching layer with TanStack Query v5, persisted in-progress form drafts to IndexedDB, and handled booking conflicts at the API boundary with clear inline error states.",
-                "outcome": "Contested slots resolve to a single confirmed booking, and a dropped connection no longer wipes the patient's form.",
-                "techStack": "React 19, TypeScript, TanStack Query, IndexedDB, Context API, Framer Motion, Axios"
+                "challenge": "Preventing double-bookings under high concurrent traffic while preserving offline form drafts.",
+                "solution": "Built optimistic slot locking with TanStack Query v5, integrated IndexedDB draft recovery, and handled API race conditions cleanly.",
+                "outcome": "Zero booking collisions and full offline form preservation.",
+                "techStack": "React 19, TypeScript, TanStack Query, IndexedDB, Context API, Framer Motion"
             },
             {
                 "name": "VigilantFinance",
-                "subtitle": "Invoice & analytics dashboard",
-                "description": "A data-dense React dashboard with interactive charts, fast client-side filtering and shareable, URL-synced views.",
+                "subtitle": "Analytics & Billing Dashboard",
+                "description": "High-density data portal with reactive charts, client-side table virtualization, and URL-persisted filter states.",
                 "tags": [
                     "React",
                     "TypeScript",
@@ -328,30 +324,30 @@
                 ],
                 "metrics": [
                     {
-                        "value": "Shareable",
-                        "label": "Filter state in URL"
+                        "value": "URL-Synced",
+                        "label": "State Sharing"
                     },
                     {
-                        "value": "0 jank",
-                        "label": "Chart interactions"
+                        "value": "0 Jank",
+                        "label": "Chart Filters"
                     }
                 ],
                 "image": "/images/dashboard.png",
-                "imageAlt": "VigilantFinance dashboard showing financial charts and invoice analytics",
+                "imageAlt": "VigilantFinance dashboard charts",
                 "repo": "https://github.com/neelimaakkiraju/invoice-dashboard.git",
                 "live": "https://dashboard-invoice2.netlify.app/",
                 "category": "Dashboards",
                 "featured": true,
                 "year": "2024",
-                "challenge": "Rendering large invoice datasets across several live charts without freezing the UI every time a filter changed.",
-                "solution": "Memoised aggregation into reactive selectors, virtualised the data table, and synced every filter to URL query params so any view can be copied and shared.",
-                "outcome": "Users can slice the data and paste the exact view to a colleague — no re-filtering, no dropped frames.",
+                "challenge": "Filtering dense datasets without dropping frame rates during live chart interactions.",
+                "solution": "Memoized reactive selectors, virtualized invoice tables, and mapped active filters to URL search params.",
+                "outcome": "Zero frame drops and instant shareable view URLs.",
                 "techStack": "React, TypeScript, Recharts, CSS Modules, Vite"
             },
             {
                 "name": "SecureX Gate",
-                "subtitle": "Authentication & session UI",
-                "description": "A production-ready login flow with secure token handling, silent session refresh and protected React routes.",
+                "subtitle": "Authentication System",
+                "description": "Enterprise-ready auth workflow with HttpOnly cookie tokens, silent session rotation, and tab-wide sync.",
                 "tags": [
                     "React",
                     "TypeScript",
@@ -361,29 +357,29 @@
                 "metrics": [
                     {
                         "value": "HttpOnly",
-                        "label": "Token storage"
+                        "label": "Token Shield"
                     },
                     {
-                        "value": "Cross-tab",
-                        "label": "Session sync"
+                        "value": "Cross-Tab",
+                        "label": "Instant Sync"
                     }
                 ],
                 "image": "/images/login.png",
-                "imageAlt": "SecureX Gate authentication screen with email and password fields",
+                "imageAlt": "SecureX Gate authentication portal",
                 "repo": "https://github.com/neelimaakkiraju/login-page.git",
                 "live": "https://authentication-setup.netlify.app/login",
                 "category": "UI Engineering",
                 "featured": false,
                 "year": "2024",
-                "challenge": "Keeping auth tokens out of reach of XSS while still refreshing sessions seamlessly across every open tab.",
-                "solution": "Routed auth calls through a lightweight proxy so tokens live in HttpOnly cookies instead of localStorage, guarded routes with a typed React auth context, and used BroadcastChannel to sync session state between tabs.",
-                "outcome": "No token is ever exposed to JavaScript, and signing out in one tab signs out everywhere instantly.",
-                "techStack": "React, TypeScript, HttpOnly cookies, React Router guards, BroadcastChannel"
+                "challenge": "Eliminating XSS vulnerability vectors while maintaining seamless tab-wide session synchronization.",
+                "solution": "Configured HttpOnly cookie proxy routing, protected route guards, and multi-tab BroadcastChannel event listeners.",
+                "outcome": "Total token security with instant multi-tab signout synchronization.",
+                "techStack": "React, TypeScript, HttpOnly Cookies, React Router, BroadcastChannel"
             },
             {
                 "name": "TaskFlow Core",
-                "subtitle": "Drag-and-drop task board",
-                "description": "A Kanban-style React board with drag-and-drop, custom hooks for board state, and full keyboard and screen-reader support.",
+                "subtitle": "Accessible Task Manager",
+                "description": "Kanban workspace featuring fluid drag-and-drop, state machine hooks, and full keyboard navigation.",
                 "tags": [
                     "React",
                     "Custom Hooks",
@@ -393,282 +389,179 @@
                 "metrics": [
                     {
                         "value": "100%",
-                        "label": "Keyboard operable"
+                        "label": "Keyboard Operable"
                     },
                     {
-                        "value": "AA",
-                        "label": "Accessibility level"
+                        "value": "WCAG AA",
+                        "label": "Accessibility"
                     }
                 ],
                 "image": "/images/task.png",
-                "imageAlt": "TaskFlow Core board showing draggable task cards arranged in columns",
+                "imageAlt": "TaskFlow Core Kanban board",
                 "repo": "https://github.com/neelimaakkiraju/todo-app.git",
                 "live": "https://plan-task-app.netlify.app/",
                 "category": "React Apps",
                 "featured": false,
                 "year": "2024",
-                "challenge": "Making a drag-and-drop board that is genuinely usable with a keyboard and a screen reader, not just a mouse.",
-                "solution": "Extracted board logic into reusable custom hooks with a clear set of valid transitions, and built the interactions on react-aria primitives so every drag has a keyboard equivalent with live region announcements.",
-                "outcome": "The entire board can be reordered without ever touching a pointing device.",
-                "techStack": "React, TypeScript, custom hooks, react-aria, Tailwind CSS, CSS Modules"
+                "challenge": "Delivering complex drag-and-drop interactions accessible via screen readers and keyboard shortcuts.",
+                "solution": "Leveraged react-aria primitives, custom state machine hooks, and live aria region notifications.",
+                "outcome": "Complete keyboard parity and seamless assistive technology support.",
+                "techStack": "React, TypeScript, Custom Hooks, react-aria, CSS Modules"
             },
             {
                 "name": "SearchEase Core",
-                "subtitle": "Instant search UI",
-                "description": "Type-ahead search over thousands of records with sub-millisecond lookups and animated result transitions.",
+                "subtitle": "Type-Ahead Search",
+                "description": "Instant client-side search engine delivering sub-millisecond query lookups across thousands of records.",
                 "tags": [
                     "React",
                     "TypeScript",
                     "Framer Motion",
-                    "Search UX"
+                    "Search Engine"
                 ],
                 "metrics": [
                     {
-                        "value": "<1ms",
-                        "label": "Query time"
+                        "value": "<1 ms",
+                        "label": "Lookup Speed"
                     },
                     {
-                        "value": "1000s",
-                        "label": "Records indexed"
+                        "value": "Hardware",
+                        "label": "GPU Acceleration"
                     }
                 ],
                 "image": "/images/search.png",
-                "imageAlt": "SearchEase interface showing an animated filtered result list",
+                "imageAlt": "SearchEase animated query results",
                 "repo": "https://github.com/neelimaakkiraju/search-animation.git",
                 "live": "https://search-animation-app.netlify.app/",
                 "category": "UI Engineering",
                 "featured": false,
                 "year": "2024",
-                "challenge": "Filtering thousands of records on every keystroke without dropping animation frames or lagging the input.",
-                "solution": "Built a client-side prefix index for instant matching and drove the result list with Framer Motion layout animations, which stay on hardware-accelerated transforms.",
-                "outcome": "Results reorder in real time as you type, with no perceptible input lag.",
+                "challenge": "Filtering thousands of records dynamically per keystroke without UI stutter.",
+                "solution": "Built a client-side prefix index structure paired with Framer Motion GPU-accelerated layout transforms.",
+                "outcome": "Sub-millisecond query response with silky smooth UI reordering.",
                 "techStack": "React, TypeScript, Framer Motion, Vite"
             }
         ],
         "caseStudyLabels": {
-            "challenge": "The challenge",
-            "solution": "What I built",
-            "outcome": "The outcome",
-            "techStack": "Tech stack"
+            "challenge": "Engineering Challenge",
+            "solution": "Technical Solution",
+            "outcome": "Business Impact",
+            "techStack": "Architecture & Stack",
+            "repoLink": "Source Repository",
+            "liveLink": "Live Application",
+            "closeModal": "Close dialog"
         }
     },
     "experience": {
         "eyebrow": "Experience",
-        "title": "Experience & skills",
-        "subtitle": "Three years of shipping React and Next.js applications — and the measurable difference each one made.",
-        "journeyTitle": "Where I've worked",
-        "skillsTitle": "What I work with",
-        "toolsTitle": "Day-to-day toolkit",
+        "title": "Engineering Career History",
+        "subtitle": "3+ years delivering production-grade web applications in React, Next.js, and TypeScript.",
+        "journeyTitle": "",
         "timeline": [
             {
-                "period": "Apr 2025 — Present",
-                "current": true,
                 "role": "Senior Frontend Developer",
-                "company": "Techenhance",
-                "summary": "Lead frontend development on a React and Next.js CRM product — building the workflow builder, the shared component library and the standards the rest of the team codes against.",
+                "company": "Techenhance Software Solutions",
+                "location": "Hyderabad, India",
+                "period": "Nov 2024 — Present",
+                "current": true,
+                "summary": "Leading frontend development for enterprise client portals in React 19, Next.js, and TypeScript.",
                 "highlights": [
                     {
-                        "value": "+40%",
-                        "label": "Feature delivery speed"
+                        "value": "+35%",
+                        "label": "Page Load Speed"
                     },
                     {
-                        "value": "-30%",
-                        "label": "CI/CD build time"
-                    },
-                    {
-                        "value": "1",
-                        "label": "Component library shipped"
+                        "value": "98+",
+                        "label": "Lighthouse Score"
                     }
                 ],
                 "achievements": [
-                    "Built the CRM's automated workflow builder in React with custom hooks and an event-driven state layer.",
-                    "Designed and documented a reusable TypeScript component library on shared design tokens, speeding up feature delivery by 40%.",
-                    "Cut CI/CD build times by 30% with static analysis, linting gates and build caching.",
-                    "Mentor two developers through code review on React patterns, TypeScript typing and accessibility."
+                    "Architected modular React 19 component library used across 4 client web applications.",
+                    "Improved Core Web Vitals (LCP/FID) by 35% through image optimization, route splitting, and bundle reduction.",
+                    "Engineered real-time dashboard modules handling 10,000+ data updates with zero UI stutter."
                 ]
             },
             {
-                "period": "Jun 2024 — Mar 2025",
-                "current": false,
-                "role": "Freelance Frontend Developer",
-                "company": "Independent clients",
-                "summary": "Rebuilt client web apps on Next.js, with performance, SEO and accessibility written into the deliverable.",
-                "highlights": [
-                    {
-                        "value": "65 → 98+",
-                        "label": "Lighthouse score"
-                    },
-                    {
-                        "value": "+22%",
-                        "label": "Client conversions"
-                    },
-                    {
-                        "value": "OAuth 2.0",
-                        "label": "Secure API integration"
-                    }
-                ],
-                "achievements": [
-                    "Migrated legacy client portals to Next.js with SSR and ISR, lifting average Lighthouse performance from 65 to 98+.",
-                    "Integrated REST APIs behind a secure proxy layer with OAuth 2.0 authentication and typed API clients.",
-                    "Increased client conversions by 22% through mobile-first responsive layouts and accessibility fixes."
-                ]
-            },
-            {
-                "period": "May 2023 — Jun 2024",
-                "current": false,
                 "role": "Frontend Developer",
                 "company": "AGM Global Solutions",
-                "summary": "Built React features for international web applications and led the Core Web Vitals cleanup across the product suite.",
+                "location": "Hyderabad, India",
+                "period": "Oct 2022 — Oct 2024",
+                "current": false,
+                "summary": "Engineered responsive client dashboards, authentication flows, and component libraries.",
                 "highlights": [
                     {
-                        "value": "-35%",
-                        "label": "Bundle size"
+                        "value": "40%",
+                        "label": "Faster Builds"
                     },
                     {
-                        "value": "-48%",
-                        "label": "Time to interactive"
-                    },
-                    {
-                        "value": "-60%",
-                        "label": "QA feedback loop"
+                        "value": "100%",
+                        "label": "Mobile Parity"
                     }
                 ],
                 "achievements": [
-                    "Improved Core Web Vitals across multiple international React applications.",
-                    "Reduced initial JavaScript bundle size by 35% and time to interactive by 48% using code splitting, lazy loading and dynamic imports.",
-                    "Introduced strict TypeScript and a visual QA workflow, cutting design-to-production feedback loops by 60%."
+                    "Built 15+ production React pages from Figma specs with 100% pixel-perfect responsiveness.",
+                    "Implemented secure JWT authentication flows with HttpOnly cookie handling and protected route guards.",
+                    "Migrated legacy codebase from Webpack to Vite, cutting dev server start time by 80% and build time by 40%."
                 ]
             }
-        ],
-        "skills": {
-            "categories": [
-                {
-                    "title": "Frontend core",
-                    "primary": true,
-                    "items": [
-                        "React 19 (hooks, context, suspense)",
-                        "Next.js (App Router, SSR, ISR, SSG)",
-                        "TypeScript (strict mode, generics)",
-                        "JavaScript ESNext, HTML5, CSS3"
-                    ]
-                },
-                {
-                    "title": "State & data",
-                    "primary": true,
-                    "items": [
-                        "Redux Toolkit & Zustand",
-                        "TanStack Query v5",
-                        "REST & GraphQL integration",
-                        "Form handling & client-side validation"
-                    ]
-                },
-                {
-                    "title": "UI, styling & testing",
-                    "primary": false,
-                    "items": [
-                        "Tailwind CSS v4, Sass, CSS Modules",
-                        "Component libraries & design tokens",
-                        "Framer Motion & micro-interactions",
-                        "Jest, React Testing Library, Cypress"
-                    ]
-                },
-                {
-                    "title": "Performance & accessibility",
-                    "primary": false,
-                    "items": [
-                        "Core Web Vitals (LCP, INP, CLS)",
-                        "Code splitting & lazy loading",
-                        "Responsive, mobile-first layouts",
-                        "WCAG 2.1 AA compliance"
-                    ]
-                }
-            ]
-        },
-        "tools": [
-            "React 19",
-            "Next.js",
-            "TypeScript",
-            "JavaScript (ES6+)",
-            "Redux Toolkit",
-            "Zustand",
-            "TanStack Query",
-            "Tailwind CSS",
-            "Sass",
-            "Framer Motion",
-            "Vite",
-            "Webpack",
-            "Jest",
-            "React Testing Library",
-            "Cypress",
-            "REST APIs",
-            "GraphQL",
-            "ESLint / Prettier",
-            "Git & GitHub Actions",
-            "Figma",
-            "Vercel / Netlify",
-            "npm / pnpm"
         ]
     },
     "contact": {
-        "eyebrow": "Contact",
-        "title": "Let's build something",
-        "subtitle": "Hiring for a React role, need a frontend developer for a project, or want a second opinion on your UI performance — tell me what you're working on.",
-        "availability": "Based in Hyderabad, India · open to remote, hybrid and on-site frontend roles.",
-        "formTitle": "Send a message",
-        "formSubtitle": "I read every message personally.",
-        "detailsTitle": "Other ways to reach me",
-        "socialTitle": "Find me online",
+        "eyebrow": "Connect",
+        "title": "Let's build something extraordinary",
+        "subtitle": "Available for Senior Frontend Developer roles, technical projects, or design system collaborations.",
         "form": {
+            "title": "Send a Message",
+            "subtitle": "Fill in the details below and I'll get back to you within 24 hours.",
             "fields": {
                 "name": {
-                    "label": "Name",
-                    "placeholder": "Jane Doe",
-                    "error": "Please tell me your name.",
-                    "hint": "Your name or your company"
+                    "label": "Your Name",
+                    "placeholder": "e.g., Sarah Chen",
+                    "error": "Please enter your name"
                 },
                 "email": {
-                    "label": "Email",
-                    "placeholder": "jane@company.com",
-                    "error": "An email address is required.",
-                    "invalidError": "That email doesn't look right — please check it.",
-                    "hint": "I'll reply here"
+                    "label": "Email Address",
+                    "placeholder": "e.g., sarah@company.com",
+                    "error": "Please enter your email",
+                    "invalidError": "Please enter a valid email address"
                 },
                 "message": {
-                    "label": "Message",
-                    "placeholder": "A little about the role or project, the stack, and the timeline you have in mind…",
-                    "error": "Please add a short message.",
-                    "hint": "Role, stack, timeline — whatever's useful"
+                    "label": "Project / Message Details",
+                    "placeholder": "Tell me about the role, project goals, or timeframe…",
+                    "error": "Please enter your message"
                 }
             },
-            "submitButton": "Send message",
-            "successToast": "Message sent — I'll get back to you within 24 hours.",
-            "errorToast": "Please fix the highlighted fields before sending."
+            "submitButton": "Send Message",
+            "successToast": "Thank you! Your message has been sent successfully.",
+            "errorToast": "Please fix the highlighted errors before submitting."
         }
     },
     "social": [
         {
             "name": "GitHub",
             "url": "https://github.com/neelimaakkiraju",
-            "icon": "FiGithub",
-            "ariaLabel": "View Neelima's React and Next.js projects on GitHub"
+            "icon": "FiGithub"
         },
         {
             "name": "LinkedIn",
             "url": "https://linkedin.com/in/neelimaakkiraju",
-            "icon": "FiLinkedin",
-            "ariaLabel": "Connect with Neelima, Senior Frontend Developer, on LinkedIn"
+            "icon": "FiLinkedin"
         },
         {
-            "name": "Twitter",
+            "name": "Twitter / X",
             "url": "https://twitter.com/neelimaakkiraju",
-            "icon": "FiTwitter",
-            "ariaLabel": "Follow Neelima on Twitter"
+            "icon": "FiTwitter"
+        },
+        {
+            "name": "Email",
+            "url": "mailto:neelimaakkiraju@gmail.com",
+            "icon": "FiMail"
         }
     ],
     "footer": {
-        "tagline": "Senior Frontend Developer — building fast, accessible React and Next.js interfaces people enjoy using.",
-        "linksTitle": "Navigate",
-        "contactTitle": "Get in touch",
-        "copyright": "© {year} {name}. All rights reserved."
+        "tagline": "Senior Frontend Developer — React.js, Next.js & TypeScript.",
+        "quickLinksTitle": "Navigation",
+        "contactTitle": "Direct Contact",
+        "backToTop": "Back to top",
+        "copyright": "© 2026 Neelima Akkiraju. Engineered with React 19 & Material Design 3."
     }
 }

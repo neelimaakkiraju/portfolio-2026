@@ -41,8 +41,6 @@ const ProjectCard = memo(function ProjectCard({ project, index, onOpenCaseStudy 
       className={`card ${styles.card}`}
       onMouseEnter={handleHover}
       onFocus={handleHover}
-      /* whileInView (not animate) so cards still reveal on scroll — the whole
-         lazy chunk mounts at once, long before these are on screen. */
       initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
@@ -102,9 +100,9 @@ const ProjectCard = memo(function ProjectCard({ project, index, onOpenCaseStudy 
             href={project.live}
             target="_blank"
             rel="noopener noreferrer"
-            className={`btn btnPrimary btnSm ${styles.action}`}
+            className={`btn btnPrimary btnSm ${styles.actionPrimary}`}
             itemProp="url"
-            aria-label={`Open the ${project.name} live demo in a new tab`}
+            aria-label={`Open ${project.name} live demo`}
             onClick={() =>
               trackProject("live_demo_click", project.name, {
                 component: "project_card",
@@ -114,15 +112,15 @@ const ProjectCard = memo(function ProjectCard({ project, index, onOpenCaseStudy 
             }
           >
             <FiExternalLink aria-hidden="true" />
-            Live demo
+            Live Demo
           </a>
 
           <a
             href={project.repo}
             target="_blank"
             rel="noopener noreferrer"
-            className={`btn btnSecondary btnSm ${styles.action}`}
-            aria-label={`View the ${project.name} source code on GitHub`}
+            className={`btn btnSecondary btnSm ${styles.actionSecondary}`}
+            aria-label={`View ${project.name} source code on GitHub`}
             onClick={() =>
               trackProject("github_click", project.name, {
                 component: "project_card",
@@ -132,17 +130,17 @@ const ProjectCard = memo(function ProjectCard({ project, index, onOpenCaseStudy 
             }
           >
             <FiGithub aria-hidden="true" />
-            GitHub
+            Code
           </a>
 
           <button
             type="button"
-            className={`btn btnGhost btnSm ${styles.action}`}
-            aria-label={`Read the ${project.name} case study`}
+            className={`btn btnSecondary btnSm ${styles.actionSecondary}`}
+            aria-label={`Read ${project.name} case study`}
             onClick={() => onOpenCaseStudy(project, index)}
           >
             <FiFileText aria-hidden="true" />
-            Case study
+            Case Study
           </button>
         </div>
       </div>
@@ -150,7 +148,7 @@ const ProjectCard = memo(function ProjectCard({ project, index, onOpenCaseStudy 
   );
 });
 
-function Projects() {
+export default function Projects() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [activeProject, setActiveProject] = useState(null);
   const prefersReducedMotion = useReducedMotion();
@@ -159,21 +157,17 @@ function Projects() {
     () =>
       activeCategory === "All"
         ? projects.items
-        : projects.items.filter((item) => item.category === activeCategory),
+        : projects.items.filter((p) => p.category === activeCategory),
     [activeCategory]
   );
 
-  const handleFilter = useCallback((category) => {
+  const handleCategorySelect = useCallback((category) => {
     setActiveCategory(category);
     trackEvent({
-      action: "project_filter",
-      category: CATEGORY.PROJECT,
+      action: "category_filter",
+      category: CATEGORY.ENGAGEMENT,
       label: category,
-      metadata: {
-        section: "projects",
-        component: "category_filter",
-        filter_value: category,
-      },
+      metadata: { section: "projects", component: "category_filters" },
     });
   }, []);
 
@@ -186,14 +180,7 @@ function Projects() {
   }, []);
 
   const handleCloseCaseStudy = useCallback(() => {
-    setActiveProject((current) => {
-      if (current) {
-        trackProject("case_study_close", current.name, {
-          component: "case_study_modal",
-        });
-      }
-      return null;
-    });
+    setActiveProject(null);
   }, []);
 
   return (
@@ -204,23 +191,24 @@ function Projects() {
       description={projects.subtitle}
       analyticsName="projects"
     >
-      <div className={styles.filters} role="group" aria-label="Filter projects by category">
+      <div className={styles.filters} role="tablist" aria-label="Project categories">
         {projects.categories.map((category) => {
           const isActive = activeCategory === category;
           return (
             <button
               key={category}
               type="button"
-              aria-pressed={isActive}
+              role="tab"
+              aria-selected={isActive}
+              onClick={() => handleCategorySelect(category)}
               className={`${styles.filter} ${isActive ? styles.filterActive : ""}`}
-              onClick={() => handleFilter(category)}
             >
               {isActive && !prefersReducedMotion && (
                 <Motion.span
-                  layoutId="project-filter-pill"
+                  layoutId="filter-pill"
                   className={styles.filterPill}
                   aria-hidden="true"
-                  transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 30 }}
                 />
               )}
               <span className={styles.filterLabel}>{category}</span>
@@ -229,7 +217,7 @@ function Projects() {
         })}
       </div>
 
-      <Motion.div layout={!prefersReducedMotion} className={styles.grid}>
+      <Motion.div layout className={styles.grid}>
         <AnimatePresence mode="popLayout">
           {filtered.map((project, index) => (
             <ProjectCard
@@ -242,13 +230,13 @@ function Projects() {
         </AnimatePresence>
       </Motion.div>
 
-      <CaseStudyModal
-        project={activeProject}
-        labels={caseStudyLabels}
-        onClose={handleCloseCaseStudy}
-      />
+      {activeProject && (
+        <CaseStudyModal
+          project={activeProject}
+          labels={caseStudyLabels}
+          onClose={handleCloseCaseStudy}
+        />
+      )}
     </Section>
   );
 }
-
-export default memo(Projects);

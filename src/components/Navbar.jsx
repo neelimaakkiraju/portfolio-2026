@@ -1,10 +1,11 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion as Motion, useReducedMotion } from "framer-motion";
-import { FiArrowRight, FiMenu, FiX } from "react-icons/fi";
+import { FiArrowRight, FiMenu, FiMoon, FiSun, FiX } from "react-icons/fi";
 
 import styles from "./Navbar.module.css";
 import { useActiveSection } from "../hooks/useActiveSection";
 import { useLockBodyScroll } from "../hooks/useLockBodyScroll";
+import { useTheme } from "../hooks/useTheme";
 import { getNavigation, getPersonal } from "../data";
 import { trackCta, trackEvent, trackNavigation, CATEGORY } from "../lib/analytics";
 
@@ -16,11 +17,12 @@ const navItems = navData.links.map((link) => ({
   href: link.href,
 }));
 const sectionIds = navItems.map((item) => item.id);
-const EASE = [0.22, 1, 0.36, 1];
+const EASE = [0.2, 0, 0, 1];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { theme, toggleTheme } = useTheme();
   const activeId = useActiveSection(sectionIds);
   const prefersReducedMotion = useReducedMotion();
   const panelRef = useRef(null);
@@ -57,6 +59,16 @@ export default function Navbar() {
     },
     [scrollToSection]
   );
+
+  const handleThemeToggle = () => {
+    toggleTheme();
+    trackEvent({
+      action: "theme_toggle",
+      category: CATEGORY.ENGAGEMENT,
+      label: theme === "dark" ? "light" : "dark",
+      metadata: { component: "navbar" },
+    });
+  };
 
   /* Elevate the bar once the page has moved off the top. */
   useEffect(() => {
@@ -174,6 +186,16 @@ export default function Navbar() {
         </ul>
 
         <div className={styles.actions}>
+          <button
+            type="button"
+            className={styles.themeToggle}
+            onClick={handleThemeToggle}
+            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+            title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+          >
+            {theme === "dark" ? <FiSun aria-hidden="true" /> : <FiMoon aria-hidden="true" />}
+          </button>
+
           <button
             type="button"
             onClick={() => handleCtaClick("navbar_cta")}

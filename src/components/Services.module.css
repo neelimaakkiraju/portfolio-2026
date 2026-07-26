@@ -1,7 +1,7 @@
 .grid {
   display: grid;
   gap: var(--grid-gap);
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
 }
 
 .card {
@@ -9,28 +9,18 @@
   flex-direction: column;
   gap: var(--stack-gap);
   height: 100%;
-  overflow: hidden;
+  border-radius: var(--radius-xl);
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  padding: var(--card-padding);
+  box-shadow: var(--elevation-1);
+  transition: transform var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out), border-color var(--duration-base) var(--ease-out);
 }
 
-/* Monochrome lift on hover — no coloured bloom */
-.card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  opacity: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.035),
-    transparent 55%
-  );
-  transition: opacity var(--duration-slow) var(--ease-out);
-}
-
-.card:hover::after,
-.card:focus-within::after {
-  opacity: 1;
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--elevation-3);
+  border-color: var(--accent-border);
 }
 
 .index {
@@ -40,21 +30,26 @@
   font-family: var(--font-mono);
   font-size: var(--fs-3xs);
   letter-spacing: 0.1em;
-  color: var(--text-quaternary);
+  color: var(--accent-text);
+  background: var(--primary-container);
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius-pill);
 }
 
 .icon {
   display: grid;
   place-items: center;
-  width: var(--icon-box-md);
-  height: var(--icon-box-md);
-  border-radius: var(--radius-md);
-  background: var(--surface-active);
-  border: 1px solid var(--border-subtle);
-  color: var(--icon-strong);
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-pill);
+  background: var(--primary-container);
+  border: 1px solid var(--accent-border);
+  color: var(--accent-text);
+  box-shadow: var(--elevation-1);
   transition:
-    border-color var(--duration-base) var(--ease-out),
-    color var(--duration-base) var(--ease-out);
+    background-color var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
 }
 
 .icon svg {
@@ -63,27 +58,28 @@
 }
 
 .card:hover .icon {
-  border-color: var(--accent-border);
-  color: var(--accent-text);
+  background: var(--accent);
+  color: var(--on-primary);
+  transform: scale(1.05);
 }
 
 .title {
   font-size: var(--fs-h3);
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-primary);
 }
 
 .copy {
   font-size: var(--fs-sm);
   line-height: var(--lh-relaxed);
-  color: var(--text-tertiary);
+  color: var(--text-secondary);
   margin: 0;
 }
 
 .outcomes {
   display: grid;
-  gap: var(--space-8);
-  padding-top: var(--space-24);
+  gap: var(--space-10);
+  padding-top: var(--space-20);
   margin-top: auto;
   border-top: 1px solid var(--border-subtle);
 }
@@ -91,27 +87,26 @@
 .outcome {
   display: flex;
   align-items: center;
-  gap: var(--space-8);
+  gap: var(--space-10);
   font-size: var(--fs-xs);
-  color: var(--text-tertiary);
+  color: var(--text-secondary);
 }
 
 .outcome svg {
   flex-shrink: 0;
   width: var(--icon-xs);
   height: var(--icon-xs);
-  color: var(--text-quaternary);
+  color: var(--accent-text);
 }
 
-/* Links carry the accent */
 .cardLink {
   display: inline-flex;
   align-items: center;
   gap: var(--space-8);
   align-self: flex-start;
-  min-height: 30px;
+  min-height: 32px;
   font-size: var(--fs-xs);
-  font-weight: 600;
+  font-weight: 650;
   color: var(--accent-text);
   transition: gap var(--duration-base) var(--ease-out);
 }
@@ -127,5 +122,5 @@
 }
 
 .cardLink:hover svg {
-  transform: translate(2px, -2px);
+  transform: translate(3px, -3px);
 }

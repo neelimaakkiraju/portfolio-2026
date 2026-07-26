@@ -3,9 +3,7 @@ import Reveal from "./Reveal";
 import { useSectionView } from "../../hooks/useAnalytics";
 
 /**
- * Canonical section shell used by every section on the page so vertical
- * rhythm, container width and header hierarchy stay identical throughout:
- *
+ * Section shell with left-aligned header hierarchy:
  *   badge → title → description → content
  */
 export default function Section({
@@ -13,9 +11,7 @@ export default function Section({
   badge,
   title,
   description,
-  align = "center",
-  /** "base" sits on the page canvas, "raised" one tonal step above it.
-   *  Alternating the two is what separates sections — not dividers. */
+  align = "start",
   tone = "base",
   children,
   className = "",
@@ -39,7 +35,7 @@ export default function Section({
         {(badge || title || description) && (
           <Reveal
             as="header"
-            className={`sectionHeader ${align === "start" ? "sectionHeaderStart" : ""}`}
+            className="sectionHeader"
           >
             {badge && (
               <p className="badge">

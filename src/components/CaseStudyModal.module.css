@@ -10,21 +10,21 @@
 .backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(4, 4, 5, 0.8);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .dialog {
   position: relative;
-  width: min(100%, 720px);
+  width: min(100%, 740px);
   max-height: min(88dvh, 900px);
   overflow-y: auto;
   overscroll-behavior: contain;
   border-radius: var(--radius-2xl);
-  background: var(--surface-overlay);
+  background: var(--surface-card);
   border: 1px solid var(--border);
-  box-shadow: var(--shadow-xl);
+  box-shadow: var(--elevation-4);
 }
 
 .dialog:focus-visible {
@@ -40,16 +40,18 @@
   place-items: center;
   width: var(--icon-box-md);
   height: var(--icon-box-md);
-  border-radius: var(--radius-md);
-  background: rgba(8, 9, 10, 0.72);
+  border-radius: var(--radius-pill);
+  background: var(--surface-overlay);
   border: 1px solid var(--border);
   color: var(--text-secondary);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  box-shadow: var(--elevation-1);
   transition:
     background-color var(--duration-base) var(--ease-out),
     border-color var(--duration-base) var(--ease-out),
-    color var(--duration-base) var(--ease-out);
+    color var(--duration-base) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
 }
 
 .close svg {
@@ -58,9 +60,10 @@
 }
 
 .close:hover {
-  background: var(--surface-active);
-  border-color: var(--border-strong);
-  color: var(--text-primary);
+  background: var(--primary-container);
+  border-color: var(--accent-border);
+  color: var(--accent-text);
+  transform: scale(1.08);
 }
 
 .media {
@@ -95,22 +98,22 @@
   align-items: center;
   gap: var(--space-8);
   font-size: var(--fs-3xs);
-  font-weight: 600;
+  font-weight: 650;
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  color: var(--text-quaternary);
+  color: var(--accent-text);
 }
 
 .title {
   font-size: clamp(1.55rem, 1.3rem + 1.3vw, 2.05rem);
-  font-weight: 640;
+  font-weight: 750;
   letter-spacing: var(--tracking-display);
   color: var(--text-primary);
 }
 
 .subtitle {
   font-size: var(--fs-sm);
-  color: var(--text-tertiary);
+  color: var(--text-secondary);
   margin: 0;
 }
 
@@ -124,16 +127,16 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-8);
-  padding-left: var(--space-16);
-  border-left: 2px solid var(--border);
+  padding-left: var(--space-18);
+  border-left: 3px solid var(--accent);
 }
 
 .blockLabel {
   font-size: var(--fs-3xs);
-  font-weight: 600;
+  font-weight: 650;
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  color: var(--text-quaternary);
+  color: var(--text-tertiary);
 }
 
 .blockText {
@@ -154,21 +157,21 @@
   flex-direction: column;
   gap: var(--space-4);
   padding: var(--space-16);
-  border-radius: var(--radius-md);
-  background: var(--surface-card);
+  border-radius: var(--radius-lg);
+  background: var(--surface-raised);
   border: 1px solid var(--border-subtle);
 }
 
 .metricValue {
   font-size: var(--fs-h4);
-  font-weight: 640;
-  color: var(--text-primary);
+  font-weight: 700;
+  color: var(--accent-text);
   line-height: 1.2;
 }
 
 .metricLabel {
   font-size: var(--fs-3xs);
-  color: var(--text-quaternary);
+  color: var(--text-tertiary);
 }
 
 .actions {
