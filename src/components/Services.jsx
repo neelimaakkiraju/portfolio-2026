@@ -1,49 +1,109 @@
 import React, { memo } from "react";
-import { FiActivity, FiLayers, FiZap, FiCode, FiSmartphone, FiDatabase } from "react-icons/fi";
-import { useRevealOnScroll } from "../hooks/useRevealOnScroll";
+import {
+  FiActivity,
+  FiArrowUpRight,
+  FiCheck,
+  FiCode,
+  FiDatabase,
+  FiLayers,
+  FiSmartphone,
+  FiZap,
+} from "react-icons/fi";
+
+import Section from "./ui/Section";
+import { RevealItem, Stagger } from "./ui/Reveal";
 import { getServices } from "../data";
+import { CATEGORY, trackEvent } from "../lib/analytics";
 import styles from "./Services.module.css";
 
-const servicesData = getServices();
+const services = getServices();
 
-// Icon mapping for dynamic rendering
 const iconMap = {
-  FiLayers: <FiLayers />,
-  FiZap: <FiZap />,
-  FiActivity: <FiActivity />,
-  FiCode: <FiCode />,
-  FiSmartphone: <FiSmartphone />,
-  FiDatabase: <FiDatabase />,
+  FiLayers,
+  FiZap,
+  FiActivity,
+  FiCode,
+  FiSmartphone,
+  FiDatabase,
 };
 
 function Services() {
-  const { ref, isVisible } = useRevealOnScroll();
-
   return (
-    <section id="services" className="section" aria-labelledby="services-title">
-      <div
-        ref={ref}
-        className={`container revealOnScroll ${isVisible ? "isVisible" : ""}`}
-      >
-        <header className="textCenter">
-          <p className="eyebrow">{servicesData.eyebrow}</p>
-          <h2 id="services-title" className="sectionTitle">{servicesData.title}</h2>
-          <p className="sectionSubtitle">{servicesData.subtitle}</p>
-        </header>
+    <Section
+      id="services"
+      badge={services.eyebrow}
+      title={services.title}
+      description={services.subtitle}
+      analyticsName="services"
+      tone="raised"
+    >
+      <Stagger className={styles.grid} stagger={0.1}>
+        {services.items.map((service, index) => {
+          const Icon = iconMap[service.icon];
+          return (
+            <RevealItem
+              key={service.title}
+              as="article"
+              className={`card cardHover ${styles.card}`}
+              onMouseEnter={() =>
+                trackEvent({
+                  action: "service_hover",
+                  category: CATEGORY.ENGAGEMENT,
+                  label: service.title,
+                  metadata: {
+                    section: "services",
+                    component: "service_card",
+                    service_name: service.title,
+                    position: index + 1,
+                  },
+                })
+              }
+            >
+              <span className={styles.index} aria-hidden="true">
+                {String(index + 1).padStart(2, "0")}
+              </span>
 
-        <div className={styles.grid}>
-          {servicesData.items.map((service) => (
-            <article key={service.title} className={styles.card}>
-              <div className={styles.iconWrap} aria-hidden="true">
-                {iconMap[service.icon]}
-              </div>
+              <span className={styles.icon} aria-hidden="true">
+                {Icon && <Icon />}
+              </span>
+
               <h3 className={styles.title}>{service.title}</h3>
               <p className={styles.copy}>{service.description}</p>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
+
+              <ul className={styles.outcomes}>
+                {service.outcomes.map((outcome) => (
+                  <li key={outcome} className={styles.outcome}>
+                    <FiCheck aria-hidden="true" />
+                    {outcome}
+                  </li>
+                ))}
+              </ul>
+
+              <a
+                href="#contact"
+                className={styles.cardLink}
+                onClick={() =>
+                  trackEvent({
+                    action: "service_cta_click",
+                    category: CATEGORY.CONVERSION,
+                    label: service.title,
+                    metadata: {
+                      section: "services",
+                      component: "service_card_cta",
+                      service_name: service.title,
+                      destination_url: "#contact",
+                    },
+                  })
+                }
+              >
+                Discuss this
+                <FiArrowUpRight aria-hidden="true" />
+              </a>
+            </RevealItem>
+          );
+        })}
+      </Stagger>
+    </Section>
   );
 }
 

@@ -1,70 +1,131 @@
-/* ===== SERVICES - MD3/HIG COMPLIANT ===== */
 .grid {
   display: grid;
-  gap: var(--space-5); /* 20px */
+  gap: var(--grid-gap);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
 }
 
-/* MD3 Filled card */
 .card {
-  padding: var(--space-6); /* 24px */
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--outline-variant);
-  background: var(--surface-container);
-  transition:
-    border-color var(--duration-medium) var(--easing-standard),
-    box-shadow var(--duration-medium) var(--easing-standard),
-    background var(--duration-medium) var(--easing-standard);
+  display: flex;
+  flex-direction: column;
+  gap: var(--stack-gap);
+  height: 100%;
+  overflow: hidden;
 }
 
-.card:hover {
-  border-color: var(--primary);
-  box-shadow: var(--elevation-2);
-  background: var(--surface-container-high);
+/* Monochrome lift on hover — no coloured bloom */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.035),
+    transparent 55%
+  );
+  transition: opacity var(--duration-slow) var(--ease-out);
 }
 
-/* Icon container - HIG 48pt touch target */
-.iconWrap {
-  width: 56px;
-  height: 56px;
-  border-radius: var(--radius-md);
+.card:hover::after,
+.card:focus-within::after {
+  opacity: 1;
+}
+
+.index {
+  position: absolute;
+  top: var(--card-padding);
+  right: var(--card-padding);
+  font-family: var(--font-mono);
+  font-size: var(--fs-3xs);
+  letter-spacing: 0.1em;
+  color: var(--text-quaternary);
+}
+
+.icon {
   display: grid;
   place-items: center;
-  background: linear-gradient(
-    140deg,
-    var(--primary-container),
-    var(--secondary-container)
-  );
-  border: 1px solid var(--outline-variant);
-  margin-bottom: var(--space-5); /* 20px gap to title */
-  color: var(--on-surface);
-  font-size: 1.5rem;
+  width: var(--icon-box-md);
+  height: var(--icon-box-md);
+  border-radius: var(--radius-md);
+  background: var(--surface-active);
+  border: 1px solid var(--border-subtle);
+  color: var(--icon-strong);
+  transition:
+    border-color var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out);
 }
 
-/* h3 - Card title */
+.icon svg {
+  width: var(--icon-lg);
+  height: var(--icon-lg);
+}
+
+.card:hover .icon {
+  border-color: var(--accent-border);
+  color: var(--accent-text);
+}
+
 .title {
-  font: var(--headline-small); /* Larger: 1.5rem */
-  color: var(--on-surface);
-  margin-bottom: var(--space-3); /* 12px gap to description */
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
-/* Card description */
 .copy {
-  color: var(--on-surface-variant);
-  font: var(--body-large); /* Larger body text */
-  line-height: 1.7;
+  font-size: var(--fs-sm);
+  line-height: var(--lh-relaxed);
+  color: var(--text-tertiary);
+  margin: 0;
 }
 
-/* Tablet: 2 columns */
-@media (min-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-6);
-  }
+.outcomes {
+  display: grid;
+  gap: var(--space-8);
+  padding-top: var(--space-24);
+  margin-top: auto;
+  border-top: 1px solid var(--border-subtle);
 }
 
-/* Desktop: 3 columns */
-@media (min-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+.outcome {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  font-size: var(--fs-xs);
+  color: var(--text-tertiary);
+}
+
+.outcome svg {
+  flex-shrink: 0;
+  width: var(--icon-xs);
+  height: var(--icon-xs);
+  color: var(--text-quaternary);
+}
+
+/* Links carry the accent */
+.cardLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  align-self: flex-start;
+  min-height: 30px;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--accent-text);
+  transition: gap var(--duration-base) var(--ease-out);
+}
+
+.cardLink svg {
+  width: var(--icon-xs);
+  height: var(--icon-xs);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.cardLink:hover {
+  gap: var(--space-12);
+}
+
+.cardLink:hover svg {
+  transform: translate(2px, -2px);
 }

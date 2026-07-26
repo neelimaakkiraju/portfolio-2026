@@ -1,10 +1,11 @@
-/* ===== APP LAYOUT ===== */
+/* No overflow/transform here: it would make .app the containing block for the
+   fixed navbar and background layers. Horizontal overflow is contained on
+   <body> instead. */
 .app {
-  min-height: 100vh;
-  background: var(--background);
-  color: var(--on-background);
   position: relative;
-  overflow-x: hidden;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text-secondary);
 }
 
 .main {
@@ -12,46 +13,53 @@
   z-index: 1;
 }
 
-/* Subtle ambient glow */
-.backgroundGlow {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
+/* A single, very low-opacity accent bloom behind the hero. This is the only
+   place colour appears in the background — everything below it is neutral. */
+.ambient {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 110vh;
   z-index: 0;
+  pointer-events: none;
   background:
     radial-gradient(
-      800px 400px at 20% 0%,
-      rgba(255, 183, 77, 0.06),
-      transparent
+      1000px 560px at 50% -12%,
+      rgba(84, 87, 214, 0.11),
+      transparent 68%
     ),
     radial-gradient(
-      600px 300px at 80% 20%,
-      rgba(77, 208, 185, 0.05),
-      transparent
+      760px 420px at 82% 4%,
+      rgba(255, 255, 255, 0.022),
+      transparent 62%
     );
 }
 
-/* Subtle noise texture */
-.noise {
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
-  opacity: 0.5;
-  pointer-events: none;
+/* Hairline technical grid, faded out before it reaches the content */
+.grid {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 100vh;
   z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(
+    ellipse 90% 62% at 50% 0%,
+    #000 18%,
+    transparent 76%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 90% 62% at 50% 0%,
+    #000 18%,
+    transparent 76%
+  );
 }
 
-/* Loading state */
-.loader {
-  min-height: 50vh;
-  display: grid;
-  place-items: center;
-  color: var(--on-surface-variant);
-  font: var(--body-large);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .noise {
-    display: none;
-  }
+/* Keeps the page height stable while a lazy section resolves */
+.sectionFallback {
+  min-height: 60vh;
 }

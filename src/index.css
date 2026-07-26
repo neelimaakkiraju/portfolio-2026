@@ -1,151 +1,190 @@
 /* ============================================================
-   DESIGN SYSTEM - Material Design 3 + Apple HIG Principles
+   DESIGN SYSTEM — monochrome + one accent
    ============================================================
-   - 8pt grid system for spacing
-   - MD3 type scale with optical sizing
-   - 48dp touch targets (MD3) / 44pt (Apple HIG)
-   - Tonal color palette with proper contrast ratios
-   - Responsive breakpoints: 320px, 768px, 1024px, 1440px
+   Palette rule: everything is a neutral except a single indigo
+   accent, which is reserved for primary CTAs, active state,
+   links, selected tabs, focus rings, impact metrics and
+   interactive icon hover. Nothing else carries colour.
+
+   Surfaces are solid neutrals (not white overlays) so the step
+   between page → section → card is a real tonal change and
+   reads as depth rather than haze.
    ============================================================ */
 
 :root {
   color-scheme: dark;
 
-  /* ===== 8PT GRID SPACING SCALE ===== */
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 20px;
-  --space-6: 24px;
-  --space-7: 32px;
-  --space-8: 40px;
-  --space-9: 48px;
-  --space-10: 56px;
-  --space-11: 64px;
-  --space-12: 80px;
-  --space-13: 96px;
-  --space-14: 120px;
+  /* ===== SPACING SCALE =====
+     The complete set. Tokens are named for their value, so an off-scale
+     number in a stylesheet is immediately visible in review. Nothing in
+     the app may use a spacing value that is not on this list. */
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-48: 48px;
+  --space-64: 64px;
+  --space-80: 80px;
+  --space-96: 96px;
+  --space-120: 120px;
 
-  /* ===== MD3 TONAL COLOR PALETTE ===== */
-  --primary: #ffb74d;
-  --primary-container: #3d2800;
-  --on-primary: #1f1300;
-  --on-primary-container: #ffddb3;
+  /* ===== VERTICAL RHYTHM =====
+     Semantic aliases. Components reference these, not raw steps, so a
+     rhythm change is a one-line edit that applies site-wide. */
 
-  --secondary: #4dd0b9;
-  --secondary-container: #00382e;
-  --on-secondary: #00201a;
-  --on-secondary-container: #82f8dc;
+  /* Section shell — identical top and bottom on every section */
+  --section-py: clamp(80px, 8vw, 120px);
+  /* Section header block → its content */
+  --section-header-mb: clamp(48px, 5vw, 64px);
+  /* Badge → heading → description, inside the header */
+  --stack-badge-title: var(--space-24);
+  --stack-title-desc: var(--space-16);
+  /* Sibling blocks within one section (e.g. timeline → skills matrix) */
+  --block-gap: var(--space-48);
 
-  --tertiary: #ffb4ab;
-  --tertiary-container: #5c1a1a;
-  --on-tertiary: #3f0000;
-  --on-tertiary-container: #ffdad6;
+  /* Two-column section layouts */
+  --layout-gap: clamp(32px, 4vw, 48px);
+  --layout-gap-lg: clamp(48px, 5vw, 64px);
 
-  /* Surface colors - MD3 tonal surfaces */
-  --surface: #0f1419;
-  --surface-dim: #0a0e12;
-  --surface-bright: #1a2128;
-  --surface-container-lowest: #070a0d;
-  --surface-container-low: #0c1014;
-  --surface-container: #111619;
-  --surface-container-high: #1a2128;
-  --surface-container-highest: #242c33;
+  /* Repeating collections */
+  --grid-gap: var(--space-24); /* card ↔ card, every grid  */
+  --stack-gap: var(--space-16); /* block ↔ block in a card  */
+  --inline-gap: var(--space-8); /* chips, tags, button rows */
+  --list-gap: var(--space-4); /* dense nav / skill lists  */
+  --field-gap: var(--space-24); /* form field ↔ field       */
 
-  --on-surface: #e3e3e3;
-  --on-surface-variant: #a9b4be;
-  --outline: #74838f;
-  --outline-variant: #3f4a53;
+  /* Card interiors */
+  --card-padding: clamp(24px, 2vw, 32px);
+  --card-padding-sm: var(--space-24);
 
-  --inverse-surface: #e3e3e3;
-  --inverse-on-surface: #1a2128;
-  --inverse-primary: #7d5700;
+  /* Hero */
+  --hero-py: clamp(48px, 6vw, 96px);
 
-  --error: #ffb4ab;
-  --error-container: #93000a;
-  --on-error: #690005;
-  --on-error-container: #ffdad6;
+  /* ===== NEUTRAL RAMP ===== */
+  --bg: #08090a; /* page canvas          */
+  --surface-raised: #0d0e10; /* alternating section   */
+  --surface-card: #131416; /* every card            */
+  --surface-hover: #191b1e; /* card / control hover  */
+  --surface-active: #202225; /* pressed, high control */
+  --surface-overlay: #16181b; /* dialogs, sheets       */
 
-  --background: #0a0e12;
-  --on-background: #e3e3e3;
+  /* ===== BORDERS ===== */
+  --border-subtle: rgba(255, 255, 255, 0.055);
+  --border: rgba(255, 255, 255, 0.085);
+  --border-strong: rgba(255, 255, 255, 0.14);
 
-  --scrim: rgba(0, 0, 0, 0.6);
-  --shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.12);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15), 0 8px 24px rgba(0, 0, 0, 0.15);
-  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2), 0 16px 48px rgba(0, 0, 0, 0.2);
-  --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.25), 0 24px 64px rgba(0, 0, 0, 0.25);
+  /* ===== TEXT HIERARCHY =====
+     Ratios below are against --surface-active, the *lightest* surface any
+     of these ever sit on, so every pairing in the system clears WCAG AA. */
+  --text-primary: #f4f5f6; /* 14.6:1 — headings         */
+  --text-secondary: #c2c6cb; /* 10.0:1 — body             */
+  --text-tertiary: #9ba0a6; /*  6.5:1 — supporting       */
+  --text-quaternary: #848a91; /*  4.9:1 — captions, labels */
+  --text-disabled: #565b61; /* non-text / inert only     */
 
-  /* ===== MD3 TYPE SCALE ===== */
-  --font-display:
-    "Outfit", -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui,
-    sans-serif;
-  --font-body:
-    "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui,
-    sans-serif;
+  /* ===== ICONS ===== */
+  --icon: #9ba0a6;
+  --icon-strong: #c2c6cb;
+  --icon-inverse: #08090a;
 
-  --display-large: 600 3.5625rem/1.12 var(--font-display);
-  --display-medium: 600 2.8125rem/1.16 var(--font-display);
-  --display-small: 600 2.25rem/1.22 var(--font-display);
-
-  --headline-large: 600 2rem/1.25 var(--font-display);
-  --headline-medium: 600 1.75rem/1.29 var(--font-display);
-  --headline-small: 600 1.5rem/1.33 var(--font-display);
-
-  --title-large: 500 1.375rem/1.27 var(--font-display);
-  --title-medium: 500 1rem/1.5 var(--font-body);
-  --title-small: 500 0.875rem/1.43 var(--font-body);
-
-  --body-large: 400 1rem/1.625 var(--font-body);
-  --body-medium: 400 0.875rem/1.57 var(--font-body);
-  --body-small: 400 0.75rem/1.5 var(--font-body);
-
-  --label-large: 500 0.875rem/1.43 var(--font-body);
-  --label-medium: 500 0.75rem/1.33 var(--font-body);
-  --label-small: 500 0.6875rem/1.45 var(--font-body);
-
-  /* ===== SHAPE SCALE (MD3 Corner Radius) ===== */
-  --radius-none: 0;
-  --radius-xs: 4px;
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
-  --radius-2xl: 28px;
-  --radius-full: 9999px;
+  /* ===== ACCENT (the only colour in the system) ===== */
+  --accent: #5457d6; /* solid fills — 5.7:1 with white */
+  --accent-hover: #6265e0;
+  --accent-active: #484bc4;
+  --accent-text: #a5a8f5; /* 9.0:1 — accent as text          */
+  --accent-subtle: rgba(84, 87, 214, 0.14);
+  --accent-border: rgba(124, 127, 235, 0.28);
+  --accent-glow: rgba(84, 87, 214, 0.3);
 
   /* ===== STATE LAYERS ===== */
-  --state-hover: rgba(255, 183, 77, 0.08);
-  --state-focus: rgba(255, 183, 77, 0.12);
-  --state-pressed: rgba(255, 183, 77, 0.16);
+  --state-hover: rgba(255, 255, 255, 0.05);
+  --state-active: rgba(255, 255, 255, 0.08);
+  --state-disabled-bg: rgba(255, 255, 255, 0.03);
+  --state-disabled-border: rgba(255, 255, 255, 0.05);
 
-  /* ===== MOTION (Butter Smooth Easing) ===== */
-  /* Smooth, natural easing curves */
-  --motion-standard: cubic-bezier(0.4, 0, 0.2, 1);
-  --motion-emphasized: cubic-bezier(0.2, 0, 0, 1);
-  --motion-emphasized-decelerate: cubic-bezier(0, 0, 0.2, 1);
-  --motion-emphasized-accelerate: cubic-bezier(0.4, 0, 1, 1);
+  /* ===== SEMANTIC (validation only — never decorative) ===== */
+  --danger: #e5686b;
+  --danger-subtle: rgba(229, 104, 107, 0.12);
+  --danger-border: rgba(229, 104, 107, 0.28);
 
-  /* Longer durations for smoother feel */
-  --motion-duration-short: 200ms;
-  --motion-duration-medium: 350ms;
-  --motion-duration-long: 500ms;
+  /* ===== ELEVATION (neutral, no coloured shadows) ===== */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.4);
+  --shadow-md:
+    0 6px 16px -4px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-lg:
+    0 16px 40px -12px rgba(0, 0, 0, 0.6), 0 4px 10px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 32px 72px -20px rgba(0, 0, 0, 0.72);
+  --shadow-accent: 0 4px 14px -4px var(--accent-glow);
 
-  /* Legacy aliases for component CSS */
-  --duration-short: 250ms;
-  --duration-medium: 400ms;
-  --duration-long: 600ms;
-  --easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
-  --easing-emphasized: cubic-bezier(0.2, 0, 0, 1);
+  /* ===== TYPOGRAPHY ===== */
+  --font-sans:
+    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui,
+    sans-serif;
+  --font-mono:
+    "SFMono-Regular", ui-monospace, "JetBrains Mono", Menlo, Consolas, monospace;
+
+  --fs-display: clamp(2.6rem, 1.15rem + 4.9vw, 4.4rem);
+  --fs-h2: clamp(1.95rem, 1.3rem + 2.3vw, 2.95rem);
+  --fs-h3: clamp(1.25rem, 1.14rem + 0.45vw, 1.45rem);
+  --fs-h4: clamp(1rem, 0.96rem + 0.22vw, 1.1rem);
+  --fs-lead: clamp(1.0625rem, 1rem + 0.38vw, 1.1875rem);
+  --fs-body: 1rem;
+  --fs-sm: 0.9375rem;
+  --fs-xs: 0.8125rem;
+  --fs-2xs: 0.75rem;
+  --fs-3xs: 0.6875rem;
+
+  --lh-tight: 1.05;
+  --lh-snug: 1.2;
+  --lh-normal: 1.5;
+  --lh-relaxed: 1.65;
+
+  --tracking-display: -0.035em;
+  --tracking-heading: -0.02em;
+  --tracking-label: 0.09em;
+  --tracking-eyebrow: 0.13em;
+
+  /* ===== RADII ===== */
+  --radius-xs: 6px;
+  --radius-sm: 8px; /* chips, tags, small pills   */
+  --radius-md: 10px; /* buttons, inputs, icon box  */
+  --radius-lg: 14px; /* nested / compact cards     */
+  --radius-xl: 18px; /* every top-level card       */
+  --radius-2xl: 24px; /* dialogs, portrait frame    */
+  --radius-pill: 999px; /* status badges only         */
+
+  /* ===== ICON SIZES ===== */
+  --icon-xs: 13px;
+  --icon-sm: 15px;
+  --icon-md: 17px;
+  --icon-lg: 20px;
+  --icon-box-sm: 36px;
+  --icon-box-md: 40px;
+  --icon-box-lg: 44px;
+
+  /* ===== CONTROL SIZES ===== */
+  --control-sm: 36px;
+  --control-md: 44px;
+  --control-lg: 52px;
+
+  /* ===== MOTION ===== */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 140ms;
+  --duration-base: 220ms;
+  --duration-slow: 380ms;
 
   /* ===== LAYOUT ===== */
-  --gutter: var(--space-4);
-  --margin-compact: var(--space-4);
-  --margin-medium: var(--space-6);
-  --margin-expanded: var(--space-6);
+  --container-max: 1180px;
+  --container-wide: 1260px;
+  --gutter: clamp(24px, 4vw, 48px);
+  --nav-height: 64px;
 }
 
-/* ===== CSS RESET & BASE ===== */
+/* ===== RESET ===== */
 *,
 *::before,
 *::after {
@@ -156,19 +195,23 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+  scroll-padding-top: calc(var(--nav-height) + 32px);
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
 
 body {
-  font: var(--body-large);
-  background: var(--background);
-  color: var(--on-background);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-relaxed);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  background: var(--bg);
+  color: var(--text-secondary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 #root {
@@ -208,310 +251,404 @@ a {
   text-decoration: none;
 }
 
-/* ===== RESPONSIVE CONTAINER ===== */
+ul,
+ol {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--text-primary);
+  font-weight: 600;
+  letter-spacing: var(--tracking-heading);
+  line-height: var(--lh-snug);
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+::selection {
+  background: var(--accent-subtle);
+  color: var(--text-primary);
+}
+
+/* ===== LAYOUT ===== */
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: var(--container-max);
   margin-inline: auto;
-  padding-inline: var(--margin-compact);
-}
-
-@media (min-width: 768px) {
-  .container {
-    padding-inline: var(--margin-medium);
-  }
-}
-
-@media (min-width: 1024px) {
-  .container {
-    padding-inline: var(--margin-expanded);
-  }
+  padding-inline: var(--gutter);
 }
 
 @media (min-width: 1440px) {
   .container {
-    max-width: 1280px;
-    padding-inline: var(--space-8);
+    max-width: var(--container-wide);
   }
 }
 
-/* ===== SECTION SPACING (8pt multiples) ===== */
 .section {
-  padding-block: var(--space-12);
+  position: relative;
+  padding-block: var(--section-py);
 }
 
-@media (min-width: 768px) {
-  .section {
-    padding-block: var(--space-13);
-  }
+/* Depth through tone, not dividers: alternating sections sit one
+   step above the canvas, with hairlines instead of hard rules. */
+.sectionRaised {
+  background: var(--surface-raised);
+  border-block: 1px solid var(--border-subtle);
 }
 
-@media (min-width: 1024px) {
-  .section {
-    padding-block: var(--space-14);
-  }
-}
-
-/* ===== SECTION HEADER HIERARCHY ===== */
+/* ===== SECTION HEADER =====
+   badge → --stack-badge-title → heading → --stack-title-desc → description
+   → --section-header-mb → content.
+   The whole block is one flex column so children carry no margins of their
+   own; every section gets byte-identical rhythm from this single rule. */
 .sectionHeader {
-  text-align: center;
-  margin-bottom: var(--space-12); /* 80px */
-}
-
-@media (min-width: 768px) {
-  .sectionHeader {
-    margin-bottom: var(--space-13); /* 96px */
-  }
-}
-
-/* Eyebrow - small label above title */
-.sectionEyebrow,
-.eyebrow {
-  font: var(--label-large);
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--primary);
-  margin-bottom: var(--space-4); /* 16px gap to title */
-  display: block;
-}
-
-/* Main section title - h2 */
-.sectionTitle {
-  font: var(--display-small); /* Larger: 2.25rem */
-  letter-spacing: -0.02em;
-  color: var(--on-surface);
-  margin-bottom: var(--space-5); /* 20px gap to subtitle */
-}
-
-@media (min-width: 768px) {
-  .sectionTitle {
-    font: var(--display-medium); /* 2.8125rem */
-  }
-}
-
-@media (min-width: 1024px) {
-  .sectionTitle {
-    font: var(--display-large); /* 3.5625rem on desktop */
-  }
-}
-
-/* Section subtitle - supporting text */
-.sectionSubtitle {
-  font: var(--title-large); /* Larger: 1.375rem */
-  color: var(--on-surface-variant);
-  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 680px;
   margin-inline: auto;
-  line-height: 1.5;
-}
-
-@media (min-width: 768px) {
-  .sectionSubtitle {
-    font-size: 1.25rem;
-  }
-}
-
-/* Wrapper for section headers with proper spacing */
-.textCenter {
+  margin-bottom: var(--section-header-mb);
   text-align: center;
-  margin-bottom: var(--space-11); /* 64px */
 }
 
-@media (min-width: 768px) {
-  .textCenter {
-    margin-bottom: var(--space-12); /* 80px */
-  }
+.sectionHeaderStart {
+  align-items: flex-start;
+  margin-inline: 0;
+  text-align: left;
+}
+
+.sectionTitle {
+  font-size: var(--fs-h2);
+  font-weight: 620;
+  letter-spacing: var(--tracking-display);
+  line-height: var(--lh-snug);
+  color: var(--text-primary);
+  margin-top: var(--stack-badge-title);
+}
+
+/* Title is optional in the markup — when there is no badge above it, the
+   heading must not inherit the badge offset. */
+.sectionTitle:first-child {
+  margin-top: 0;
+}
+
+.sectionSubtitle {
+  font-size: var(--fs-lead);
+  line-height: var(--lh-relaxed);
+  color: var(--text-tertiary);
+  max-width: 580px;
+  margin-top: var(--stack-title-desc);
+}
+
+.sectionSubtitle:first-child {
+  margin-top: 0;
+}
+
+/* ===== EYEBROW / BADGE ===== */
+.badge,
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  height: 26px;
+  padding-inline: var(--space-12);
+  border-radius: var(--radius-pill);
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  color: var(--text-tertiary);
+  font-size: var(--fs-3xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.badgeDot {
+  width: 5px;
+  height: 5px;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  flex-shrink: 0;
 }
 
 /* ===== TEXT UTILITIES ===== */
-.gradientText {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+/* Monochrome emphasis: a tonal step down inside a heading, never colour. */
+.headlineMuted {
+  color: var(--text-quaternary);
 }
 
-/* ===== MD3 BUTTON SYSTEM (48dp touch targets) ===== */
+.textMuted {
+  color: var(--text-tertiary);
+}
+
+/* Inline links are one of the sanctioned accent uses. */
+.link {
+  color: var(--accent-text);
+  text-decoration: underline;
+  text-decoration-color: var(--accent-border);
+  text-underline-offset: 3px;
+  transition: text-decoration-color var(--duration-base) var(--ease-out);
+}
+
+.link:hover {
+  text-decoration-color: var(--accent-text);
+}
+
+/* ===== BUTTONS ===== */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-2);
-  font: var(--label-large);
-  letter-spacing: 0.02em;
-  min-height: 48px;
-  min-width: 48px;
-  padding: 0 var(--space-6);
-  border-radius: var(--radius-full);
+  gap: var(--space-8);
+  min-height: var(--control-md);
+  padding-inline: var(--space-24);
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  font-size: var(--fs-sm);
+  font-weight: 550;
+  letter-spacing: -0.006em;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
   transition:
-    background var(--duration-medium) var(--easing-standard),
-    box-shadow var(--duration-medium) var(--easing-standard),
-    opacity var(--duration-medium) var(--easing-standard);
-  position: relative;
-  overflow: hidden;
-}
-
-.btn:hover {
-  opacity: 0.9;
-}
-
-.btn:focus-visible {
-  outline: 2px solid var(--primary);
-  outline-offset: 2px;
+    background-color var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
 }
 
 .btn:active {
-  opacity: 0.8;
+  transform: translateY(0.5px);
+}
+
+.btn svg {
+  flex-shrink: 0;
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+}
+
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  background: var(--state-disabled-bg);
+  border-color: var(--state-disabled-border);
+  color: var(--text-disabled);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.btnLg {
+  min-height: var(--control-lg);
+  padding-inline: var(--space-32);
+  font-size: var(--fs-body);
+}
+
+.btnLg svg {
+  width: var(--icon-md);
+  height: var(--icon-md);
+}
+
+.btnSm {
+  min-height: var(--control-sm);
+  padding-inline: var(--space-16);
+  font-size: var(--fs-xs);
+}
+
+.btnSm svg {
+  width: var(--icon-xs);
+  height: var(--icon-xs);
 }
 
 .btnPrimary {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%);
-  color: var(--on-primary);
-  box-shadow: var(--shadow);
+  background: var(--accent);
+  color: #fff;
+  box-shadow: var(--shadow-accent);
 }
 
 .btnPrimary:hover {
-  box-shadow: var(--shadow-md);
+  background: var(--accent-hover);
+}
+
+.btnPrimary:active {
+  background: var(--accent-active);
 }
 
 .btnSecondary {
-  background: transparent;
-  color: var(--on-surface);
-  border: 1px solid var(--outline);
+  background: var(--surface-card);
+  border-color: var(--border);
+  color: var(--text-primary);
 }
 
 .btnSecondary:hover {
-  background: var(--state-hover);
-  border-color: var(--on-surface-variant);
+  background: var(--surface-hover);
+  border-color: var(--border-strong);
 }
 
-/* ===== ICON BUTTON (48x48 touch target) ===== */
-.iconBtn {
+.btnSecondary:active {
+  background: var(--surface-active);
+}
+
+.btnGhost {
+  background: transparent;
+  color: var(--text-tertiary);
+}
+
+.btnGhost:hover {
+  background: var(--state-hover);
+  color: var(--text-primary);
+}
+
+.btnBlock {
+  width: 100%;
+}
+
+/* ===== ICON BUTTON ===== */
+.iconButton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-full);
-  background: var(--surface-container);
-  border: 1px solid var(--outline-variant);
-  color: var(--on-surface-variant);
+  width: var(--icon-box-lg);
+  height: var(--icon-box-lg);
+  border-radius: var(--radius-md);
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  color: var(--icon);
   transition:
-    background var(--motion-duration-short) var(--motion-standard),
-    color var(--motion-duration-short) var(--motion-standard),
-    transform var(--motion-duration-short) var(--motion-standard);
+    background-color var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out);
 }
 
-.iconBtn:hover {
-  background: var(--surface-container-high);
-  color: var(--on-surface);
-  transform: translateY(-2px);
+.iconButton svg {
+  width: var(--icon-md);
+  height: var(--icon-md);
 }
 
-.iconBtn:focus-visible {
-  outline: 2px solid var(--primary);
-  outline-offset: 2px;
+/* Interactive icons pick up the accent on hover — a sanctioned use. */
+.iconButton:hover {
+  background: var(--surface-hover);
+  border-color: var(--accent-border);
+  color: var(--accent-text);
 }
 
-/* ===== MD3 CHIPS ===== */
+/* ===== CHIP / TAG ===== */
 .chip {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-  height: 32px;
-  padding: 0 var(--space-4);
+  gap: var(--space-8);
+  height: 30px;
+  padding-inline: var(--space-12);
   border-radius: var(--radius-sm);
-  font: var(--label-large);
-  background: var(--surface-container);
-  border: 1px solid var(--outline-variant);
-  color: var(--on-surface-variant);
-  transition: background var(--motion-duration-short) var(--motion-standard);
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-tertiary);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  transition:
+    background-color var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out);
 }
 
 .chip:hover {
-  background: var(--surface-container-high);
+  background: var(--surface-hover);
+  border-color: var(--border);
+  color: var(--text-secondary);
 }
 
-.chipActive {
-  background: var(--primary-container);
-  border-color: transparent;
-  color: var(--on-primary-container);
-}
-
-/* ===== TAG/BADGE ===== */
+/* Sits on --surface-active so it stays legible on a card in both its
+   resting and hover state. */
 .tag {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-1);
   height: 24px;
-  padding: 0 var(--space-3);
-  border-radius: var(--radius-xs);
-  font: var(--label-small);
-  background: var(--surface-container-highest);
-  color: var(--on-surface-variant);
+  padding-inline: var(--space-12);
+  border-radius: var(--radius-sm);
+  background: var(--surface-active);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-quaternary);
+  font-size: var(--fs-3xs);
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
 }
 
-/* ===== MD3 CARDS ===== */
+/* ===== CARD ===== */
 .card {
-  background: var(--surface-container);
-  border: 1px solid var(--outline-variant);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
+  position: relative;
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: var(--card-padding);
+  box-shadow: var(--shadow-sm);
   transition:
-    box-shadow var(--motion-duration-medium) var(--motion-standard),
-    transform var(--motion-duration-medium) var(--motion-standard);
+    background-color var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
 }
 
-.card:hover {
+.cardHover:hover {
+  background: var(--surface-hover);
+  border-color: var(--border);
   box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
 }
 
-/* ===== FORM ELEMENTS (48dp touch targets) ===== */
+/* ===== FORM CONTROLS ===== */
 .input,
 .textarea {
   width: 100%;
-  min-height: 48px;
-  padding: var(--space-3) var(--space-4);
-  font: var(--body-large);
-  background: var(--surface-container-low);
-  border: 1px solid var(--outline-variant);
-  border-radius: var(--radius-sm);
-  color: var(--on-surface);
+  min-height: var(--control-md);
+  padding: var(--space-12) var(--space-16);
+  font-size: var(--fs-sm);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
   transition:
-    border-color var(--motion-duration-short) var(--motion-standard),
-    box-shadow var(--motion-duration-short) var(--motion-standard);
+    border-color var(--duration-base) var(--ease-out),
+    background-color var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
 }
 
 .input:hover,
 .textarea:hover {
-  border-color: var(--outline);
+  border-color: var(--border-strong);
 }
 
 .input:focus,
 .textarea:focus {
   outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 2px rgba(255, 183, 77, 0.2);
+  background: var(--surface-raised);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-subtle);
 }
 
 .input::placeholder,
 .textarea::placeholder {
-  color: var(--on-surface-variant);
+  color: var(--text-quaternary);
 }
 
 .textarea {
-  min-height: 120px;
+  min-height: 140px;
   resize: vertical;
-}
-
-.label {
-  display: block;
-  font: var(--label-large);
-  color: var(--on-surface-variant);
-  margin-bottom: var(--space-2);
+  line-height: var(--lh-normal);
 }
 
 /* ===== ACCESSIBILITY ===== */
+:focus-visible {
+  outline: 2px solid var(--accent-text);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}
+
 .srOnly {
   position: absolute;
   width: 1px;
@@ -525,33 +662,23 @@ a {
 }
 
 .skip-link {
-  position: absolute;
-  left: -9999px;
-  top: var(--space-2);
-  z-index: 999;
-  padding: var(--space-3) var(--space-4);
-  background: var(--surface-container-high);
-  color: var(--on-surface);
-  font: var(--label-large);
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--outline);
+  position: fixed;
+  left: var(--space-16);
+  top: var(--space-16);
+  z-index: 200;
+  padding: var(--space-12) var(--space-24);
+  background: var(--surface-overlay);
+  color: var(--text-primary);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-200%);
+  transition: transform var(--duration-base) var(--ease-out);
 }
 
 .skip-link:focus {
-  left: var(--space-4);
-}
-
-/* ===== SCROLL REVEAL - Butter Smooth ===== */
-.revealOnScroll {
-  opacity: 0;
-  transform: translateY(20px);
-  transition:
-    opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.revealOnScroll.isVisible {
-  opacity: 1;
   transform: translateY(0);
 }
 
@@ -569,21 +696,4 @@ a {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-
-  .revealOnScroll {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-/* ===== FOCUS VISIBLE GLOBAL ===== */
-:focus-visible {
-  outline: 2px solid var(--primary);
-  outline-offset: 2px;
-}
-
-/* ===== SELECTION ===== */
-::selection {
-  background: rgba(255, 183, 77, 0.3);
-  color: var(--on-surface);
 }

@@ -1,9 +1,14 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect } from "react";
 
 import styles from "./App.module.css";
 import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import ScrollProgress from "./components/ScrollProgress";
+import { useScrollDepth } from "./hooks/useAnalytics";
+import { initEngagementTracking, trackPageView } from "./lib/analytics";
 
-const Hero = lazy(() => import("./components/Hero"));
+/* Hero stays in the main bundle — it is the LCP element. Everything below the
+   fold is split out so first paint carries as little JS as possible. */
 const About = lazy(() => import("./components/About"));
 const Services = lazy(() => import("./components/Services"));
 const Projects = lazy(() => import("./components/Projects"));
@@ -11,27 +16,43 @@ const Experience = lazy(() => import("./components/Experience"));
 const Contact = lazy(() => import("./components/Contact"));
 const Footer = lazy(() => import("./components/Footer"));
 
+/* Reserves vertical space while a section loads so nothing shifts. */
+function SectionFallback() {
+  return (
+    <div className={styles.sectionFallback} role="status" aria-live="polite">
+      <span className="srOnly">Loading section…</span>
+    </div>
+  );
+}
+
 export default function App() {
+  useScrollDepth();
+
+  useEffect(() => {
+    trackPageView();
+    return initEngagementTracking();
+  }, []);
+
   return (
     <div className={styles.app}>
-      <div className={styles.backgroundGlow} aria-hidden="true" />
-      <div className={styles.noise} aria-hidden="true" />
+      <div className={styles.ambient} aria-hidden="true" />
+      <div className={styles.grid} aria-hidden="true" />
+
+      <ScrollProgress />
       <Navbar />
-      <Suspense
-        fallback={
-          <div className={styles.loader} role="status" aria-live="polite">
-            Loading experience…
-          </div>
-        }
-      >
-        <main id="main-content" className={styles.main}>
-          <Hero />
+
+      <main id="main-content" className={styles.main}>
+        <Hero />
+        <Suspense fallback={<SectionFallback />}>
           <About />
           <Services />
           <Projects />
           <Experience />
           <Contact />
-        </main>
+        </Suspense>
+      </main>
+
+      <Suspense fallback={null}>
         <Footer />
       </Suspense>
     </div>

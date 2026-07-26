@@ -1,0 +1,82 @@
+.frame {
+  position: relative;
+  width: min(100%, var(--portrait-size, 480px));
+  aspect-ratio: 1 / 1;
+  margin-inline: auto;
+  isolation: isolate;
+}
+
+/* Neutral bloom with a single low-opacity accent note */
+.aura {
+  position: absolute;
+  inset: -12%;
+  z-index: -1;
+  border-radius: var(--radius-pill);
+  background:
+    radial-gradient(
+      circle at 34% 28%,
+      rgba(84, 87, 214, 0.16),
+      transparent 62%
+    ),
+    radial-gradient(
+      circle at 70% 74%,
+      rgba(255, 255, 255, 0.045),
+      transparent 60%
+    );
+  filter: blur(56px);
+}
+
+.surface {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface-card);
+  box-shadow: var(--shadow-xl);
+}
+
+.illustration,
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Glass sheen along the top-left edge */
+.sheen {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.015) 30%,
+    transparent 56%
+  );
+}
+
+.orbitSlow {
+  animation: spin 44s linear infinite;
+}
+
+.orbitFast {
+  animation: spin 26s linear infinite reverse;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbitSlow,
+  .orbitFast {
+    animation: none;
+  }
+}
