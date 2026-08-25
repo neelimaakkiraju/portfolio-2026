@@ -17,22 +17,17 @@
   gap: var(--space-32);
 }
 
-.availabilityCard {
+.availabilityBlock {
   display: flex;
   flex-direction: column;
-  gap: var(--space-12);
-  padding: var(--card-padding);
-  border-radius: var(--radius-xl);
-  background: var(--surface-card);
-  border: 1px solid var(--border-subtle);
-  box-shadow: var(--elevation-1);
+  gap: var(--space-10);
 }
 
 .availability {
   display: inline-flex;
   align-items: center;
   gap: var(--space-12);
-  font-size: var(--fs-h4);
+  font-size: var(--fs-h3);
   font-weight: 700;
   color: var(--text-primary);
   margin: 0;
@@ -101,29 +96,34 @@
   margin-bottom: var(--space-16);
 }
 
+/* One grouped container with internal dividers, not three separately
+   elevated cards — same information, fewer boxes. */
 .details {
-  display: grid;
-  gap: var(--list-gap);
+  display: flex;
+  flex-direction: column;
   font-style: normal;
+  border-radius: var(--radius-lg);
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--elevation-1);
+  overflow: hidden;
 }
 
 .detailRow {
   display: flex;
   align-items: center;
   gap: var(--space-16);
-  padding: var(--space-14);
+  padding: var(--space-14) var(--card-padding-sm);
   margin: 0;
-  border-radius: var(--radius-lg);
-  background: var(--surface-card);
-  border: 1px solid var(--border-subtle);
-  box-shadow: var(--elevation-1);
-  transition: background-color var(--duration-base) var(--ease-out), transform var(--duration-fast) var(--ease-out), border-color var(--duration-base) var(--ease-out);
+  transition: background-color var(--duration-base) var(--ease-out);
+}
+
+.detailRow + .detailRow {
+  border-top: 1px solid var(--border-subtle);
 }
 
 a.detailRow:hover {
   background: var(--primary-container);
-  border-color: var(--accent-border);
-  transform: translateY(-2px);
 }
 
 .detailIcon {
@@ -209,7 +209,7 @@ a.detailRow:hover .detailIcon {
 .form {
   display: flex;
   flex-direction: column;
-  gap: var(--field-gap);
+  gap: var(--space-20);
 }
 
 .field {
@@ -218,22 +218,10 @@ a.detailRow:hover .detailIcon {
   gap: var(--space-8);
 }
 
-.labelRow {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: var(--space-12);
-}
-
 .label {
   font-size: var(--fs-xs);
   font-weight: 650;
   color: var(--text-primary);
-}
-
-.hint {
-  font-size: var(--fs-3xs);
-  color: var(--text-tertiary);
 }
 
 .controlWrap {

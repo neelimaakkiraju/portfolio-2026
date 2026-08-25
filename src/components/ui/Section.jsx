@@ -11,7 +11,6 @@ export default function Section({
   badge,
   title,
   description,
-  align = "start",
   tone = "base",
   children,
   className = "",

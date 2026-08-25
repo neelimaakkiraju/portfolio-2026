@@ -46,13 +46,21 @@ export default function Portrait({
   );
 }
 
+/**
+ * Abstract composition standing in for a photo: three layered rounded-rect
+ * panels — a "content" card and a mini bar-chart card peeking out behind a
+ * front identity panel carrying the monogram. Reads as a small UI/engineering
+ * system rather than a generic avatar, and stays legible fanned out at both
+ * the hero's large size and About's small one since it's built from a few
+ * bold shapes rather than fine detail.
+ */
 function AbstractPortrait({ monogram, label }) {
   return (
     <svg
       className={styles.illustration}
       viewBox="0 0 480 480"
       role="img"
-      aria-label={label || "Abstract portrait illustration"}
+      aria-label={label || "Abstract engineering illustration"}
       preserveAspectRatio="xMidYMid slice"
     >
       <defs>
@@ -62,16 +70,15 @@ function AbstractPortrait({ monogram, label }) {
           <stop offset="100%" stopColor="#0a0b0c" />
         </linearGradient>
 
-        <radialGradient id="pt-orb" cx="36%" cy="32%" r="74%">
-          <stop offset="0%" stopColor="#3a3d42" />
-          <stop offset="46%" stopColor="#212429" />
-          <stop offset="100%" stopColor="#141518" />
-        </radialGradient>
+        <linearGradient id="pt-panel-front" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#34373d" />
+          <stop offset="55%" stopColor="#202329" />
+          <stop offset="100%" stopColor="#16181c" />
+        </linearGradient>
 
         <linearGradient id="pt-ring" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#ffffff" stopOpacity="0.34" />
-          <stop offset="55%" stopColor="#ffffff" stopOpacity="0.1" />
-          <stop offset="100%" stopColor="#ffffff" stopOpacity="0.03" />
+          <stop offset="0%" stopColor="#ffffff" stopOpacity="0.3" />
+          <stop offset="100%" stopColor="#ffffff" stopOpacity="0.02" />
         </linearGradient>
 
         <pattern id="pt-grid" width="40" height="40" patternUnits="userSpaceOnUse">
@@ -88,72 +95,63 @@ function AbstractPortrait({ monogram, label }) {
       <rect width="480" height="480" fill="url(#pt-bg)" />
       <rect width="480" height="480" fill="url(#pt-grid)" />
 
-      {/* Core form — graphite, with a single accent rim as the only colour */}
-      <circle cx="240" cy="228" r="132" fill="url(#pt-orb)" />
-      <circle
-        cx="240"
-        cy="228"
-        r="132"
+      {/* Back panel — content/text card peeking from the top right */}
+      <g transform="rotate(8 336 128)">
+        <rect x="270" y="80" width="132" height="96" rx="20" fill="#1c1f24" stroke="#ffffff" strokeOpacity="0.07" />
+        <rect x="292" y="106" width="72" height="6" rx="3" fill="#ffffff" fillOpacity="0.16" />
+        <rect x="292" y="124" width="88" height="6" rx="3" fill="#ffffff" fillOpacity="0.11" />
+        <rect x="292" y="142" width="52" height="6" rx="3" fill="#ffffff" fillOpacity="0.11" />
+      </g>
+
+      {/* Back panel — mini bar-chart card peeking from the bottom left */}
+      <g transform="rotate(-7 161 318)">
+        <rect x="86" y="264" width="150" height="108" rx="22" fill="#191c21" stroke="#ffffff" strokeOpacity="0.07" />
+        <rect x="112" y="330" width="16" height="24" rx="3" fill="#5457d6" fillOpacity="0.55" />
+        <rect x="138" y="316" width="16" height="38" rx="3" fill="#5457d6" fillOpacity="0.75" />
+        <rect x="164" y="304" width="16" height="50" rx="3" fill="#5457d6" fillOpacity="0.95" />
+        <rect x="190" y="322" width="16" height="32" rx="3" fill="#5457d6" fillOpacity="0.65" />
+      </g>
+
+      {/* Front panel — primary mark, always upright and on top */}
+      <rect x="140" y="140" width="200" height="200" rx="40" fill="url(#pt-panel-front)" stroke="#ffffff" strokeOpacity="0.1" />
+
+      {/* Alignment tick — small engineering-tool accent at the panel corner */}
+      <path
+        d="M152 176V152H176"
         fill="none"
-        stroke="#ffffff"
-        strokeOpacity="0.07"
+        stroke="#5457d6"
+        strokeOpacity="0.6"
+        strokeWidth="2.5"
+        strokeLinecap="round"
       />
 
-      {/* Orbital rings */}
-      <g className={styles.orbitSlow} style={{ transformOrigin: "240px 228px" }}>
-        <ellipse
+      {/* Guide ring — the one retained motion accent, off under reduced-motion */}
+      <g className={styles.orbitSlow} style={{ transformOrigin: "240px 240px" }}>
+        <circle
           cx="240"
-          cy="228"
-          rx="186"
-          ry="78"
+          cy="240"
+          r="196"
           fill="none"
           stroke="url(#pt-ring)"
           strokeWidth="1.25"
-          transform="rotate(-24 240 228)"
+          strokeDasharray="2 10"
         />
-        <circle cx="60" cy="284" r="4" fill="#5457d6" />
-      </g>
-      <g className={styles.orbitFast} style={{ transformOrigin: "240px 228px" }}>
-        <ellipse
-          cx="240"
-          cy="228"
-          rx="170"
-          ry="170"
-          fill="none"
-          stroke="#ffffff"
-          strokeOpacity="0.06"
-          strokeWidth="1"
-          strokeDasharray="3 9"
-        />
-        <circle cx="410" cy="228" r="3" fill="#ffffff" fillOpacity="0.5" />
+        <circle cx="240" cy="44" r="4" fill="#5457d6" />
       </g>
 
       {/* Monogram */}
       <text
         x="240"
-        y="228"
+        y="248"
         textAnchor="middle"
         dominantBaseline="central"
         fontFamily="Inter, system-ui, sans-serif"
-        fontSize="104"
+        fontSize="92"
         fontWeight="700"
-        letterSpacing="-4"
+        letterSpacing="-3"
         fill="#f4f5f6"
       >
         {monogram}
-      </text>
-
-      {/* Signature baseline */}
-      <text
-        x="240"
-        y="400"
-        textAnchor="middle"
-        fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace"
-        fontSize="14"
-        letterSpacing="2.5"
-        fill="#9ba0a6"
-      >
-        build.ship.scale
       </text>
     </svg>
   );

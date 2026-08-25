@@ -1,6 +1,6 @@
 import React, { memo, useCallback, useMemo, useState } from "react";
 import { AnimatePresence, motion as Motion, useReducedMotion } from "framer-motion";
-import { FiExternalLink, FiFileText, FiGithub } from "react-icons/fi";
+import { FiArrowUpRight, FiExternalLink, FiGithub } from "react-icons/fi";
 
 import Section from "./ui/Section";
 import { EASE } from "./ui/motionTokens";
@@ -13,15 +13,22 @@ import styles from "./Projects.module.css";
 const projects = getProjects();
 const caseStudyLabels = projects.caseStudyLabels;
 
-const ProjectCard = memo(function ProjectCard({ project, index, onOpenCaseStudy }) {
+const ProjectCard = memo(function ProjectCard({
+  project,
+  index,
+  variant = "compact",
+  onOpenCaseStudy,
+}) {
   const prefersReducedMotion = useReducedMotion();
   const [hoverTracked, setHoverTracked] = useState(false);
+  const isFeatured = variant === "featured";
 
   const impressionRef = useImpression(() =>
     trackProject("project_view", project.name, {
       component: "project_card",
       position: index + 1,
       category_name: project.category,
+      variant,
     })
   );
 
@@ -38,7 +45,9 @@ const ProjectCard = memo(function ProjectCard({ project, index, onOpenCaseStudy 
     <Motion.article
       ref={impressionRef}
       layout={!prefersReducedMotion}
-      className={`card ${styles.card}`}
+      className={`card ${styles.card} ${isFeatured ? styles.cardFeatured : styles.cardCompact} ${
+        isFeatured && index % 2 === 1 ? styles.cardReverse : ""
+      }`}
       onMouseEnter={handleHover}
       onFocus={handleHover}
       initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
@@ -62,7 +71,6 @@ const ProjectCard = memo(function ProjectCard({ project, index, onOpenCaseStudy 
         <span className={styles.year} aria-hidden="true">
           {project.year}
         </span>
-        {project.featured && <span className={styles.featured}>Featured</span>}
       </div>
 
       <div className={styles.body}>
@@ -78,14 +86,16 @@ const ProjectCard = memo(function ProjectCard({ project, index, onOpenCaseStudy 
           {project.description}
         </p>
 
-        <dl className={styles.metrics}>
-          {project.metrics.map((metric) => (
-            <div key={metric.label} className={styles.metric}>
-              <dt className={styles.metricValue}>{metric.value}</dt>
-              <dd className={styles.metricLabel}>{metric.label}</dd>
-            </div>
-          ))}
-        </dl>
+        {isFeatured && project.metrics.length > 0 && (
+          <dl className={styles.metrics}>
+            {project.metrics.map((metric) => (
+              <div key={metric.label} className={styles.metric}>
+                <dt className={styles.metricValue}>{metric.value}</dt>
+                <dd className={styles.metricLabel}>{metric.label}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
 
         <ul className={styles.tags}>
           {project.tags.map((tag) => (
@@ -100,7 +110,7 @@ const ProjectCard = memo(function ProjectCard({ project, index, onOpenCaseStudy 
             href={project.live}
             target="_blank"
             rel="noopener noreferrer"
-            className={`btn btnPrimary btnSm ${styles.actionPrimary}`}
+            className="btn btnPrimary btnSm"
             itemProp="url"
             aria-label={`Open ${project.name} live demo`}
             onClick={() =>
@@ -119,7 +129,7 @@ const ProjectCard = memo(function ProjectCard({ project, index, onOpenCaseStudy 
             href={project.repo}
             target="_blank"
             rel="noopener noreferrer"
-            className={`btn btnSecondary btnSm ${styles.actionSecondary}`}
+            className="btn btnSecondary btnSm"
             aria-label={`View ${project.name} source code on GitHub`}
             onClick={() =>
               trackProject("github_click", project.name, {
@@ -135,12 +145,12 @@ const ProjectCard = memo(function ProjectCard({ project, index, onOpenCaseStudy 
 
           <button
             type="button"
-            className={`btn btnSecondary btnSm ${styles.actionSecondary}`}
+            className={styles.caseStudyLink}
             aria-label={`Read ${project.name} case study`}
             onClick={() => onOpenCaseStudy(project, index)}
           >
-            <FiFileText aria-hidden="true" />
-            Case Study
+            Case study
+            <FiArrowUpRight aria-hidden="true" />
           </button>
         </div>
       </div>
@@ -160,6 +170,12 @@ export default function Projects() {
         : projects.items.filter((p) => p.category === activeCategory),
     [activeCategory]
   );
+
+  /* Editorial split: featured projects get the large treatment, the rest
+     stay in a compact grid. Both are derived slices of the same filtered
+     list, so category filtering keeps working across both tiers for free. */
+  const featuredProjects = useMemo(() => filtered.filter((p) => p.featured), [filtered]);
+  const secondaryProjects = useMemo(() => filtered.filter((p) => !p.featured), [filtered]);
 
   const handleCategorySelect = useCallback((category) => {
     setActiveCategory(category);
@@ -217,18 +233,42 @@ export default function Projects() {
         })}
       </div>
 
-      <Motion.div layout className={styles.grid}>
-        <AnimatePresence mode="popLayout">
-          {filtered.map((project, index) => (
-            <ProjectCard
-              key={project.name}
-              project={project}
-              index={index}
-              onOpenCaseStudy={handleOpenCaseStudy}
-            />
-          ))}
-        </AnimatePresence>
-      </Motion.div>
+      {featuredProjects.length > 0 && (
+        <Motion.div layout className={styles.featuredList}>
+          <AnimatePresence mode="popLayout">
+            {featuredProjects.map((project) => (
+              <ProjectCard
+                key={project.name}
+                project={project}
+                index={filtered.indexOf(project)}
+                variant="featured"
+                onOpenCaseStudy={handleOpenCaseStudy}
+              />
+            ))}
+          </AnimatePresence>
+        </Motion.div>
+      )}
+
+      {secondaryProjects.length > 0 && (
+        <div className={styles.secondaryGroup}>
+          {featuredProjects.length > 0 && (
+            <h3 className={styles.groupLabel}>More Projects</h3>
+          )}
+          <Motion.div layout className={styles.grid}>
+            <AnimatePresence mode="popLayout">
+              {secondaryProjects.map((project) => (
+                <ProjectCard
+                  key={project.name}
+                  project={project}
+                  index={filtered.indexOf(project)}
+                  variant="compact"
+                  onOpenCaseStudy={handleOpenCaseStudy}
+                />
+              ))}
+            </AnimatePresence>
+          </Motion.div>
+        </div>
+      )}
 
       {activeProject && (
         <CaseStudyModal

@@ -88,6 +88,15 @@
   }
 }
 
+/* ===== IDENTITY (name kicker) ===== */
+.identity {
+  font-size: var(--fs-sm);
+  font-weight: 650;
+  letter-spacing: 0.005em;
+  color: var(--text-tertiary);
+  margin: 0;
+}
+
 .headline {
   font-size: var(--fs-display);
   font-weight: 750;
@@ -97,33 +106,30 @@
   margin: 0;
 }
 
-/* ===== TYPEWRITER (fixed line box) ===== */
-.role {
+/* ===== TYPEWRITER (fixed line box, no chip — flows as typography) ===== */
+.specialization {
   display: block;
   font-family: var(--font-mono);
-  font-size: var(--fs-sm);
-  font-weight: 500;
-  letter-spacing: 0.01em;
+  font-size: var(--fs-h4);
+  font-weight: 600;
+  letter-spacing: -0.005em;
   color: var(--accent-text);
-  padding: var(--space-8) var(--space-16);
-  border-radius: var(--radius-md);
-  background: var(--surface-card);
-  border: 1px solid var(--border-subtle);
+  margin: 0;
   width: fit-content;
 }
 
-.roleInner {
+.specializationInner {
   position: relative;
   display: block;
 }
 
-.roleReserve {
+.specializationReserve {
   visibility: hidden;
   display: block;
   white-space: nowrap;
 }
 
-.roleText {
+.specializationText {
   position: absolute;
   inset: 0;
   display: flex;
@@ -134,8 +140,8 @@
 .caret {
   display: inline-block;
   width: 2px;
-  height: 1.1em;
-  margin-left: 0.2em;
+  height: 1em;
+  margin-left: 0.15em;
   background: var(--accent);
   animation: blink 1.05s steps(2, start) infinite;
 }
@@ -196,6 +202,7 @@
 .techChip {
   cursor: pointer;
   border-radius: var(--radius-pill);
+  box-shadow: none;
 }
 
 .techChip:hover {
@@ -230,16 +237,20 @@
   gap: var(--space-24);
 }
 
+/* Integrated proof strip — numbers are the focal point, dividers replace
+   four separately-elevated cards so this reads as one unit, not a mini
+   dashboard. */
 .stats {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--space-16);
+  gap: var(--space-20) var(--space-16);
   margin: 0;
 }
 
 @media (min-width: 720px) {
   .stats {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0;
   }
 }
 
@@ -247,19 +258,23 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-6);
-  position: relative;
-  padding: var(--space-16) var(--space-20);
-  background: var(--surface-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--elevation-1);
-  transition: transform var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out);
 }
 
-.stat:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--elevation-2);
-  border-color: var(--accent-border);
+.stat:nth-child(2n) {
+  padding-inline-start: var(--space-20);
+  border-left: 1px solid var(--border-subtle);
+}
+
+@media (min-width: 720px) {
+  .stat {
+    padding-inline-start: 0;
+    border-left: none;
+  }
+
+  .stat:not(:first-child) {
+    padding-inline-start: var(--space-24);
+    border-left: 1px solid var(--border-subtle);
+  }
 }
 
 .statValue {

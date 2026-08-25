@@ -8,11 +8,16 @@
 
   /* ===== SPACING SCALE ===== */
   --space-4: 4px;
+  --space-6: 6px;
   --space-8: 8px;
+  --space-10: 10px;
   --space-12: 12px;
+  --space-14: 14px;
   --space-16: 16px;
+  --space-18: 18px;
   --space-20: 20px;
   --space-24: 24px;
+  --space-28: 28px;
   --space-32: 32px;
   --space-40: 40px;
   --space-48: 48px;
@@ -130,13 +135,13 @@
   --fs-display: clamp(2.4rem, 1.2rem + 4.5vw, 4.2rem);
   --fs-h2: clamp(1.8rem, 1.3rem + 2vw, 2.8rem);
   --fs-h3: clamp(1.25rem, 1.15rem + 0.4vw, 1.5rem);
-  --fs-h4: clamp(1rem, 0.95rem + 0.2vw, 1.15rem);
+  --fs-h4: clamp(1.125rem, 1.05rem + 0.3vw, 1.25rem);
   --fs-lead: clamp(1.05rem, 0.98rem + 0.3vw, 1.2rem);
   --fs-body: 1rem;
   --fs-sm: 0.9375rem;
-  --fs-xs: 0.8125rem;
-  --fs-2xs: 0.75rem;
-  --fs-3xs: 0.6875rem;
+  --fs-xs: 0.875rem;
+  --fs-2xs: 0.8125rem;
+  --fs-3xs: 0.75rem;
 
   --lh-tight: 1.1;
   --lh-snug: 1.25;
@@ -346,25 +351,22 @@ p {
   margin-top: 0;
 }
 
-/* ===== EYEBROW / BADGE ===== */
+/* ===== EYEBROW / BADGE =====
+   Plain kicker text, not a filled pill — pill shape is reserved for
+   interactive/state elements (buttons, filters, tags). A label that repeats
+   at the top of every section shouldn't also repeat a bordered capsule. */
 .badge,
 .eyebrow {
   display: inline-flex;
   align-items: center;
   gap: var(--space-8);
-  height: 28px;
-  padding-inline: var(--space-14);
-  border-radius: var(--radius-pill);
-  background: var(--primary-container);
-  border: 1px solid var(--accent-border);
   color: var(--accent-text);
-  font-size: var(--fs-3xs);
-  font-weight: 650;
+  font-size: var(--fs-2xs);
+  font-weight: 700;
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
   line-height: 1;
   white-space: nowrap;
-  box-shadow: var(--elevation-1);
 }
 
 .badgeDot {

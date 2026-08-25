@@ -39,7 +39,7 @@ function Experience() {
               <div className={`card cardHover ${styles.entryCard}`}>
                 <header className={styles.entryHeader}>
                   <div>
-                    <h4 className={styles.role}>{role.role}</h4>
+                    <h3 className={styles.role}>{role.role}</h3>
                     <p className={styles.company}>{role.company}</p>
                   </div>
                   <p className={styles.period}>

@@ -4,16 +4,9 @@
   gap: var(--space-32);
 }
 
-/* ===== OVERVIEW CARD ===== */
-.heroCard {
-  padding: var(--card-padding);
-  background: var(--surface-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--elevation-1);
-}
-
-.heroContent {
+/* ===== BIO ===== (plain content, not a card — it's the section's lead
+   statement, not a grouped item alongside others) */
+.bio {
   display: flex;
   flex-direction: column;
   gap: var(--space-24);
@@ -21,7 +14,7 @@
 }
 
 @media (min-width: 768px) {
-  .heroContent {
+  .bio {
     flex-direction: row;
     align-items: center;
     gap: var(--space-32);
@@ -54,21 +47,24 @@
 .metaRow {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-10);
+  gap: var(--space-20);
   margin-top: var(--space-4);
 }
 
-.metaChip {
+.metaItem {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-6);
-  padding: var(--space-6) var(--space-12);
-  border-radius: var(--radius-pill);
-  background: var(--surface-raised);
-  border: 1px solid var(--border-subtle);
-  font-size: var(--fs-xs);
+  gap: var(--space-8);
+  font-size: var(--fs-sm);
   font-weight: 550;
   color: var(--text-tertiary);
+}
+
+.metaItem svg {
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+  color: var(--accent-text);
+  flex-shrink: 0;
 }
 
 /* ===== PILLARS GRID ===== */
@@ -128,16 +124,15 @@
   margin: 0;
 }
 
-/* ===== SKILLS SECTION ===== */
+/* ===== SKILLS SECTION =====
+   Reference material, not a primary statement — a hairline rule separates
+   it instead of matching the pillars' full card treatment. */
 .skillsSection {
   display: flex;
   flex-direction: column;
   gap: var(--space-20);
-  padding: var(--card-padding);
-  background: var(--surface-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--elevation-1);
+  padding-top: var(--space-32);
+  border-top: 1px solid var(--border-subtle);
 }
 
 .skillsHeader {

@@ -128,12 +128,9 @@ export default function Contact() {
 
     return (
       <div className={styles.field}>
-        <div className={styles.labelRow}>
-          <label className={styles.label} htmlFor={field}>
-            {config.label}
-          </label>
-          <span className={styles.hint}>{config.hint}</span>
-        </div>
+        <label className={styles.label} htmlFor={field}>
+          {config.label}
+        </label>
 
         <div className={styles.controlWrap}>
           <Tag
@@ -191,7 +188,7 @@ export default function Contact() {
       <div className={styles.grid}>
         {/* ── Info panel ───────────────────────────────────── */}
         <Reveal className={styles.info}>
-          <div className={`card ${styles.availabilityCard}`}>
+          <div className={styles.availabilityBlock}>
             <p className={styles.availability}>
               <span className={styles.availabilityDot} aria-hidden="true" />
               {personal.availabilityStatus}
@@ -200,7 +197,7 @@ export default function Contact() {
               <FiClock aria-hidden="true" />
               {personal.responseTime}
             </p>
-            <p className={styles.availabilityNote}>{contact.availability}</p>
+            <p className={styles.availabilityNote}>{personal.availability}</p>
           </div>
 
           <div>
@@ -278,7 +275,7 @@ export default function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="iconButton"
-                    aria-label={item.ariaLabel}
+                    aria-label={`${item.name} (opens in a new tab)`}
                     onClick={() =>
                       trackOutbound({
                         url: item.url,
@@ -299,8 +296,8 @@ export default function Contact() {
         {/* ── Form ─────────────────────────────────────────── */}
         <Reveal delay={0.08} className={`card ${styles.formCard}`}>
           <header className={styles.formHeader}>
-            <h3 className={styles.formTitle}>{contact.formTitle}</h3>
-            <p className={styles.formSubtitle}>{contact.formSubtitle}</p>
+            <h3 className={styles.formTitle}>{contact.form.title}</h3>
+            <p className={styles.formSubtitle}>{contact.form.subtitle}</p>
           </header>
 
           <form

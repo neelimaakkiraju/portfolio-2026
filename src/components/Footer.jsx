@@ -80,7 +80,7 @@ function Footer() {
           </div>
 
           <nav aria-label="Footer navigation">
-            <h2 className={styles.blockTitle}>{footer.linksTitle}</h2>
+            <h2 className={styles.blockTitle}>{footer.quickLinksTitle}</h2>
             <ul className={styles.links}>
               {nav.links.map((link) => (
                 <li key={link.href}>
@@ -132,7 +132,7 @@ function Footer() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className={`iconButton ${styles.socialLink}`}
-                      aria-label={item.ariaLabel}
+                      aria-label={`${item.name} (opens in a new tab)`}
                       onClick={() =>
                         trackOutbound({
                           url: item.url,

@@ -15,7 +15,7 @@ import {
   SiVercel,
   SiVite,
 } from "react-icons/si";
-import { FiCode, FiSmartphone, FiZap } from "react-icons/fi";
+import { FiClock, FiCode, FiMapPin, FiSmartphone, FiZap } from "react-icons/fi";
 
 import Section from "./ui/Section";
 import Reveal, { RevealItem, Stagger } from "./ui/Reveal";
@@ -74,25 +74,32 @@ function About() {
       analyticsName="about"
     >
       <div className={styles.container}>
-        {/* ── Top Overview Card ──────────────────────────────── */}
-        <Reveal className={`card ${styles.heroCard}`}>
-          <div className={styles.heroContent}>
-            <div className={styles.portraitWrap}>
-              <Portrait
-                src={personal.avatarUrl || undefined}
-                alt={`${personal.name}, ${personal.role}`}
-                monogram={personal.monogram}
-                size={120}
-              />
-            </div>
-            <div className={styles.bioText}>
-              <h3 className={styles.bioTitle}>Passionate about high-impact frontend engineering</h3>
-              <p className={styles.bioParagraph}>{about.bio}</p>
-              <div className={styles.metaRow}>
-                <span className={styles.metaChip}>📍 {personal.location}</span>
-                <span className={styles.metaChip}>🕒 {personal.timezone}</span>
-                <span className={styles.metaChip}>🚀 {personal.tagline}</span>
-              </div>
+        {/* ── Bio ─────────────────────────────────────────────── */}
+        <Reveal className={styles.bio}>
+          <div className={styles.portraitWrap}>
+            <Portrait
+              src={personal.avatarUrl || undefined}
+              alt={`${personal.name}, ${personal.role}`}
+              monogram={personal.monogram}
+              size={120}
+            />
+          </div>
+          <div className={styles.bioText}>
+            <h3 className={styles.bioTitle}>Passionate about high-impact frontend engineering</h3>
+            <p className={styles.bioParagraph}>{about.bio}</p>
+            <div className={styles.metaRow}>
+              <span className={styles.metaItem}>
+                <FiMapPin aria-hidden="true" />
+                {personal.location}
+              </span>
+              <span className={styles.metaItem}>
+                <FiClock aria-hidden="true" />
+                {personal.timezone}
+              </span>
+              <span className={styles.metaItem}>
+                <FiZap aria-hidden="true" />
+                {personal.tagline}
+              </span>
             </div>
           </div>
         </Reveal>

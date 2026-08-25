@@ -80,30 +80,33 @@ export default function Hero() {
               {hero.status}
             </Motion.p>
 
-            <Motion.h1 id="hero-title" className={styles.headline} {...fadeUp(0.06)}>
-              {hero.headline}{" "}
-              <span className="headlineMuted">{hero.headlineHighlight}</span>
+            <Motion.p className={styles.identity} {...fadeUp(0.05)}>
+              {personal.name}
+            </Motion.p>
+
+            <Motion.h1 id="hero-title" className={styles.headline} {...fadeUp(0.1)}>
+              {hero.headline}
             </Motion.h1>
 
             {/* The animated text is decorative — a live region that updates on
                 every keystroke is unusable with a screen reader, so the roles
                 are exposed once as static text instead. */}
-            <Motion.p className={styles.role} {...fadeUp(0.12)}>
+            <Motion.p className={styles.specialization} {...fadeUp(0.16)}>
               <span className="srOnly">{phrases.join(" · ")}</span>
-              <span className={styles.roleInner} aria-hidden="true">
-                <span className={styles.roleReserve}>{longestPhrase}</span>
-                <span className={styles.roleText}>
+              <span className={styles.specializationInner} aria-hidden="true">
+                <span className={styles.specializationReserve}>{longestPhrase}</span>
+                <span className={styles.specializationText}>
                   {text}
                   {!prefersReducedMotion && <span className={styles.caret} />}
                 </span>
               </span>
             </Motion.p>
 
-            <Motion.p className={styles.subtitle} {...fadeUp(0.18)}>
+            <Motion.p className={styles.subtitle} {...fadeUp(0.22)}>
               {hero.subtitle}
             </Motion.p>
 
-            <Motion.div className={styles.ctaRow} {...fadeUp(0.24)}>
+            <Motion.div className={styles.ctaRow} {...fadeUp(0.28)}>
               <a
                 href={hero.primaryCta.href}
                 className="btn btnPrimary btnLg"
@@ -137,7 +140,7 @@ export default function Hero() {
               </a>
             </Motion.div>
 
-            <Motion.div className={styles.techRow} {...fadeUp(0.3)}>
+            <Motion.div className={styles.techRow} {...fadeUp(0.34)}>
               <span className={styles.techLabel}>Core stack</span>
               <ul className={styles.techList}>
                 {hero.techBadges.map((tech) => (
@@ -182,7 +185,7 @@ export default function Hero() {
           </Motion.div>
         </div>
 
-        <Motion.div className={styles.proof} {...fadeUp(0.38)}>
+        <Motion.div className={styles.proof} {...fadeUp(0.4)}>
           <dl className={styles.stats}>
             {hero.stats.map((stat) => (
               <div key={stat.label} className={styles.stat}>
