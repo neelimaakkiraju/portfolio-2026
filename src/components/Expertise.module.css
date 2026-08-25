@@ -31,12 +31,6 @@
   gap: var(--space-12);
 }
 
-.bioTitle {
-  font-size: var(--fs-h3);
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
 .bioParagraph {
   font-size: var(--fs-body);
   line-height: var(--lh-relaxed);
@@ -56,7 +50,7 @@
   align-items: center;
   gap: var(--space-8);
   font-size: var(--fs-sm);
-  font-weight: 550;
+  font-weight: 500;
   color: var(--text-tertiary);
 }
 
@@ -67,7 +61,8 @@
   flex-shrink: 0;
 }
 
-/* ===== PILLARS GRID ===== */
+/* ===== CAPABILITY AREAS ===== (the one real card grid in this section —
+   genuine grouping of three distinct themes, each with its own evidence) */
 .pillarsGrid {
   display: grid;
   gap: var(--grid-gap);
@@ -110,6 +105,10 @@
   height: var(--icon-md);
 }
 
+.pillarBody {
+  flex: 1;
+}
+
 .pillarTitle {
   font-size: var(--fs-h4);
   font-weight: 700;
@@ -124,15 +123,44 @@
   margin: 0;
 }
 
+.outcomes {
+  display: grid;
+  gap: var(--space-10);
+  margin-top: var(--space-16);
+  padding-top: var(--space-16);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.outcome {
+  display: flex;
+  align-items: center;
+  gap: var(--space-10);
+  font-size: var(--fs-xs);
+  color: var(--text-secondary);
+}
+
+.outcome svg {
+  flex-shrink: 0;
+  width: var(--icon-xs);
+  height: var(--icon-xs);
+  color: var(--accent-text);
+}
+
 /* ===== SKILLS SECTION =====
-   Reference material, not a primary statement — a hairline rule separates
-   it instead of matching the pillars' full card treatment. */
+   A contained panel — border and background, but no shadow — so it reads
+   as considered reference material without competing with the capability
+   cards above. The "primary" flag (already in the data, previously
+   unused) gives Core Stack an accent treatment so the section still has
+   its own internal hierarchy instead of presenting every tool as equally
+   important. */
 .skillsSection {
   display: flex;
   flex-direction: column;
-  gap: var(--space-20);
-  padding-top: var(--space-32);
-  border-top: 1px solid var(--border-subtle);
+  gap: var(--space-24);
+  padding: var(--card-padding);
+  border-radius: var(--radius-xl);
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
 }
 
 .skillsHeader {
@@ -143,44 +171,47 @@
 
 .skillsGroupGrid {
   display: grid;
-  gap: var(--space-24);
+  gap: var(--space-28);
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
 }
 
 .skillGroup {
   display: flex;
   flex-direction: column;
-  gap: var(--space-12);
+  gap: var(--space-14);
 }
 
 .skillGroupTitle {
   font-size: var(--fs-3xs);
-  font-weight: 650;
+  font-weight: 500;
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
   color: var(--text-tertiary);
 }
 
+.skillGroupPrimary .skillGroupTitle {
+  color: var(--accent-text);
+}
+
 .skillPills {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-8);
+  gap: var(--space-10);
 }
 
 .skillPill {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-8);
-  min-height: 34px;
-  padding-inline: var(--space-14);
+  gap: var(--space-10);
+  min-height: 38px;
+  padding-inline: var(--space-8) var(--space-16);
   border-radius: var(--radius-pill);
   background: var(--surface-raised);
   border: 1px solid var(--border-subtle);
   color: var(--text-secondary);
   font-size: var(--fs-xs);
-  font-weight: 550;
+  font-weight: 500;
   white-space: nowrap;
-  box-shadow: var(--elevation-1);
   transition:
     background-color var(--duration-base) var(--ease-out),
     border-color var(--duration-base) var(--ease-out),
@@ -198,10 +229,44 @@
 .skillIcon {
   display: grid;
   place-items: center;
-  color: var(--accent-text);
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-hover);
+  color: var(--icon-strong);
+  transition:
+    background-color var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out);
 }
 
 .skillIcon svg {
-  width: var(--icon-sm);
-  height: var(--icon-sm);
+  width: var(--icon-xs);
+  height: var(--icon-xs);
+}
+
+.skillPill:hover .skillIcon {
+  background: var(--accent);
+  color: var(--on-primary);
+}
+
+/* Primary stack carries the accent treatment by default, not just on
+   hover — it's the tech the rest of the page already leads with. */
+.skillPillPrimary {
+  color: var(--text-primary);
+  border-color: var(--accent-border);
+}
+
+.skillPillPrimary .skillIcon {
+  background: var(--primary-container);
+  color: var(--accent-text);
+}
+
+.skillPillPrimary:hover {
+  background: var(--primary-container);
+}
+
+.skillPillPrimary:hover .skillIcon {
+  background: var(--accent);
+  color: var(--on-primary);
 }

@@ -1,9 +1,7 @@
 import React, { memo, useCallback, useMemo, useState } from "react";
-import { AnimatePresence, motion as Motion, useReducedMotion } from "framer-motion";
 import { FiArrowUpRight, FiExternalLink, FiGithub } from "react-icons/fi";
 
 import Section from "./ui/Section";
-import { EASE } from "./ui/motionTokens";
 import CaseStudyModal from "./CaseStudyModal";
 import { useImpression } from "../hooks/useAnalytics";
 import { getProjects } from "../data";
@@ -13,22 +11,14 @@ import styles from "./Projects.module.css";
 const projects = getProjects();
 const caseStudyLabels = projects.caseStudyLabels;
 
-const ProjectCard = memo(function ProjectCard({
-  project,
-  index,
-  variant = "compact",
-  onOpenCaseStudy,
-}) {
-  const prefersReducedMotion = useReducedMotion();
+const ProjectCard = memo(function ProjectCard({ project, index, reverse, onOpenCaseStudy }) {
   const [hoverTracked, setHoverTracked] = useState(false);
-  const isFeatured = variant === "featured";
 
   const impressionRef = useImpression(() =>
     trackProject("project_view", project.name, {
       component: "project_card",
       position: index + 1,
       category_name: project.category,
-      variant,
     })
   );
 
@@ -42,19 +32,11 @@ const ProjectCard = memo(function ProjectCard({
   };
 
   return (
-    <Motion.article
+    <article
       ref={impressionRef}
-      layout={!prefersReducedMotion}
-      className={`card ${styles.card} ${isFeatured ? styles.cardFeatured : styles.cardCompact} ${
-        isFeatured && index % 2 === 1 ? styles.cardReverse : ""
-      }`}
+      className={`card ${styles.card} ${reverse ? styles.cardReverse : ""}`}
       onMouseEnter={handleHover}
       onFocus={handleHover}
-      initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      exit={prefersReducedMotion ? undefined : { opacity: 0, y: -12 }}
-      transition={{ duration: 0.45, ease: EASE }}
       itemScope
       itemType="https://schema.org/CreativeWork"
     >
@@ -71,6 +53,7 @@ const ProjectCard = memo(function ProjectCard({
         <span className={styles.year} aria-hidden="true">
           {project.year}
         </span>
+        {project.featured && <span className={styles.featured}>Featured</span>}
       </div>
 
       <div className={styles.body}>
@@ -85,17 +68,6 @@ const ProjectCard = memo(function ProjectCard({
         <p className={styles.description} itemProp="description">
           {project.description}
         </p>
-
-        {isFeatured && project.metrics.length > 0 && (
-          <dl className={styles.metrics}>
-            {project.metrics.map((metric) => (
-              <div key={metric.label} className={styles.metric}>
-                <dt className={styles.metricValue}>{metric.value}</dt>
-                <dd className={styles.metricLabel}>{metric.label}</dd>
-              </div>
-            ))}
-          </dl>
-        )}
 
         <ul className={styles.tags}>
           {project.tags.map((tag) => (
@@ -154,14 +126,13 @@ const ProjectCard = memo(function ProjectCard({
           </button>
         </div>
       </div>
-    </Motion.article>
+    </article>
   );
 });
 
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [activeProject, setActiveProject] = useState(null);
-  const prefersReducedMotion = useReducedMotion();
 
   const filtered = useMemo(
     () =>
@@ -170,12 +141,6 @@ export default function Projects() {
         : projects.items.filter((p) => p.category === activeCategory),
     [activeCategory]
   );
-
-  /* Editorial split: featured projects get the large treatment, the rest
-     stay in a compact grid. Both are derived slices of the same filtered
-     list, so category filtering keeps working across both tiers for free. */
-  const featuredProjects = useMemo(() => filtered.filter((p) => p.featured), [filtered]);
-  const secondaryProjects = useMemo(() => filtered.filter((p) => !p.featured), [filtered]);
 
   const handleCategorySelect = useCallback((category) => {
     setActiveCategory(category);
@@ -219,56 +184,23 @@ export default function Projects() {
               onClick={() => handleCategorySelect(category)}
               className={`${styles.filter} ${isActive ? styles.filterActive : ""}`}
             >
-              {isActive && !prefersReducedMotion && (
-                <Motion.span
-                  layoutId="filter-pill"
-                  className={styles.filterPill}
-                  aria-hidden="true"
-                  transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                />
-              )}
-              <span className={styles.filterLabel}>{category}</span>
+              {category}
             </button>
           );
         })}
       </div>
 
-      {featuredProjects.length > 0 && (
-        <Motion.div layout className={styles.featuredList}>
-          <AnimatePresence mode="popLayout">
-            {featuredProjects.map((project) => (
-              <ProjectCard
-                key={project.name}
-                project={project}
-                index={filtered.indexOf(project)}
-                variant="featured"
-                onOpenCaseStudy={handleOpenCaseStudy}
-              />
-            ))}
-          </AnimatePresence>
-        </Motion.div>
-      )}
-
-      {secondaryProjects.length > 0 && (
-        <div className={styles.secondaryGroup}>
-          {featuredProjects.length > 0 && (
-            <h3 className={styles.groupLabel}>More Projects</h3>
-          )}
-          <Motion.div layout className={styles.grid}>
-            <AnimatePresence mode="popLayout">
-              {secondaryProjects.map((project) => (
-                <ProjectCard
-                  key={project.name}
-                  project={project}
-                  index={filtered.indexOf(project)}
-                  variant="compact"
-                  onOpenCaseStudy={handleOpenCaseStudy}
-                />
-              ))}
-            </AnimatePresence>
-          </Motion.div>
-        </div>
-      )}
+      <div className={styles.list}>
+        {filtered.map((project, index) => (
+          <ProjectCard
+            key={project.name}
+            project={project}
+            index={index}
+            reverse={index % 2 === 1}
+            onOpenCaseStudy={handleOpenCaseStudy}
+          />
+        ))}
+      </div>
 
       {activeProject && (
         <CaseStudyModal

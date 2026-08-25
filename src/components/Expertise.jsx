@@ -15,14 +15,14 @@ import {
   SiVercel,
   SiVite,
 } from "react-icons/si";
-import { FiClock, FiCode, FiMapPin, FiSmartphone, FiZap } from "react-icons/fi";
+import { FiCheck, FiClock, FiCode, FiMapPin, FiSmartphone, FiZap } from "react-icons/fi";
 
 import Section from "./ui/Section";
 import Reveal, { RevealItem, Stagger } from "./ui/Reveal";
 import Portrait from "./ui/Portrait";
 import { getAbout, getPersonal } from "../data";
 import { CATEGORY, trackEvent } from "../lib/analytics";
-import styles from "./About.module.css";
+import styles from "./Expertise.module.css";
 
 const about = getAbout() || {};
 const personal = getPersonal() || {};
@@ -47,14 +47,14 @@ const iconMap = {
   FiSmartphone,
 };
 
-function About() {
+function Expertise() {
   const handleSkillClick = (skill, category) => {
     trackEvent({
       action: "skill_click",
       category: CATEGORY.ENGAGEMENT,
       label: skill,
       metadata: {
-        section: "about",
+        section: "expertise",
         component: "skill_grid",
         skill_name: skill,
         skill_category: category,
@@ -67,11 +67,12 @@ function About() {
 
   return (
     <Section
-      id="about"
+      id="expertise"
       badge={about.eyebrow}
       title={about.title}
       description={about.subtitle}
-      analyticsName="about"
+      analyticsName="expertise"
+      tone="raised"
     >
       <div className={styles.container}>
         {/* ── Bio ─────────────────────────────────────────────── */}
@@ -85,7 +86,6 @@ function About() {
             />
           </div>
           <div className={styles.bioText}>
-            <h3 className={styles.bioTitle}>Passionate about high-impact frontend engineering</h3>
             <p className={styles.bioParagraph}>{about.bio}</p>
             <div className={styles.metaRow}>
               <span className={styles.metaItem}>
@@ -96,19 +96,16 @@ function About() {
                 <FiClock aria-hidden="true" />
                 {personal.timezone}
               </span>
-              <span className={styles.metaItem}>
-                <FiZap aria-hidden="true" />
-                {personal.tagline}
-              </span>
             </div>
           </div>
         </Reveal>
 
-        {/* ── Core Value Pillars ──────────────────────────────── */}
+        {/* ── Capability Areas ──────────────────────────────────── */}
         {highlightsList.length > 0 && (
           <Stagger className={styles.pillarsGrid}>
             {highlightsList.map((item) => {
               const Icon = iconMap[item.icon];
+              const outcomes = item.outcomes || [];
               return (
                 <RevealItem
                   key={item.title}
@@ -118,9 +115,19 @@ function About() {
                   <span className={styles.pillarIcon} aria-hidden="true">
                     {Icon && <Icon />}
                   </span>
-                  <div>
+                  <div className={styles.pillarBody}>
                     <h4 className={styles.pillarTitle}>{item.title}</h4>
                     <p className={styles.pillarText}>{item.text}</p>
+                    {outcomes.length > 0 && (
+                      <ul className={styles.outcomes}>
+                        {outcomes.map((outcome) => (
+                          <li key={outcome} className={styles.outcome}>
+                            <FiCheck aria-hidden="true" />
+                            {outcome}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
                 </RevealItem>
               );
@@ -134,7 +141,10 @@ function About() {
             <h3 className={styles.skillsHeader}>Technical Stack & Tools</h3>
             <div className={styles.skillsGroupGrid}>
               {skillCategoryList.map((category) => (
-                <div key={category.category} className={styles.skillGroup}>
+                <div
+                  key={category.category}
+                  className={`${styles.skillGroup} ${category.primary ? styles.skillGroupPrimary : ""}`}
+                >
                   <h4 className={styles.skillGroupTitle}>{category.category}</h4>
                   <ul className={styles.skillPills}>
                     {(category.skills || []).map((skill) => {
@@ -143,7 +153,9 @@ function About() {
                         <li key={skill.name}>
                           <button
                             type="button"
-                            className={styles.skillPill}
+                            className={`${styles.skillPill} ${
+                              category.primary ? styles.skillPillPrimary : ""
+                            }`}
                             onClick={() =>
                               handleSkillClick(skill.name, category.category)
                             }
@@ -169,4 +181,4 @@ function About() {
   );
 }
 
-export default memo(About);
+export default memo(Expertise);

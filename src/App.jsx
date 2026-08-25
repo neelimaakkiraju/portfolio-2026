@@ -9,8 +9,7 @@ import { initEngagementTracking, trackPageView } from "./lib/analytics";
 
 /* Hero stays in the main bundle — it is the LCP element. Everything below the
    fold is split out so first paint carries as little JS as possible. */
-const About = lazy(() => import("./components/About"));
-const Services = lazy(() => import("./components/Services"));
+const Expertise = lazy(() => import("./components/Expertise"));
 const Projects = lazy(() => import("./components/Projects"));
 const Experience = lazy(() => import("./components/Experience"));
 const Contact = lazy(() => import("./components/Contact"));
@@ -44,8 +43,7 @@ export default function App() {
       <main id="main-content" className={styles.main}>
         <Hero />
         <Suspense fallback={<SectionFallback />}>
-          <About />
-          <Services />
+          <Expertise />
           <Projects />
           <Experience />
           <Contact />

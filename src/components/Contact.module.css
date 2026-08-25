@@ -89,7 +89,7 @@
 /* ===== DETAILS ===== */
 .blockTitle {
   font-size: var(--fs-3xs);
-  font-weight: 650;
+  font-weight: 500;
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
   color: var(--text-tertiary);
@@ -155,7 +155,7 @@ a.detailRow:hover .detailIcon {
 .detailLabel {
   display: block;
   font-size: var(--fs-3xs);
-  font-weight: 650;
+  font-weight: 500;
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
   color: var(--text-tertiary);
@@ -164,7 +164,7 @@ a.detailRow:hover .detailIcon {
 .detailValue {
   display: block;
   font-size: var(--fs-sm);
-  font-weight: 550;
+  font-weight: 500;
   color: var(--text-primary);
   overflow-wrap: anywhere;
 }
@@ -220,7 +220,7 @@ a.detailRow:hover .detailIcon {
 
 .label {
   font-size: var(--fs-xs);
-  font-weight: 650;
+  font-weight: 500;
   color: var(--text-primary);
 }
 
@@ -340,7 +340,7 @@ a.detailRow:hover .detailIcon {
   padding: var(--space-16) var(--space-24);
   border-radius: var(--radius-pill);
   font-size: var(--fs-sm);
-  font-weight: 550;
+  font-weight: 500;
   background: var(--surface-overlay);
   border: 1px solid var(--border-strong);
   box-shadow: var(--elevation-4);

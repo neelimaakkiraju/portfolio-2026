@@ -22,7 +22,7 @@
         "timezone": "IST (UTC+5:30)",
         "resumeUrl": "/resume/Neelima_Frontend_Resume.pdf",
         "resumeLabel": "Download résumé",
-        "avatarUrl": "",
+        "avatarUrl": "/images/avatar.jpg",
         "availability": "Available for Senior Frontend Developer roles — Remote or Hybrid",
         "availabilityStatus": "Available for new roles",
         "responseTime": "Replies within 24 hours"
@@ -84,12 +84,8 @@
                 "href": "#home"
             },
             {
-                "label": "About",
-                "href": "#about"
-            },
-            {
-                "label": "Services",
-                "href": "#services"
+                "label": "Expertise",
+                "href": "#expertise"
             },
             {
                 "label": "Work",
@@ -110,25 +106,28 @@
         }
     },
     "about": {
-        "eyebrow": "About Me",
+        "eyebrow": "Expertise",
         "title": "Building modern web experiences at scale",
-        "subtitle": "Senior Frontend Developer with 3+ years of experience transforming complex requirements into clean, performant React applications.",
-        "bio": "I focus on building production-grade React & Next.js applications with strict TypeScript, modular design systems, and sub-second load times. Driven by clean code, high performance, and great user experience.",
+        "subtitle": "Turning complex requirements into clean, performant interfaces.",
+        "bio": "I build production-grade React and Next.js applications — strict TypeScript, modular design systems, clean code.",
         "highlights": [
             {
                 "icon": "FiCode",
                 "title": "Frontend Architecture",
-                "text": "React 19, Next.js App Router, strict TypeScript, modular state"
+                "text": "Scalable React 19 and Next.js applications with strict TypeScript and clean, reusable component APIs.",
+                "outcomes": ["Modular UI Design System", "Type-safe Data Layer"]
             },
             {
                 "icon": "FiZap",
-                "title": "Performance Optimization",
-                "text": "Sub-second LCP, 98+ Lighthouse scores, bundle optimization"
+                "title": "Performance Engineering",
+                "text": "Core Web Vitals auditing, code-splitting, and bundle optimization that keeps interfaces fast under real-world load.",
+                "outcomes": ["50%+ Bundle Size Reduction", "Route-level Code Splitting"]
             },
             {
                 "icon": "FiSmartphone",
-                "title": "Design Systems & UI",
-                "text": "Tailwind CSS v4, Framer Motion, 100% WCAG AA accessibility"
+                "title": "Design Systems & Accessibility",
+                "text": "Tailwind CSS v4 and Framer Motion component systems, translated pixel-for-pixel from Figma with full keyboard and screen-reader support.",
+                "outcomes": ["Smooth Motion Tokens", "Cross-Browser Consistency"]
             }
         ],
         "skillCategories": [
@@ -200,43 +199,6 @@
             }
         ]
     },
-    "services": {
-        "eyebrow": "Services",
-        "title": "High-impact frontend solutions",
-        "subtitle": "Targeted engineering to accelerate product delivery, optimize runtime performance, and ensure flawless UI consistency.",
-        "items": [
-            {
-                "title": "React & Next.js Architecture",
-                "description": "Scalable web applications built with strict TypeScript, clean component APIs, and modern state management for rapid team velocity.",
-                "icon": "FiLayers",
-                "outcomes": [
-                    "Modular UI Design System",
-                    "Type-safe Data Layer",
-                    "Next.js App Router Setup"
-                ]
-            },
-            {
-                "title": "Performance Optimization",
-                "description": "Core Web Vitals auditing, asset optimization, code splitting, and bundle reduction to ensure instant LCP and zero runtime jank.",
-                "icon": "FiZap",
-                "outcomes": [
-                    "98+ Lighthouse Scores",
-                    "50%+ Bundle Size Reduction",
-                    "Sub-second First Contentful Paint"
-                ]
-            },
-            {
-                "title": "Figma-to-Code & Design Systems",
-                "description": "Pixel-perfect, responsive UI transformations with WCAG AA accessibility, fluid motion physics, and cross-browser consistency.",
-                "icon": "FiActivity",
-                "outcomes": [
-                    "100% Mobile-first Responsiveness",
-                    "WCAG AA Accessibility",
-                    "Smooth Motion Tokens"
-                ]
-            }
-        ]
-    },
     "projects": {
         "eyebrow": "Portfolio",
         "title": "Featured Engineering Projects",
@@ -254,7 +216,6 @@
                 "description": "Next.js storefront with virtualized catalog rendering, optimistic cart state, and Stripe payment processing.",
                 "tags": [
                     "Next.js App Router",
-                    "TypeScript",
                     "Zustand",
                     "Stripe"
                 ],
@@ -287,7 +248,6 @@
                 "tags": [
                     "React 19",
                     "TanStack Query",
-                    "TypeScript",
                     "IndexedDB"
                 ],
                 "metrics": [
@@ -317,10 +277,9 @@
                 "subtitle": "Analytics & Billing Dashboard",
                 "description": "High-density data portal with reactive charts, client-side table virtualization, and URL-persisted filter states.",
                 "tags": [
-                    "React",
-                    "TypeScript",
                     "Recharts",
-                    "Data Virtualization"
+                    "Data Virtualization",
+                    "Vite"
                 ],
                 "metrics": [
                     {
@@ -349,10 +308,9 @@
                 "subtitle": "Authentication System",
                 "description": "Enterprise-ready auth workflow with HttpOnly cookie tokens, silent session rotation, and tab-wide sync.",
                 "tags": [
-                    "React",
-                    "TypeScript",
                     "JWT Auth",
-                    "Protected Routes"
+                    "Protected Routes",
+                    "React Router"
                 ],
                 "metrics": [
                     {
@@ -381,7 +339,6 @@
                 "subtitle": "Accessible Task Manager",
                 "description": "Kanban workspace featuring fluid drag-and-drop, state machine hooks, and full keyboard navigation.",
                 "tags": [
-                    "React",
                     "Custom Hooks",
                     "Dnd Kit",
                     "Accessibility"
@@ -413,10 +370,9 @@
                 "subtitle": "Type-Ahead Search",
                 "description": "Instant client-side search engine delivering sub-millisecond query lookups across thousands of records.",
                 "tags": [
-                    "React",
-                    "TypeScript",
                     "Framer Motion",
-                    "Search Engine"
+                    "Search Engine",
+                    "Vite"
                 ],
                 "metrics": [
                     {
@@ -470,8 +426,8 @@
                         "label": "Page Load Speed"
                     },
                     {
-                        "value": "98+",
-                        "label": "Lighthouse Score"
+                        "value": "4",
+                        "label": "Client Applications"
                     }
                 ],
                 "achievements": [

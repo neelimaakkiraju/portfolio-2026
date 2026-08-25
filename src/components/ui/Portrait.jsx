@@ -2,11 +2,12 @@ import React from "react";
 import styles from "./Portrait.module.css";
 
 /**
- * Hero/About visual.
- *
- * If `src` is provided (a real portrait photo) it renders inside the frame.
- * Otherwise it falls back to a self-contained abstract illustration — inline
- * SVG, so there is no network request, no decode cost and zero layout shift.
+ * Hero/About visual: a layered UI-panel composition (content card + mini
+ * bar-chart card peeking behind a front identity panel, a corner alignment
+ * tick, and a slow-rotating guide ring). If `personal.avatarUrl` is set,
+ * the photo sits inside the front panel, in place of the monogram — the
+ * rest of the engineered composition stays exactly as designed around it.
+ * Without a photo, the front panel falls back to the monogram.
  *
  * Swapping in a real photo is a one-line data change: set
  * `personal.avatarUrl` in portfolio.json.
@@ -19,6 +20,8 @@ export default function Portrait({
   priority = false,
   className = "",
 }) {
+  const hasPhoto = Boolean(src);
+
   return (
     <div
       className={`${styles.frame} ${className}`}
@@ -26,7 +29,9 @@ export default function Portrait({
     >
       <div className={styles.aura} aria-hidden="true" />
       <div className={styles.surface}>
-        {src ? (
+        <PortraitBackdrop monogram={monogram} label={alt} hasPhoto={hasPhoto} />
+
+        {hasPhoto && (
           <img
             src={src}
             alt={alt}
@@ -37,31 +42,28 @@ export default function Portrait({
             fetchPriority={priority ? "high" : "auto"}
             decoding="async"
           />
-        ) : (
-          <AbstractPortrait monogram={monogram} label={alt} />
         )}
+
+        <PortraitForeground />
         <div className={styles.sheen} aria-hidden="true" />
       </div>
     </div>
   );
 }
 
-/**
- * Abstract composition standing in for a photo: three layered rounded-rect
- * panels — a "content" card and a mini bar-chart card peeking out behind a
- * front identity panel carrying the monogram. Reads as a small UI/engineering
- * system rather than a generic avatar, and stays legible fanned out at both
- * the hero's large size and About's small one since it's built from a few
- * bold shapes rather than fine detail.
- */
-function AbstractPortrait({ monogram, label }) {
+/** Background layer: base gradient, grid, the two "peeking" back panels,
+ *  and — only when there's no photo — the front panel + monogram. */
+function PortraitBackdrop({ monogram, label, hasPhoto }) {
+  const a11yProps = hasPhoto
+    ? { "aria-hidden": "true" }
+    : { role: "img", "aria-label": label || "Abstract engineering illustration" };
+
   return (
     <svg
-      className={styles.illustration}
+      className={styles.layer}
       viewBox="0 0 480 480"
-      role="img"
-      aria-label={label || "Abstract engineering illustration"}
       preserveAspectRatio="xMidYMid slice"
+      {...a11yProps}
     >
       <defs>
         <linearGradient id="pt-bg" x1="0" y1="0" x2="1" y2="1">
@@ -74,11 +76,6 @@ function AbstractPortrait({ monogram, label }) {
           <stop offset="0%" stopColor="#34373d" />
           <stop offset="55%" stopColor="#202329" />
           <stop offset="100%" stopColor="#16181c" />
-        </linearGradient>
-
-        <linearGradient id="pt-ring" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#ffffff" stopOpacity="0.3" />
-          <stop offset="100%" stopColor="#ffffff" stopOpacity="0.02" />
         </linearGradient>
 
         <pattern id="pt-grid" width="40" height="40" patternUnits="userSpaceOnUse">
@@ -112,15 +109,52 @@ function AbstractPortrait({ monogram, label }) {
         <rect x="190" y="322" width="16" height="32" rx="3" fill="#5457d6" fillOpacity="0.65" />
       </g>
 
-      {/* Front panel — primary mark, always upright and on top */}
-      <rect x="140" y="140" width="200" height="200" rx="40" fill="url(#pt-panel-front)" stroke="#ffffff" strokeOpacity="0.1" />
+      {/* Front panel — only rendered here when there's no photo to fill it */}
+      {!hasPhoto && (
+        <>
+          <rect x="140" y="140" width="200" height="200" rx="40" fill="url(#pt-panel-front)" stroke="#ffffff" strokeOpacity="0.1" />
+          <text
+            x="240"
+            y="248"
+            textAnchor="middle"
+            dominantBaseline="central"
+            fontFamily="'Google Sans Display', 'Google Sans Text', Inter, system-ui, sans-serif"
+            fontSize="92"
+            fontWeight="700"
+            letterSpacing="-3"
+            fill="#f4f5f6"
+          >
+            {monogram}
+          </text>
+        </>
+      )}
+    </svg>
+  );
+}
+
+/** Foreground layer: corner alignment tick + guide ring, always on top —
+ *  including on top of a photo, so the engineered accents stay visible. */
+function PortraitForeground() {
+  return (
+    <svg
+      className={styles.layer}
+      viewBox="0 0 480 480"
+      preserveAspectRatio="xMidYMid slice"
+      aria-hidden="true"
+    >
+      <defs>
+        <linearGradient id="pt-ring" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#ffffff" stopOpacity="0.3" />
+          <stop offset="100%" stopColor="#ffffff" stopOpacity="0.02" />
+        </linearGradient>
+      </defs>
 
       {/* Alignment tick — small engineering-tool accent at the panel corner */}
       <path
         d="M152 176V152H176"
         fill="none"
         stroke="#5457d6"
-        strokeOpacity="0.6"
+        strokeOpacity="0.7"
         strokeWidth="2.5"
         strokeLinecap="round"
       />
@@ -138,21 +172,6 @@ function AbstractPortrait({ monogram, label }) {
         />
         <circle cx="240" cy="44" r="4" fill="#5457d6" />
       </g>
-
-      {/* Monogram */}
-      <text
-        x="240"
-        y="248"
-        textAnchor="middle"
-        dominantBaseline="central"
-        fontFamily="Inter, system-ui, sans-serif"
-        fontSize="92"
-        fontWeight="700"
-        letterSpacing="-3"
-        fill="#f4f5f6"
-      >
-        {monogram}
-      </text>
     </svg>
   );
 }

@@ -37,11 +37,25 @@
   box-shadow: var(--shadow-xl);
 }
 
-.illustration,
-.photo {
+/* Both SVG layers stack full-bleed; the photo is inset to sit exactly
+   inside the front panel drawn in the backdrop layer (140,140–340,340 of
+   the 480 viewBox = 29.1667%/41.6667%, rx 40 of 200 = 20% radius). */
+.layer {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
+}
+
+.photo {
+  position: absolute;
+  left: 29.1667%;
+  top: 29.1667%;
+  width: 41.6667%;
+  height: 41.6667%;
+  border-radius: 20%;
   object-fit: cover;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
 /* Glass sheen along the top-left edge */

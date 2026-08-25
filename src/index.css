@@ -25,11 +25,11 @@
   --space-80: 80px;
 
   /* ===== SECTION & LAYOUT RHYTHM ===== */
-  --section-py: clamp(72px, 7vw, 110px);
-  --section-header-mb: clamp(36px, 4vw, 56px);
+  --section-py: clamp(48px, 5vw, 72px);
+  --section-header-mb: clamp(28px, 3vw, 40px);
   --stack-badge-title: var(--space-16);
   --stack-title-desc: var(--space-12);
-  --block-gap: var(--space-48);
+  --block-gap: var(--space-32);
 
   --layout-gap: clamp(32px, 4vw, 56px);
   --layout-gap-lg: clamp(48px, 5vw, 72px);
@@ -41,7 +41,7 @@
 
   --card-padding: clamp(24px, 2.5vw, 36px);
   --card-padding-sm: var(--space-20);
-  --hero-py: clamp(48px, 5vw, 84px);
+  --hero-py: clamp(28px, 3.5vw, 48px);
 
   /* ===== RADII ===== */
   --radius-xs: 6px;
@@ -128,14 +128,20 @@
   --shadow-xl: var(--elevation-4);
   --shadow-accent: 0 6px 20px -4px var(--accent-glow);
 
-  /* Typography */
-  --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  /* Typography — Google Sans Display for large headings, Google Sans Text
+     for everything else (UI/body reads better in a text-optimized face at
+     smaller sizes), JetBrains Mono as a subtle accent for technical bits.
+     Both Google Sans faces only ship weights 400/500/700 (no 600) — every
+     component targets that same 3-step scale for consistency, including
+     mono text, rather than mixing weight ranges across fonts. */
+  --font-display: "Google Sans Display", "Google Sans Text", "Inter", system-ui, -apple-system, sans-serif;
+  --font-sans: "Google Sans Text", "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
 
-  --fs-display: clamp(2.4rem, 1.2rem + 4.5vw, 4.2rem);
-  --fs-h2: clamp(1.8rem, 1.3rem + 2vw, 2.8rem);
-  --fs-h3: clamp(1.25rem, 1.15rem + 0.4vw, 1.5rem);
-  --fs-h4: clamp(1.125rem, 1.05rem + 0.3vw, 1.25rem);
+  --fs-display: clamp(2.25rem, 1.5rem + 3.5vw, 3.75rem);
+  --fs-h2: clamp(1.625rem, 1.4rem + 1.2vw, 2.25rem);
+  --fs-h3: clamp(1.125rem, 1.05rem + 0.35vw, 1.375rem);
+  --fs-h4: clamp(1rem, 0.95rem + 0.2vw, 1.125rem);
   --fs-lead: clamp(1.05rem, 0.98rem + 0.3vw, 1.2rem);
   --fs-body: 1rem;
   --fs-sm: 0.9375rem;
@@ -148,10 +154,10 @@
   --lh-normal: 1.5;
   --lh-relaxed: 1.65;
 
-  --tracking-display: -0.03em;
+  --tracking-display: -0.02em;
   --tracking-heading: -0.015em;
-  --tracking-label: 0.08em;
-  --tracking-eyebrow: 0.12em;
+  --tracking-label: 0.05em;
+  --tracking-eyebrow: 0.07em;
 
   --container-max: 1200px;
   --container-wide: 1280px;
@@ -313,22 +319,16 @@ p {
 .sectionHeader {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  max-width: 700px;
-  margin-inline: auto;
-  margin-bottom: var(--section-header-mb);
-  text-align: center;
-}
-
-.sectionHeaderStart {
   align-items: flex-start;
-  margin-inline: 0;
+  max-width: 700px;
+  margin-bottom: var(--section-header-mb);
   text-align: left;
 }
 
 .sectionTitle {
+  font-family: var(--font-display);
   font-size: var(--fs-h2);
-  font-weight: 750;
+  font-weight: 700;
   letter-spacing: var(--tracking-display);
   line-height: var(--lh-snug);
   color: var(--text-primary);
@@ -410,7 +410,7 @@ p {
   border-radius: var(--radius-pill);
   border: 1px solid transparent;
   font-size: var(--fs-sm);
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: -0.005em;
   line-height: 1;
   white-space: nowrap;
@@ -592,7 +592,7 @@ p {
   border: 1px solid var(--accent-border);
   color: var(--accent-text);
   font-size: var(--fs-3xs);
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1;
   white-space: nowrap;
 }
@@ -689,7 +689,7 @@ p {
   background: var(--surface-overlay);
   color: var(--text-primary);
   font-size: var(--fs-sm);
-  font-weight: 650;
+  font-weight: 500;
   border-radius: var(--radius-pill);
   border: 1px solid var(--border-strong);
   box-shadow: var(--elevation-4);

@@ -88,7 +88,7 @@
   border: 1px solid var(--accent-border);
   color: var(--accent-text);
   font-size: var(--fs-3xs);
-  font-weight: 650;
+  font-weight: 500;
   line-height: 1;
   margin: 0;
 }
@@ -104,7 +104,7 @@
 /* ===== COLUMN HEADINGS ===== */
 .blockTitle {
   font-size: var(--fs-3xs);
-  font-weight: 650;
+  font-weight: 500;
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
   color: var(--text-tertiary);
@@ -211,7 +211,7 @@
   border: 1px solid var(--border);
   color: var(--text-secondary);
   font-size: var(--fs-xs);
-  font-weight: 600;
+  font-weight: 500;
   box-shadow: var(--elevation-1);
   transition:
     background-color var(--duration-base) var(--ease-out),

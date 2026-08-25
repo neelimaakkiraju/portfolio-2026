@@ -5,12 +5,7 @@ import { FiArrowDown, FiDownload } from "react-icons/fi";
 import Portrait from "./ui/Portrait";
 import { EASE } from "./ui/motionTokens";
 import { getHero, getPersonal } from "../data";
-import {
-  CATEGORY,
-  trackCta,
-  trackEvent,
-  trackResumeDownload,
-} from "../lib/analytics";
+import { trackCta, trackResumeDownload } from "../lib/analytics";
 import styles from "./Hero.module.css";
 
 const hero = getHero();
@@ -139,34 +134,6 @@ export default function Hero() {
                 {hero.secondaryCta.text}
               </a>
             </Motion.div>
-
-            <Motion.div className={styles.techRow} {...fadeUp(0.34)}>
-              <span className={styles.techLabel}>Core stack</span>
-              <ul className={styles.techList}>
-                {hero.techBadges.map((tech) => (
-                  <li key={tech}>
-                    <button
-                      type="button"
-                      className={`chip ${styles.techChip}`}
-                      onClick={() =>
-                        trackEvent({
-                          action: "tech_badge_click",
-                          category: CATEGORY.ENGAGEMENT,
-                          label: tech,
-                          metadata: {
-                            section: "hero",
-                            component: "tech_badges",
-                            technology: tech,
-                          },
-                        })
-                      }
-                    >
-                      {tech}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </Motion.div>
           </div>
 
           <Motion.div
@@ -194,7 +161,6 @@ export default function Hero() {
               </div>
             ))}
           </dl>
-          <p className={styles.socialProof}>{hero.socialProof}</p>
         </Motion.div>
       </div>
     </section>
